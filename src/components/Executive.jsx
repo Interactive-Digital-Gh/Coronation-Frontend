@@ -1,36 +1,35 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-const executives = [
-    {
-        id: 1,
-        name: "DR. YAW ADOM-BOATENG – MANAGING DIRECTOR",
-        body:
-            "Dr. Adom-Boateng is a Fellow of the Chartered Insurance Institute of Ghana (FCIIG) and the Chartered Insurance Institute of UK (FCII-UK). He is a seasoned insurance professional with over 22 years of experience in the insurance industry.",
-        image: "https://via.placeholder.com/400x450"
-    },
-    {
-        id: 2,
-        name: "ABAYOMI OGUNSHOLA – HEAD, TECHNICAL OPERATIONS",
-        body:
-            "Mr. Abayomi Shamusideen Ogunshola, is a Fellow of the Chartered Insurance Institute of Ghana (FCIIG) and a seasoned chartered insurance professional with over twenty (20) years track record in Underwriting, Claims and Reinsurance Administration with wide experience in Risk Management and Marketing. He has handled various technical operations roles for over 20 years, demonstrating leadership and expertise.",
-        image: "https://via.placeholder.com/400x450"
-    },
-    {
-        id: 3,
-        name: "ENOCK NARH – CHIEF FINANCE OFFICER",
-        body:
-            "Enock Narh is a Chartered Certified Accountant and a member of the Association of Chartered Certified Accountants (ACCA). He also holds a Bachelor of Commerce (B.COM) in Accounting & Finance from the University of Cape Coast.",
-        image: "https://via.placeholder.com/400x450"
-    }
-];
-
 export default function Executive() {
+    const [executives, setExecutives] = useState([]);
     const [expanded, setExpanded] = useState({});
     const location = useLocation();
     const isRedAbout = location.pathname === "/redabout";
+
+    // Fetch Executive Members from CMS
+    useEffect(() => {
+        const fetchExecutives = async () => {
+            try {
+                const res = await fetch(
+                    "https://coronation-cms.interactivedigital.com.gh/api/aboutus/executive-members/fetch"
+                );
+
+                if (!res.ok) throw new Error("Failed to fetch executive members");
+
+                const json = await res.json();
+                console.log("Executive API Response:", json);
+
+                setExecutives(json); // API returns array directly
+            } catch (error) {
+                console.error("Executive API Error:", error);
+            }
+        };
+
+        fetchExecutives();
+    }, []);
 
     const toggleReadMore = (id) => {
         setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -49,12 +48,9 @@ export default function Executive() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                 {executives.map((item) => {
-                    const isLong = item.body.length > 200;
+                    const plainText = item.description.replace(/<[^>]+>/g, "");
+                    const isLong = plainText.length > 200;
                     const isOpen = expanded[item.id];
-
-                    const displayText = isOpen
-                        ? item.body
-                        : item.body.substring(0, 200);
 
                     return (
                         <motion.div
@@ -66,26 +62,33 @@ export default function Executive() {
                         >
                             {/* IMAGE */}
                             <img
-                                src={item.image}
+                                src={`https://coronation-cms.interactivedigital.com.gh/${item.image}`}
                                 alt={item.name}
-                                className="w-full h-[350px] object-cover"
+                                className="w-full h-[350px] object-center"
                             />
 
                             {/* TEXT CARD */}
                             <div className="bg-black text-white p-6 h-[330px] flex flex-col justify-between">
 
                                 {/* NAME */}
-                                <h3 className="font-semibold text-lg mb-2">
-                                    {item.name}
-                                </h3>
+                                <h3
+                                    className="font-semibold text-lg mb-2"
+                                    dangerouslySetInnerHTML={{ __html: item.name }}
+                                />
 
-                                {/* BODY TEXT */}
+                                {/* BODY */}
                                 <div className="text-sm text-gray-300 leading-relaxed overflow-y-auto pr-1 h-[190px]">
-                                    {displayText}
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: isOpen
+                                                ? item.description
+                                                : plainText.substring(0, 200),
+                                        }}
+                                    />
                                     {!isOpen && isLong && " ..."}
                                 </div>
 
-                                {/* READ MORE BUTTON FIXED AT BOTTOM */}
+                                {/* READ MORE BUTTON */}
                                 {isLong && (
                                     <button
                                         className={`mt-4 p-2 font-semibold border-2 hover:underline 
