@@ -86,21 +86,39 @@ const SlickSlider = () => {
                             </div>
 
                             {/* Text section */}
-                            <div className="lg:w-1/2 h-[300px] lg:h-full bg-black text-white lg:p-8 p-2 flex flex-col justify-center">
+                            <div className="lg:w-1/2 h-[350px] lg:h-full bg-black text-white lg:p-8 p-4 flex flex-col items-start">
                                 <h3
-                                    className="lg:text-2xl text-[20px] font-semibold mb-2"
+                                    className="lg:text-2xl text-[20px] font-bold mb-1 text-white uppercase tracking-tight"
                                     dangerouslySetInnerHTML={{ __html: item.name }}
                                 />
 
                                 <p
-                                    className="text-md text-gray-300 mb-4"
+                                    className="text-sm text-gray-400 mb-4 font-medium"
                                     dangerouslySetInnerHTML={{ __html: item.title }}
                                 />
 
-                                <p
-                                    className="text-sm"
-                                    dangerouslySetInnerHTML={{ __html: item.body }}
-                                />
+                                <div className="relative flex-grow overflow-hidden w-full group">
+                                    <div 
+                                        className="text-[14px] leading-relaxed text-gray-200 overflow-y-auto max-h-[220px] pr-2 custom-scrollbar"
+                                        style={{
+                                            scrollbarWidth: 'thin',
+                                            scrollbarColor: 'rgba(255,255,255,0.2) transparent'
+                                        }}
+                                        dangerouslySetInnerHTML={{ __html: item.body }}
+                                    />
+                                    <style jsx="true">{`
+                                        .custom-scrollbar::-webkit-scrollbar {
+                                            width: 4px;
+                                        }
+                                        .custom-scrollbar::-webkit-scrollbar-track {
+                                            background: transparent;
+                                        }
+                                        .custom-scrollbar::-webkit-scrollbar-thumb {
+                                            background-color: rgba(255,255,255,0.2);
+                                            border-radius: 10px;
+                                        }
+                                    `}</style>
+                                </div>
                             </div>
 
                         </div>
