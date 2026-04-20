@@ -1,0 +1,35 @@
+name: Deploy Coronation Website, Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ vars.PROD_SERVER_HOST }}
+          username: ${{ vars.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SERVER_SSH_KEY }}
+          script: |
+            set -e
+
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 22
+
+            cd /var/www/production/Coronation-Frontend
+
+            git fetch origin
+            git reset --hard origin/main
+            git clean -fd
+
+            npm ci
+            npm run build
+
+            sudo systemctl reload nginx
