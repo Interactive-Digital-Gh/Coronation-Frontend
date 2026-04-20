@@ -90,7 +90,7 @@ const PurpleHome = () => {
 
             <div id="pruplehome_section2" className="flex w-full lg:h-[120px] h-[112px] bg-[#B580D1] items-center justify-between lg:px-20 px-4 md:px-6">
                 <div className="lg:text-[32px] text-[24px] font-semibold lg:leading-[40px] leading-8 text-white">
-                    My Insurance Account!
+                    My Insurance Account!!
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] h-10 bg-white rounded-lg items-center justify-center">
                     <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer' >Request & Pay</Link>
