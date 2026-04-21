@@ -27,9 +27,9 @@ function Project() {
                     id: article.id,
                     image: `https://coronation-cms.interactivedigital.com.gh/${article.main_image}`,
                     date: new Date(article.created_at).toLocaleDateString(),
-                    heading: article.caption.replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
-                    details: article.excerpt.replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
-                    category: article.category,
+                    heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
+                    details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
+                    category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
                     link: `/purpledetail/${article.id}` // Modify this based on your routing structure
                 }));
 
@@ -50,7 +50,7 @@ function Project() {
                 const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
                 const data = await response.json();
                 const fetchedCategories = data.map((category) => ({
-                    name: category.category
+                    name: (category.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim()
                 }));
                 setCategories([{ name: 'All' }, ...fetchedCategories]);
             } catch (error) {
@@ -68,7 +68,7 @@ function Project() {
         } else {
             // Filter articles based on selected category
             const filtered = articles.filter(article =>
-                article.category.toLowerCase() === item.name.toLowerCase()
+                article.category.toLowerCase().trim() === item.name.toLowerCase().trim()
             );
             setFilteredArticles(filtered);
         }

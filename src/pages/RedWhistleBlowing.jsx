@@ -3,7 +3,9 @@
 import insightmainbg from "../assets/purpleinsight/insightmain.png"
 import whistle from "../assets/whistle/whistleimg.png"
 import whistle1 from "../assets/whistle/whistle1.png"
+import qrcode from "../assets/qrcode_coro.png"
 import { Link } from "react-router-dom"
+import { MdCall, MdPublic, MdEmail, MdLocationOn, MdQrCodeScanner } from "react-icons/md"
 
 const RedWhistleBlowing = () => {
     return (
@@ -36,52 +38,103 @@ const RedWhistleBlowing = () => {
                 </div>
             </section>
 
-            <section>
-                <div className="flex lg:flex-row flex-col-reverse justify-between items-center">
-                    <div className="flex flex-col gap-6 lg:w-[950px] w-full lg:h-[544px] h-[600px] lg:p-20 p-4">
-                        <h2 className="lg:w-[515px] md:w-[500px] w-[347px] lg:h-[88px] h-[64px] lg:text-[40px] text-[24px] font-bold lg:leading-[44px] leading-8">What are the Company’s whistleblowing channels?</h2>
-                        <div className="w-[781px] h-[440px] flex flex-col gap-3">
-                            <span className="lg:text-[16px] text-[12px] w-[347px] md:w-[700px] lg:w-full font-normal lg:leading-[24px] leading-5 text-[#56575D]">
-                                The Company is committed to ensuring the confidentiality of whistleblowing reports. Whistleblowers may report a concern directly to the Chief Compliance officer through:
-                            </span>
-                            <span className="lg:text-[16px] text-[12px] font-medium lg:leading-[24px] leading-5">+233 (0) 268 312 065</span>
-                            <span className=" w-[347px] md:w-[700px] lg:w-full lg:text-[16px] text-[12px] font-normal lg:leading-[24px] leading-5 text-[#56575D]">
-                                Whistleblowers may choose to make anonymous reports by not disclosing their identities when making reports. Reports can also be made by sending an email or logging the issue on the web-link below:
-                            </span>
-                            <div className="">
-                                <div className="flex gap-1">
-                                    <span className="lg:text-[16px] text-[12px]">Email:</span>
-                                    <span className="text-[#FF0226] lg:text-[16px] text-[12px]">kpmgethicsline@nh.kpmg</span>
+            <section className="bg-[#F8F9FA] py-20">
+                <div className="max-w-[1200px] mx-auto px-4">
+                    <div className="flex flex-col lg:flex-row gap-12 items-start">
+                        <div className="flex-1">
+                            <h2 className="text-[32px] lg:text-[48px] font-bold text-[#1A1A1A] mb-8">
+                                Available Channels
+                            </h2>
+                            <div className="h-1 w-full bg-gradient-to-r from-[#00205B] via-[#FF0226] to-[#FF0226] mb-12"></div>
+
+                            <div className="bg-[#001D4A] rounded-[24px] py-6 px-12 inline-block mb-12 shadow-lg">
+                                <h3 className="text-white text-[32px] lg:text-[44px] font-extrabold tracking-wider">CONTACT US</h3>
+                            </div>
+
+                            <div className="flex flex-col gap-10">
+                                {/* Phone Section */}
+                                <div className="flex gap-6 items-start">
+                                    <div className="bg-[#FF0226]/10 p-3 rounded-xl">
+                                        <MdCall className="text-[#FF0226] text-4xl" />
+                                    </div>
+                                    <div className="flex flex-col lg:flex-row gap-12">
+                                        <div>
+                                            <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">ON NETWORK TOLL FREE</p>
+                                            <p className="text-[22px] font-semibold text-[#1A1A1A]">07030000026 (MTN)</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">ALL-NETWORK TOLL FREE</p>
+                                            <p className="text-[22px] font-semibold text-[#1A1A1A]">08001235276</p>
+                                            <p className="text-[22px] font-semibold text-[#1A1A1A]">08001235764</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="flex gap-1">
-                                    <span>Weblink:</span>
-                                    <Link to="Weblink: https://apps.ng.kpmg.com/ethics" target="_blank" rel="noopener noreferrer" className="text-[#FF0226]">https://apps.ng.kpmg.com/ethics</Link>
+
+                                {/* Weblink Section */}
+                                <div className="flex gap-6 items-start">
+                                    <div className="bg-[#FF0226]/10 p-3 rounded-xl">
+                                        <MdPublic className="text-[#FF0226] text-4xl" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">WEBLINK</p>
+                                        <a href="https://apps.ng.kpmg.com/ethics/#/" target="_blank" rel="noopener noreferrer" className="text-[18px] text-[#FF0226] hover:underline break-all">
+                                            https://apps.ng.kpmg.com/ethics/#/
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Email Section */}
+                                <div className="flex gap-6 items-start">
+                                    <div className="bg-[#FF0226]/10 p-3 rounded-xl">
+                                        <MdEmail className="text-[#FF0226] text-4xl" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">KPMG ETHICS LINE EMAIL</p>
+                                        <a href="mailto:Kpmgethicsline@ng.kpmg.com" className="text-[18px] text-[#1A1A1A] hover:text-[#FF0226] transition-colors">
+                                            Kpmgethicsline@ng.kpmg.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Office Section */}
+                                <div className="flex gap-6 items-start">
+                                    <div className="bg-[#FF0226]/10 p-3 rounded-xl">
+                                        <MdLocationOn className="text-[#FF0226] text-4xl" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">KPMG OFFICE</p>
+                                        <p className="text-[18px] text-[#56575D]">A physical mail address</p>
+                                    </div>
+                                </div>
+
+                                {/* App Section */}
+                                <div className="flex gap-6 items-start">
+                                    <div className="bg-[#FF0226]/10 p-3 rounded-xl">
+                                        <MdQrCodeScanner className="text-[#FF0226] text-4xl" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[#00205B] font-bold text-lg uppercase tracking-tight">KPMG NIGERIA WHISTLEBLOWING APP</p>
+                                        <p className="text-[18px] text-[#1A1A1A] font-medium">(On Google PlayStore and iOS) (with a call feature)</p>
+                                        <div className="mt-4 flex flex-col items-start gap-2">
+                                            <p className="text-[16px] italic text-[#56575D]">Scan to download app</p>
+                                            <img src={qrcode} alt="QR Code" className="w-32 h-32 object-contain rounded-lg shadow-sm border border-gray-100 p-1 bg-white" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <p className="lg:text-[16px] text-[14px] w-[347px] md:w-[700px] lg:w-full font-medium lg:leading-[24px] leading-5">
-                                    Alternatively, reports can be made by calling any of the KPMG ethics line:
-                                </p>
-                                <div className="flex lg:flex-row flex-col lg:gap-8 gap-0 pl-6 mb-4">
-                                    <ul className="list-disc">
-                                        <li className="text-black">(+234) 0703-000-0026</li>
-                                        <li className="text-black">(+234) 0808-822-8888</li>
-                                        <li className="text-black">(+234) 0809-933-6366</li>
-                                    </ul>
-                                    <ul className="list-disc">
-                                        <li className="text-black">(+234) 0703-000-0027</li>
-                                        <li className="text-black">(+234) 0708-060-1222</li>
-                                        <li className="text-black">(+234) 0705-889-0140</li>
-                                    </ul>
-                                </div>
-                                <p className="lg:text-[16px] text-[14px] w-[347px] md:w-[700px] lg:w-full font-medium lg:leading-[24px] leading-5">
+                        </div>
+
+                        <div className="lg:w-[400px] w-full flex flex-col gap-6">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl">
+                                <img src={whistle1} alt="whistle" className="w-full object-cover" loading="lazy" />
+                            </div>
+                            <div className="bg-[#FF0226] p-6 rounded-2xl text-white">
+                                <p className="text-sm italic font-light leading-relaxed">
+                                    Whistleblowers may choose to make anonymous reports by not disclosing their identities when making reports.
                                     If you want your identity to be disclosed, then you need to give a written consent to that effect.
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex-1 flex justify-end md:hidden md:w-full lg:block h-[250px] lg:h-full">
-                        <img src={whistle1} alt="whistle" className="bg-cover h-full" loading="lazy" />
                     </div>
                 </div>
             </section>

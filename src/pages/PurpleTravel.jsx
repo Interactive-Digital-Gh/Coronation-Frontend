@@ -11,6 +11,7 @@ import IndividualFeature from "../features/IndividualFeature";
 import travelmob from "../assets/purpletravel/travelmob.png"
 import travelbenefit from "../assets/purpletravel/travelbenefit.png"
 import { Link } from "react-router-dom";
+import ProductFlyer from "../assets/Product_Flyers  .pdf";
 
 const PurpleTravel = () => {
 
@@ -123,8 +124,13 @@ const PurpleTravel = () => {
                                 </h3>
                                 <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4"
                                     dangerouslySetInnerHTML={{ __html: travelData.student_insurance_body }} />
-                                <div onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center lg:mt-6">
-                                    Insurance Features
+                                <div className="flex gap-4">
+                                    <div onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center lg:mt-6 mt-4">
+                                        Insurance Features
+                                    </div>
+                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center lg:mt-6 mt-4">
+                                        Download Flyer
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -142,8 +148,13 @@ const PurpleTravel = () => {
                                 </h3>
                                 <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4"
                                     dangerouslySetInnerHTML={{ __html: travelData.individual_insurance_body }} />
-                                <div onClick={() => setIsIndModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    Insurance Features
+                                <div className="flex gap-4">
+                                    <div onClick={() => setIsIndModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
+                                        Insurance Features
+                                    </div>
+                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                        Download Flyer
+                                    </a>
                                 </div>
                             </div>
                         </div>

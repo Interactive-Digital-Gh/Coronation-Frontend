@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"
 import HomeOwnerFeature from "../features/HomeOwnerFeature"
 import HouseHolderFeature from "../features/HouseHolderFeature"
 import { Link } from "react-router-dom"
+import ProductFlyer from "../assets/Product_Flyers  .pdf"
 
 
 const PurpleHomeInsurance = () => {
@@ -109,7 +110,10 @@ const PurpleHomeInsurance = () => {
                                     <p className="lg:w-[560px] w-full lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4"
                                         dangerouslySetInnerHTML={{ __html: homeInsData.homeowner_ins_body }} />
                                 </div>
-                                <span onClick={() => setIsModalOpen(true)} className="text-white bg-[#B580D1] p-2  rounded-md cursor-pointer">Featured Insurance</span>
+                                <div className="flex gap-4 mt-2">
+                                    <span onClick={() => setIsModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
+                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
+                                </div>
                             </div>
                             {isModalOpen && (
                                 <HomeOwnerFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
@@ -138,7 +142,10 @@ const PurpleHomeInsurance = () => {
                                         dangerouslySetInnerHTML={{ __html: homeInsData.householder_ins_body }} />
 
                                 </div>
-                                <span onClick={() => setIsHouseModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
+                                <div className="flex gap-4 mt-2">
+                                    <span onClick={() => setIsHouseModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
+                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
+                                </div>
                             </div>
                             {isHouseModalOpen && (
                                 <HouseHolderFeature closeModal={() => setIsHouseModalOpen(false)} /> // Pass close function to the modal

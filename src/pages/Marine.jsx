@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import CargoFeature from "../features/CargoFeature"
 import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
+import ProductFlyer from "../assets/Product_Flyers  .pdf"
 
 
 
@@ -135,6 +136,9 @@ const Marine = () => {
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                 <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                             </div>
+                            <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                Download Flyer
+                            </a>
                         </div>
                     </div>
                     {cargoOpen && (
@@ -154,6 +158,9 @@ const Marine = () => {
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                 <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                             </div>
+                            <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                Download Flyer
+                            </a>
                         </div>
                     </div>
                     {marinehullOpen && (

@@ -94,14 +94,14 @@ const RedDetailOne = () => {
                 <img
                     src={articleDetails?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}` : "assets/purplemotor/motorbg.png"}
                     alt="about"
-                    className="w-full h-[1000px] object-cover bg-center"
+                    className="w-full h-[300px] md:h-[450px] lg:h-[600px] object-cover bg-center"
                     loading="lazy" />
                 <div className="absolute inset-0 bg-black/30"></div>
 
-                <div className="absolute top-[20px] lg:left-20 left-4 md:w-[858px]">
+                <div className="absolute top-[20px] lg:left-20 left-4 right-4 md:w-auto">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/redinsights">Back</Link></div>
                     <div
-                        className="lg:w-[800px] lg:text-[40px] text-[18px] font-normal md:leading-[34px] text-[#ffffff]"
+                        className="lg:max-w-[800px] lg:text-[40px] text-[20px] font-bold leading-tight text-[#ffffff]"
                         dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
                     />
 
@@ -131,20 +131,20 @@ const RedDetailOne = () => {
                 </div>
             </div>
 
-            <section>
-                <div className="lg:p-20 p-4">
-                    <div className="lg:w-[1280px] lg:h-[1672px] flex lg:flex-row flex-col gap-10">
-                        <div className="lg:w-[827px] md:w-full w-[347px] h-full flex flex-col gap-4 ">
-                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-6">
-                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]"
+            <section className="bg-white">
+                <div className="max-w-7xl mx-auto lg:p-20 p-4">
+                    <div className="flex lg:flex-row flex-col gap-10">
+                        <div className="lg:flex-1 flex flex-col gap-4">
+                            <div className="flex flex-col gap-6">
+                                <div className="font-normal text-[16px] leading-[1.6] text-[#56575D] article-body"
                                     dangerouslySetInnerHTML={{ __html: articleDetails.body }} />
                             </div>
                             {/* <div>
                                 <img src={storm} alt="about" className="lg:w-[803px] h-[320px] bg-cover" loading="lazy" />
                             </div> */}
                         </div>
-                        <div className="lg:w-[413px] h-full flex flex-col gap-10">
-                            <div className="w-full h-[120px] bg-[#F7F7F8] flex flex-col gap-4 rounded-md">
+                        <div className="lg:w-[413px] flex flex-col gap-10">
+                            <div className="w-full p-6 bg-[#F7F7F8] flex flex-col gap-4 rounded-md">
                                 <h3 className="text-[16px] font-normal leading-[24px] text-[#56575D]">Connect with us</h3>
                                 <ul className="flex gap-4">
                                     <a href="https://www.facebook.com/coronationghana" target="_blank" rel="noopener noreferrer"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaFacebook size={24} /></li></a>
@@ -154,7 +154,7 @@ const RedDetailOne = () => {
                                 </ul>
                             </div>
 
-                            <div className="w-full flex lg:flex-col flex-row gap-5 overflow-x-auto lg:overflow-x-visible">
+                            <div className="w-full flex flex-col gap-5 overflow-x-auto lg:overflow-x-visible">
                                 {insightLatestData.slice(0, 2).map((article, index) => (
                                     <div key={index} className="w-full bg-[#f4f4f2] max-w-sm flex-shrink-0">
                                         <img
@@ -162,7 +162,7 @@ const RedDetailOne = () => {
                                             alt="heading"
                                             className="w-full h-[200px] object-cover rounded-lg"
                                         />
-                                        <div className="p-4 h-[170px]">
+                                        <div className="p-4 h-auto">
                                             <div className="text-sm text-[#999881] flex gap-8 mb-2">
                                                 <h3 className="text-[12px] text-[#888991]">
                                                     {article.category}
