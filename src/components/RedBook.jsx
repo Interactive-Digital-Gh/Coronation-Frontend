@@ -27,12 +27,12 @@ const RedBook = ({ item }) => {
 
                 {/* Heading and details */}
                 <div className="h-auto">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                        {item.heading} {/* This is coming from the caption */}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">
-                        {item.details} {/* This is the excerpt or placeholder text */}
-                    </p>
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800"
+                        dangerouslySetInnerHTML={{ __html: item.heading }}
+                    />
+                    <p className="text-gray-600 text-sm mb-4"
+                        dangerouslySetInnerHTML={{ __html: item.details }}
+                    />
                 </div>
 
                 {/* Read More link */}
