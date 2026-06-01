@@ -1,14 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
-// import homebg from "../assets/purplehome/purplehomebg.png"
-// import hero1 from "../assets/purplehome/hero1.png"
-// import hero2 from "../assets/purplehome/hero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
 
-
-// import heroInsight from "../assets/purplehome/homeInsight1.png"
-// import heroIns2 from "../assets/purplehome/heroIns2.jpg"
-// import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
 import Articles from "../components/Articles"
 
