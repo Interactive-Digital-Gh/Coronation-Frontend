@@ -115,9 +115,11 @@ const PurpleInsights = () => {
                                             <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto  text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
 
-                                            <a href={`/purpledetail/${article.id}`} className="text-[#B580D1] font-semibold hover:underline">
-                                                Read More
-                                            </a>
+                                            {article.excerpt && article.excerpt.length > 30 && (
+                                                <a href={`/purpledetail/${article.id}`} className="text-[#B580D1] font-semibold hover:underline">
+                                                    Read More
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

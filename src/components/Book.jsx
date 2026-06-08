@@ -36,9 +36,11 @@ const Book = ({ item }) => {
                 </div>
 
                 {/* Read More link */}
-                <a href={`/purpledetail/${item.id}`} className="text-[#B580D1] font-semibold hover:underline">
-                    Read More
-                </a>
+                {item.details && item.details.length > 30 && (
+                    <a href={`/purpledetail/${item.id}`} className="text-[#B580D1] font-semibold hover:underline">
+                        Read More
+                    </a>
+                )}
 
             </div>
         </div>

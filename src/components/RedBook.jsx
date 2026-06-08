@@ -36,9 +36,11 @@ const RedBook = ({ item }) => {
                 </div>
 
                 {/* Read More link */}
-                <a href={`/reddetail/${item.id}`} className="text-[#FF0226] font-semibold hover:underline">
-                    Read More
-                </a>
+                {item.details && item.details.length > 30 && (
+                    <a href={`/reddetail/${item.id}`} className="text-[#FF0226] font-semibold hover:underline">
+                        Read More
+                    </a>
+                )}
 
             </div>
         </div>

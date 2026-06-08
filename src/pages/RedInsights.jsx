@@ -115,9 +115,11 @@ const RedInsights = () => {
                                             <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
 
-                                            <Link to={`/reddetail/${article.id}`} className="text-[#FF0226] font-semibold hover:underline mt-4">
-                                                Read More
-                                            </Link>
+                                            {article.excerpt && article.excerpt.length > 30 && (
+                                                <Link to={`/reddetail/${article.id}`} className="text-[#FF0226] font-semibold hover:underline mt-4">
+                                                    Read More
+                                                </Link>
+                                            )}
 
                                         </div>
                                     </div>
