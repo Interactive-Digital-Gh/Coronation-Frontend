@@ -86,6 +86,7 @@ const PurpleNavbar = () => {
                                 <Link to="/purpleinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
                                 <Link to="/purplecareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
                                 <Link to="/purplecontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/purpleoffices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
                             </>
                         ) : (
                             <>
@@ -94,6 +95,7 @@ const PurpleNavbar = () => {
                                 <Link to="/redinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
                                 <Link to="/redcareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
                                 <Link to="/redcontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/redoffices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
                             </>
                         )}
                     </ul>
@@ -129,6 +131,7 @@ const PurpleNavbar = () => {
                             <Link to="/purpleinsights" onClick={() => handleLinkClick('insights')}>Insights</Link>
                             <Link to="/purplecareers" onClick={() => handleLinkClick('careers')}>Careers</Link>
                             <Link to="/purplecontact" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
+                            <Link to="/purpleoffices" onClick={() => handleLinkClick('offices')}>Offices</Link>
                         </>
                     ) : (
                         <>
@@ -137,6 +140,7 @@ const PurpleNavbar = () => {
                             <Link to="/redinsights" onClick={() => handleLinkClick('insights')}>Insights</Link>
                             <Link to="/redcareers" onClick={() => handleLinkClick('careers')}>Careers</Link>
                             <Link to="/redcontact" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
+                            <Link to="/redoffices" onClick={() => handleLinkClick('offices')}>Offices</Link>
                         </>
                     )}
 
