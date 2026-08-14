@@ -26,6 +26,8 @@ import { useEffect, useState } from 'react'
 import CookieConsent from "react-cookie-consent";
 import Privacy from './pages/Privacy'
 import RedWhistleBlowing from './pages/RedWhistleBlowing'
+import PurpleOffices from './pages/PurpleOffices'
+import RedOffices from './pages/RedOffices'
 
 
 
@@ -72,6 +74,8 @@ function App() {
           <Route path='/redproductdetails' element={<RedProductDetails />} />
           <Route path="/redproductdetails/*" element={<RedProductDetails />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/purpleoffices" element={<PurpleOffices />} />
+          <Route path="/redoffices" element={<RedOffices />} />
         </Routes>
         <Footer />
       </BrowserRouter>
