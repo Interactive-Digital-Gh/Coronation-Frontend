@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
+      - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      DEPLOY_DIR: ${{ github.ref_name == 'main' && '/var/www/production/Coronation-Frontend' || '/var/www/staging/Coronation-Frontend' }}
+      DEPLOY_BRANCH: ${{ github.ref_name }}
 
     steps:
       - name: Deploy via SSH
@@ -16,6 +21,7 @@ jobs:
           host: ${{ vars.PROD_SERVER_HOST }}
           username: ${{ vars.PROD_SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          envs: DEPLOY_DIR,DEPLOY_BRANCH
           script: |
             set -e
 
@@ -23,10 +29,10 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 22
 
-            cd /var/www/production/Coronation-Frontend
+            cd "$DEPLOY_DIR"
 
             git fetch origin
-            git reset --hard origin/main
+            git reset --hard "origin/$DEPLOY_BRANCH"
             git clean -fd
 
             npm ci
