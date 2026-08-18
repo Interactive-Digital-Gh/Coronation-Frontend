@@ -186,7 +186,7 @@ const RedContact = () => {
                                     className={`flex w-full px-3 py-2 border rounded-md shadow-sm text-black 
                                         ${phoneNumber &&
                                             isPossiblePhoneNumber(phoneNumber)
-                                            ? "border-customPurple"
+                                            ? "border-[#FF0226]"
                                             : "border-gray-300"
                                         }
                                     `}

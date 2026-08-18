@@ -17,8 +17,8 @@ const RedProductDetails = () => {
                 <ul className="flex gap-3 whitespace-nowrap">
                     <li>
                         <Link
-                            to="/redproductdetails/redmotor"
-                            className={`${isActive("/redproductdetails/redmotor")
+                            to="/corporate/business-insurance/motor"
+                            className={`${isActive("/corporate/business-insurance/motor")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -28,8 +28,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/redproductdetails/engineer"
-                            className={`${isActive("/redproductdetails/engineer")
+                            to="/corporate/business-insurance/engineering"
+                            className={`${isActive("/corporate/business-insurance/engineering")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -39,8 +39,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/redproductdetails/marine"
-                            className={`${isActive("/redproductdetails/marine")
+                            to="/corporate/business-insurance/marine"
+                            className={`${isActive("/corporate/business-insurance/marine")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -54,8 +54,8 @@ const RedProductDetails = () => {
             {/* Content Routes */}
             <div className="mt-6">
                 <Routes>
-                    <Route path="redmotor" element={<RedMotor />} />
-                    <Route path="engineer" element={<Engineer />} />
+                    <Route path="motor" element={<RedMotor />} />
+                    <Route path="engineering" element={<Engineer />} />
                     <Route path="marine" element={<Marine />} />
                 </Routes>
             </div>

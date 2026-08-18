@@ -75,7 +75,7 @@ const RedHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] text-white h-10 bg-[#FF0226] items-center justify-center">
-                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
                 </div>
             </div>
             <section id="redhome_section3">
@@ -100,7 +100,7 @@ const RedHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/redabout">
+                                    <Link to="/corporate/about-us">
                                         Learn More
                                     </Link>
                                 </div>
@@ -131,7 +131,7 @@ const RedHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/redabout">Learn More</Link>
+                                        <Link to="/corporate/about-us">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@ const RedHome = () => {
                                 Hear the latest trends from our industry experts
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#FF0226] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/purpleinsights">See more</Link>
+                                <Link to="/corporate/insights">See more</Link>
                             </div>
                         </div>
                     </div>

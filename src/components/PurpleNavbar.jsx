@@ -11,10 +11,10 @@ const PurpleNavbar = () => {
 
     // Watch for location changes and update the active link accordingly
     useEffect(() => {
-        if (location.pathname === '/' || location.pathname.startsWith('/purple')) {
-            setActiveLink('individual');
-        } else if (location.pathname.startsWith('/red')) {
+        if (location.pathname.startsWith('/corporate') || location.pathname.startsWith('/red')) {
             setActiveLink('institution');
+        } else {
+            setActiveLink('individual');
         }
     }, [location.pathname]);
 
@@ -32,7 +32,7 @@ const PurpleNavbar = () => {
         if (activeLink === 'individual') {
             navigate('/');  // Navigate to the home page for 'individual'
         } else if (activeLink === 'institution') {
-            navigate('/redhome');  // Navigate to the home page for 'institution'
+            navigate('/corporate');  // Navigate to the home page for 'institution'
         }
     };
 
@@ -55,7 +55,7 @@ const PurpleNavbar = () => {
                         )}
                     </Link>
                     <Link
-                        to="/redhome"
+                        to="/corporate"
                         onClick={() => handleLinkClick('institution')}
                         className={`text-[14px] leading-[20px] font-medium transform transition duration-300 hover:scale-105 ${activeLink === 'institution' ? 'text-[#FF0226] font-bold' : 'text-[#888991]'}`}
                     >
@@ -81,21 +81,23 @@ const PurpleNavbar = () => {
                     <ul className="hidden md:flex flex-row gap-4">
                         {activeLink === 'individual' ? (
                             <>
-                                <Link to="/purpleabout"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
-                                <Link to="/purpleproduct"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
-                                <Link to="/purpleinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
-                                <Link to="/purplecareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
-                                <Link to="/purplecontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
-                                <Link to="/purpleoffices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
+                                <Link to="/about-us"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
+                                <Link to="/personal-insurance"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
+                                <Link to="/motor-insurance-ghana"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Motor Insurance</li></Link>
+                                <Link to="/insights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
+                                <Link to="/careers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
+                                <Link to="/contact-us"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/our-offices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
                             </>
                         ) : (
                             <>
-                                <Link to="/redabout"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
-                                <Link to="/redproduct"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
-                                <Link to="/redinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
-                                <Link to="/redcareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
-                                <Link to="/redcontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
-                                <Link to="/redoffices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
+                                <Link to="/corporate/about-us"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
+                                <Link to="/corporate/business-insurance"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
+                                <Link to="/corporate/motor-insurance-ghana"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Motor Insurance</li></Link>
+                                <Link to="/corporate/insights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
+                                <Link to="/corporate/careers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
+                                <Link to="/corporate/contact-us"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/corporate/our-offices"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Offices</li></Link>
                             </>
                         )}
                     </ul>
@@ -104,11 +106,11 @@ const PurpleNavbar = () => {
                 {/* Self Service Button based on activeLink */}
                 {activeLink === 'individual' ? (
                     <div className="lg:flex hidden md:flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
-                        <Link to="/purpleservices">Self Service</Link>
+                        <Link to="/self-service">Self Service</Link>
                     </div>
                 ) : (
                     <div className="lg:flex hidden md:flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
-                        <Link to="/redservices">Self Service</Link>
+                        <Link to="/corporate/self-service">Self Service</Link>
                     </div>
                 )}
 
@@ -126,32 +128,34 @@ const PurpleNavbar = () => {
                 <div className="md:hidden flex flex-col gap-4 px-4 py-4 bg-[#F7F7F8]">
                     {activeLink === 'individual' ? (
                         <>
-                            <Link to="/purpleabout" onClick={() => handleLinkClick('about')}>About Us</Link>
-                            <Link to="/purpleproduct" onClick={() => handleLinkClick('product')}>Product & Solutions</Link>
-                            <Link to="/purpleinsights" onClick={() => handleLinkClick('insights')}>Insights</Link>
-                            <Link to="/purplecareers" onClick={() => handleLinkClick('careers')}>Careers</Link>
-                            <Link to="/purplecontact" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
-                            <Link to="/purpleoffices" onClick={() => handleLinkClick('offices')}>Offices</Link>
+                            <Link to="/about-us" onClick={() => handleLinkClick('about')}>About Us</Link>
+                            <Link to="/personal-insurance" onClick={() => handleLinkClick('product')}>Product & Solutions</Link>
+                            <Link to="/motor-insurance-ghana" onClick={() => handleLinkClick('motor')}>Motor Insurance</Link>
+                            <Link to="/insights" onClick={() => handleLinkClick('insights')}>Insights</Link>
+                            <Link to="/careers" onClick={() => handleLinkClick('careers')}>Careers</Link>
+                            <Link to="/contact-us" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
+                            <Link to="/our-offices" onClick={() => handleLinkClick('offices')}>Offices</Link>
                         </>
                     ) : (
                         <>
-                            <Link to="/redabout" onClick={() => handleLinkClick('about')}>About</Link>
-                            <Link to="/redproduct" onClick={() => handleLinkClick('product')}>Product & Solutions</Link>
-                            <Link to="/redinsights" onClick={() => handleLinkClick('insights')}>Insights</Link>
-                            <Link to="/redcareers" onClick={() => handleLinkClick('careers')}>Careers</Link>
-                            <Link to="/redcontact" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
-                            <Link to="/redoffices" onClick={() => handleLinkClick('offices')}>Offices</Link>
+                            <Link to="/corporate/about-us" onClick={() => handleLinkClick('about')}>About</Link>
+                            <Link to="/corporate/business-insurance" onClick={() => handleLinkClick('product')}>Product & Solutions</Link>
+                            <Link to="/corporate/motor-insurance-ghana" onClick={() => handleLinkClick('motor')}>Motor Insurance</Link>
+                            <Link to="/corporate/insights" onClick={() => handleLinkClick('insights')}>Insights</Link>
+                            <Link to="/corporate/careers" onClick={() => handleLinkClick('careers')}>Careers</Link>
+                            <Link to="/corporate/contact-us" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
+                            <Link to="/corporate/our-offices" onClick={() => handleLinkClick('offices')}>Offices</Link>
                         </>
                     )}
 
                     {/* Self Service Button based on activeLink */}
                     {activeLink === 'individual' ? (
                         <div className="flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
-                            <Link to="/purpleservices">Self Service</Link>
+                            <Link to="/self-service">Self Service</Link>
                         </div>
                     ) : (
                         <div className="flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
-                            <Link to="/redservices">Self Service</Link>
+                            <Link to="/corporate/self-service">Self Service</Link>
                         </div>
                     )}
                 </div>

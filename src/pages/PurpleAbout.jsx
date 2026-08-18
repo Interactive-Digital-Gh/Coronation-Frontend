@@ -85,7 +85,7 @@ const PurpleAbout = () => {
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <Link to="/purplecontact" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
+                        <Link to="/contact-us" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
                             Contact Us
                         </Link>
                     </div>

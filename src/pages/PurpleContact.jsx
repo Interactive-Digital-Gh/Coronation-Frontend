@@ -186,7 +186,7 @@ const PurpleContact = () => {
                                     className={`flex w-full px-3 py-2 border rounded-md shadow-sm text-black 
                                         ${phoneNumber &&
                                             isPossiblePhoneNumber(phoneNumber)
-                                            ? "border-customPurple"
+                                            ? "border-[#B580D1]"
                                             : "border-gray-300"
                                         }
                                     `}

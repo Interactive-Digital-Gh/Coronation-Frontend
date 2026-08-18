@@ -7,7 +7,7 @@ export default function Executive() {
     const [executives, setExecutives] = useState([]);
     const [expanded, setExpanded] = useState({});
     const location = useLocation();
-    const isRedAbout = location.pathname === "/redabout";
+    const isRedAbout = location.pathname === "/corporate/about-us";
 
     // Fetch Executive Members from CMS
     useEffect(() => {

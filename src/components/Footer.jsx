@@ -5,8 +5,9 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
     const location = useLocation();
-    const isRedHome = location.pathname === "/redhome";
-    const isPurpleHome = location.pathname === "/";
+    // Corporate pages live under /corporate — everything else belongs to the individual section
+    const isCorporate = location.pathname.startsWith("/corporate");
+    const sectionPrefix = isCorporate ? "/corporate" : "";
 
     return (
         <div>
@@ -27,17 +28,29 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Main Service</div>
                                         <ul>
-                                            <a href="https://ecoronation.com/motor" target="_blank" rel="noopener noreferrer">
+                                            <Link to={`${sectionPrefix}/motor-insurance-ghana`}>
                                                 <li className="text-[#888991] mb-2">Motor Insurance</li>
-                                            </a>
+                                            </Link>
 
-                                            <a href="https://ecoronation.com/marine" target="_blank" rel="noopener noreferrer">
+                                            <Link to={`${sectionPrefix}/marine-insurance-ghana`}>
                                                 <li className="text-[#888991] mb-2">Marine Insurance</li>
-                                            </a>
+                                            </Link>
+
+                                            <Link to={`${sectionPrefix}/business-protection-insurance`}>
+                                                <li className="text-[#888991] mb-2">Business Protection</li>
+                                            </Link>
 
                                             <a href="https://ecoronation.com/pa" target="_blank" rel="noopener noreferrer">
                                                 <li className="text-[#888991] mb-2">Personal Accident</li>
                                             </a>
+
+                                            <Link to="/personal-insurance/travel">
+                                                <li className="text-[#888991] mb-2">Travel Insurance</li>
+                                            </Link>
+
+                                            <Link to="/personal-insurance/home">
+                                                <li className="text-[#888991] mb-2">Home Insurance</li>
+                                            </Link>
                                         </ul>
 
                                     </div>
@@ -45,6 +58,7 @@ const Footer = () => {
                                         <div className="mb-2 text-white">Self Service</div>
                                         <ul>
                                             <a href="https://claims-gh.coronation.ng/" target="_blank" rel="noopener noreferrer"><li className="text-[#888991]">Claims</li></a>
+                                            <a href="https://ecoronation.com/" target="_blank" rel="noopener noreferrer"><li className="text-[#888991] mt-2">Buy Insurance</li></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -65,12 +79,9 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Whistle Blowing</div>
                                         <ul>
-                                            {isRedHome && (
-                                                <Link to="/redwhistle"><li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li></Link>
-                                            )}
-                                            {isPurpleHome && (
-                                                <Link to="/purplewhistle"><li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li></Link>
-                                            )}
+                                            <Link to={`${sectionPrefix}/whistle-blowing`}>
+                                                <li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li>
+                                            </Link>
                                         </ul>
                                     </div>
                                 </div>

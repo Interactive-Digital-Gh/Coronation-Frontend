@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 const SlickSlider = () => {
     const sliderRef = React.useRef(null);
     const location = useLocation();
-    const isRedAbout = location.pathname === "/redabout";
+    const isRedAbout = location.pathname === "/corporate/about-us";
 
     const [data, setData] = useState([]);
 
