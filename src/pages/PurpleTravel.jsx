@@ -12,6 +12,7 @@ import travelmob from "../assets/purpletravel/travelmob.png"
 import travelbenefit from "../assets/purpletravel/travelbenefit.png"
 import { Link } from "react-router-dom";
 import ProductFlyer from "../assets/Product_Flyers  .pdf";
+import SEO from "../components/SEO";
 
 const PurpleTravel = () => {
 
@@ -30,11 +31,7 @@ const PurpleTravel = () => {
                 const data = await response.json();
                 console.log('purple travel Data:', data);
                 setTravelData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching travel data:', error);
             }
@@ -65,6 +62,11 @@ const PurpleTravel = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Travel Insurance | Coronation Insurance Ghana"
+                description="Get travel insurance from Coronation Insurance Ghana. Individual and student travel cover with medical, trip cancellation and baggage protection."
+                keywords="travel insurance Ghana, student travel insurance, international travel cover, Coronation travel insurance"
+            />
             <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px]">
                 <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                     <div className="p-4">

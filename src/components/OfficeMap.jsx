@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, useJsApiLoader, OverlayViewF } from '@react-google-maps/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import officeHero from '../assets/office/officehero.png';
+import officeHero from '../assets/office/officehero.webp';
 
 const containerStyle = {
   width: '100%',

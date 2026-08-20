@@ -1,9 +1,15 @@
-import officeHero from '../assets/office/officehero.png';
+import officeHero from '../assets/office/officehero.webp';
 import OfficeMap from '../components/OfficeMap';
+import SEO from "../components/SEO";
 
 const RedOffices = () => {
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Our Offices | Coronation Insurance Ghana - Corporate"
+                description="Locate Coronation Insurance Ghana corporate and agency offices. Visit us for business insurance consultations and support."
+                keywords="Coronation Insurance offices, corporate insurance office Ghana, Coronation office locations"
+            />
             {/* Hero Section */}
             <div className="relative">
                 <img

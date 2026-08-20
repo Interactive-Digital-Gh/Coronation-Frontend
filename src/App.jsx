@@ -1,38 +1,46 @@
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import PurpleHome from './pages/PurpleHome'
 import PurpleNavbar from './components/PurpleNavbar'
-import RedHome from './pages/RedHome'
-import PurpleAbout from './pages/PurpleAbout'
 import Footer from './components/Footer'
-import PurpleProduct from './pages/PurpleProduct'
-import PurpleProductDetails from './pages/PurpleProductDetails'
-import PurpleCareers from './pages/PurpleCareers'
-import PurpleContact from './pages/PurpleContact'
-import PurpleInsights from './pages/PurpleInsights'
-import DetailOne from './components/DetailOne'
-import PurpleService from './pages/PurpleService'
-import WhistleBlowing from './pages/WhistleBlowing'
-import RedAbout from './pages/RedAbout'
-import RedProduct from './pages/RedProduct'
-import RedInsights from './pages/RedInsights'
-import RedDetailOne from './components/RedDetailOne'
-import RedCareers from './pages/RedCareers'
-import RedContact from './pages/RedContact'
-import RedService from './pages/RedService'
-import RedProductDetails from './pages/RedProductDetails'
 import Feedback from './components/FeedBack'
-import { useEffect, useState } from 'react'
 import CookieConsent from "react-cookie-consent";
-import Privacy from './pages/Privacy'
-import RedWhistleBlowing from './pages/RedWhistleBlowing'
-import PurpleOffices from './pages/PurpleOffices'
-import RedOffices from './pages/RedOffices'
-import MotorInsuranceGhana from './pages/MotorInsuranceGhana'
-import MarineInsuranceGhana from './pages/MarineInsuranceGhana'
-import BusinessProtectionInsurance from './pages/BusinessProtectionInsurance'
 
+// Every page except the landing page is lazy-loaded so mobile visitors only
+// download the code for the route they are on, not the whole site.
+const RedHome = lazy(() => import('./pages/RedHome'))
+const PurpleAbout = lazy(() => import('./pages/PurpleAbout'))
+const PurpleProduct = lazy(() => import('./pages/PurpleProduct'))
+const PurpleProductDetails = lazy(() => import('./pages/PurpleProductDetails'))
+const PurpleCareers = lazy(() => import('./pages/PurpleCareers'))
+const PurpleContact = lazy(() => import('./pages/PurpleContact'))
+const PurpleInsights = lazy(() => import('./pages/PurpleInsights'))
+const DetailOne = lazy(() => import('./components/DetailOne'))
+const PurpleService = lazy(() => import('./pages/PurpleService'))
+const WhistleBlowing = lazy(() => import('./pages/WhistleBlowing'))
+const RedAbout = lazy(() => import('./pages/RedAbout'))
+const RedProduct = lazy(() => import('./pages/RedProduct'))
+const RedInsights = lazy(() => import('./pages/RedInsights'))
+const RedDetailOne = lazy(() => import('./components/RedDetailOne'))
+const RedCareers = lazy(() => import('./pages/RedCareers'))
+const RedContact = lazy(() => import('./pages/RedContact'))
+const RedService = lazy(() => import('./pages/RedService'))
+const RedProductDetails = lazy(() => import('./pages/RedProductDetails'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const RedWhistleBlowing = lazy(() => import('./pages/RedWhistleBlowing'))
+const PurpleOffices = lazy(() => import('./pages/PurpleOffices'))
+const RedOffices = lazy(() => import('./pages/RedOffices'))
+const MotorInsuranceGhana = lazy(() => import('./pages/MotorInsuranceGhana'))
+const MarineInsuranceGhana = lazy(() => import('./pages/MarineInsuranceGhana'))
+const BusinessProtectionInsurance = lazy(() => import('./pages/BusinessProtectionInsurance'))
 
+// Shown briefly while a lazy route chunk downloads
+const RouteFallback = () => (
+  <div className="w-full h-screen flex items-center justify-center bg-white">
+    <div className="w-16 h-16 border-4 border-[#B580D1] border-t-transparent rounded-full animate-spin"></div>
+  </div>
+)
 
 // Forwards legacy insight-detail URLs (/purpledetail/:id, /reddetail/:id) to the new paths
 const LegacyDetailRedirect = ({ base }) => {
@@ -59,6 +67,7 @@ function App() {
     <div>
       <BrowserRouter>
         <PurpleNavbar />
+        <Suspense fallback={<RouteFallback />}>
         <Routes>
           {/* Individual (personal) section */}
           <Route path='/' element={<PurpleHome />} />
@@ -125,6 +134,7 @@ function App() {
           <Route path='/redwhistle' element={<Navigate to="/corporate/whistle-blowing" replace />} />
           <Route path='/redoffices' element={<Navigate to="/corporate/our-offices" replace />} />
         </Routes>
+        </Suspense>
         <Footer />
       </BrowserRouter>
       <Feedback showModal={showFeedbackModal} setShowModal={setShowFeedbackModal} />

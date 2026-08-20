@@ -15,6 +15,7 @@ import MachineFeature from "../features/MachineFeature"
 import ErectionFeature from "../features/ErectionFeature"
 import ElectronicFeature from "../features/ElectronicFeature"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import SEO from "../components/SEO";
 
 
 const Engineer = () => {
@@ -37,11 +38,7 @@ const Engineer = () => {
                 const data = await response.json();
                 console.log('purple engineer Data:', data);
                 setEngineerData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching engineer data:', error);
             }
@@ -70,6 +67,11 @@ const Engineer = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Engineering Insurance | Coronation Insurance Ghana"
+                description="Engineering insurance from Coronation Insurance Ghana. Coverage for plant and machinery, contractor all-risks, erection all-risks and electronic equipment."
+                keywords="engineering insurance Ghana, contractor all risks, plant machinery insurance, erection insurance, electronic equipment insurance"
+            />
             <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px]">
                 <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                     <div className="p-4">

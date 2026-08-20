@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 
 
 const RedCareers = () => {
@@ -16,11 +17,7 @@ const RedCareers = () => {
                 const data = await response.json();
                 console.log('purple career Data:', data);
                 setCareerData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching career data:', error);
             }
@@ -47,6 +44,11 @@ const RedCareers = () => {
     }
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Careers | Coronation Insurance Ghana - Corporate"
+                description="Explore corporate career opportunities at Coronation Insurance Ghana. Join our team of professionals delivering business insurance excellence."
+                keywords="Coronation Insurance careers, corporate insurance jobs Ghana, Coronation Ghana employment"
+            />
             <div className="relative">
                 <img
                     src={careerData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.header_image}` : "assets/purpleinsight/insightbg.png"}

@@ -46,10 +46,7 @@ const MotorInsuranceGhana = () => {
                 const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
                 const data = await response.json();
                 setMotorData(data[0]);
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(() => setShowLoader(false), 500);
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching motor data:', error);
             }

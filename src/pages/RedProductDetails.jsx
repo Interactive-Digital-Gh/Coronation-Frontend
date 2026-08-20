@@ -3,6 +3,7 @@ import RedMotor from "./RedMotor";
 import Engineer from "./Engineer";
 import Marine from "./Marine";
 import "./global.css"
+import SEO from "../components/SEO";
 
 const RedProductDetails = () => {
     const location = useLocation();
@@ -12,6 +13,11 @@ const RedProductDetails = () => {
 
     return (
         <div>
+            <SEO
+                title="Business Insurance Details | Coronation Insurance Ghana"
+                description="Explore detailed business insurance products from Coronation Insurance Ghana including motor, engineering and marine insurance for businesses."
+                keywords="business insurance details, commercial motor insurance, engineering insurance, marine insurance Ghana"
+            />
             {/* Scrollable Links Container */}
             <div className="px-4 h-[50px] flex items-center md:px-10 overflow-x-auto overflow-y-hidden scrollbar">
                 <ul className="flex gap-3 whitespace-nowrap">

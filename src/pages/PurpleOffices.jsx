@@ -1,9 +1,15 @@
-import officeHero from '../assets/office/officehero.png';
+import officeHero from '../assets/office/officehero.webp';
 import OfficeMap from '../components/OfficeMap';
+import SEO from "../components/SEO";
 
 const PurpleOffices = () => {
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Our Offices | Coronation Insurance Ghana"
+                description="Find Coronation Insurance Ghana office locations and agency offices near you. Visit us for in-person insurance support and consultations."
+                keywords="Coronation Insurance offices, insurance office Ghana, Coronation office locations, insurance agents Ghana"
+            />
             {/* Hero Section */}
             <div className="relative">
                 <img

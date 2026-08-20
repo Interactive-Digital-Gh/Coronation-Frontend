@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import MotorFeature from "../features/MotorFeature";
 import TheftFeature from "../features/TheftFeature";
 import PartyFeature from "../features/PartyFeature";
+import SEO from "../components/SEO";
 
 
 const RedMotor = () => {
@@ -43,11 +44,7 @@ const RedMotor = () => {
                 const data = await response.json();
                 console.log('purple redmotor Data:', data);
                 setMotorData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching redmotor data:', error);
             }
@@ -83,6 +80,11 @@ const RedMotor = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Commercial Motor Insurance | Coronation Insurance Ghana"
+                description="Protect your business fleet with Coronation Insurance Ghana commercial motor insurance. Comprehensive, third party fire and theft, and third party only coverage."
+                keywords="commercial motor insurance Ghana, fleet insurance, business vehicle insurance Ghana, corporate motor insurance"
+            />
             <div>
                 <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
                     <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">

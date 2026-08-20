@@ -8,11 +8,17 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 
 
 const RedService = () => {
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Self Service | Coronation Insurance Ghana - Corporate"
+                description="Access Coronation Insurance Ghana corporate self-service portal. File business claims, renew policies, manage your commercial insurance online."
+                keywords="corporate insurance self service, business insurance portal Ghana, file corporate claims, renew commercial policy"
+            />
             <div className="flex lg:flex-row md:flex-row flex-col-reverse w-full gap-24">
                 <div className="flex-1 flex flex-col lg:items-center md:items-center md:justify-center lg:justify-center pl-4 lg:pl-0">
                     <div>

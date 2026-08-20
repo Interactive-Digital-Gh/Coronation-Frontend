@@ -22,11 +22,7 @@ const PurpleHome = () => {
                 console.log(data);
                 setHomeData(data[0]);
 
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -81,7 +77,8 @@ const PurpleHome = () => {
                         src={homeData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.header_image}` : "assets/purplehome/purplehomebg.png"}
                         alt="home"
                         className="w-full lg:h-[540px] md:h-[450px] h-[458px] bg-cover"
-                        loading="lazy"
+                        fetchpriority="high"
+                        decoding="async"
                     />
 
                 </div>

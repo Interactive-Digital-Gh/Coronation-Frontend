@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
 import Executive from "../components/Executive";
+import SEO from "../components/SEO";
 
 const PurpleAbout = () => {
     const [aboutData, setAboutData] = useState(null);
@@ -19,11 +20,7 @@ const PurpleAbout = () => {
                 const data = await response.json();
                 console.log('About Data:', data);
                 setAboutData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching about data:', error);
             }
@@ -68,6 +65,11 @@ const PurpleAbout = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="About Us | Coronation Insurance Ghana"
+                description="Learn about Coronation Insurance Ghana, our mission, leadership team, values and commitment to providing trusted insurance solutions across Ghana."
+                keywords="about Coronation Insurance, insurance company Ghana, Coronation Ghana leadership, insurance provider Ghana"
+            />
             <div className="relative">
                 <img
                     src={aboutData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${aboutData.header_image}` : "assets/purplehome/purplehomebg.png"}

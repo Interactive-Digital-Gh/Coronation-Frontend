@@ -24,11 +24,8 @@ const BusinessProtectionInsurance = () => {
 
     useEffect(() => {
         trackProductView('Business Protection Insurance');
-        // Simulate loader for consistent UX with other pages
-        setTimeout(() => {
-            setFadeOut(true);
-            setTimeout(() => setShowLoader(false), 500);
-        }, 1500);
+        // Static page — no data to wait for, show content immediately
+        setShowLoader(false);
     }, []);
 
     if (showLoader) {

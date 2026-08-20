@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 const RedInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -21,11 +22,7 @@ const RedInsights = () => {
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching card latest data:', error);
             }
@@ -53,6 +50,11 @@ const RedInsights = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Corporate Insights & News | Coronation Insurance Ghana"
+                description="Read the latest corporate insurance insights, industry news and business articles from Coronation Insurance Ghana."
+                keywords="corporate insurance news Ghana, business insurance insights, Coronation Insurance articles"
+            />
             <div className="relative">
                 <img
                     src={insightmainbg} alt="about"

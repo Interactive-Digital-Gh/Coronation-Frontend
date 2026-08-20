@@ -15,6 +15,8 @@ import product44 from "../assets/purpleproduct/redprodmob.png"
 
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
+import FAQ from "../components/FAQ";
 
 
 const RedProduct = () => {
@@ -30,11 +32,7 @@ const RedProduct = () => {
                 const data = await response.json();
                 console.log('purple redproduct Data:', data);
                 setProductData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching redproduct data:', error);
             }
@@ -62,6 +60,11 @@ const RedProduct = () => {
     }
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Business Insurance Products | Coronation Insurance Ghana"
+                description="Explore Coronation Insurance Ghana business insurance products including motor fleet, engineering, marine and business protection insurance for your company."
+                keywords="business insurance Ghana, corporate insurance products, commercial motor insurance, engineering insurance"
+            />
             <div className="relative">
                 <img
                     src={productData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.header_image}` : "assets/purpleproduct/productbg.png"}
@@ -307,6 +310,8 @@ const RedProduct = () => {
                     </div>
                 </div>
             </section>
+
+            <FAQ theme="red" />
 
             <section>
                 <div className="relative hidden lg:block">

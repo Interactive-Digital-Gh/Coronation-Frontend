@@ -8,6 +8,7 @@ import CargoFeature from "../features/CargoFeature"
 import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import SEO from "../components/SEO";
 
 
 
@@ -27,11 +28,7 @@ const Marine = () => {
                 const data = await response.json();
                 console.log('purple marine Data:', data);
                 setMarineData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching marine data:', error);
             }
@@ -61,6 +58,11 @@ const Marine = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Marine Insurance | Coronation Insurance Ghana - Corporate"
+                description="Coronation Insurance Ghana offers comprehensive marine insurance including cargo and marine hull coverage to protect your goods in transit and vessels."
+                keywords="marine insurance Ghana, cargo insurance, marine hull insurance, goods in transit insurance, shipping insurance Ghana"
+            />
             <div className="relative">
                 {/* Background images */}
                 <img

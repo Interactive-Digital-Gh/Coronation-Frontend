@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
-import aboutbg from "../assets/purplehome/instbg.png"
+import aboutbg from "../assets/purplehome/instbg.webp"
 // import hero1 from "../assets/redhome/redhero1.png"
 // import hero2 from "../assets/redhome/redhero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
@@ -12,6 +12,7 @@ import RedArticles from "../components/RedArticles"
 
 // import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 
 
 
@@ -28,11 +29,7 @@ const RedHome = () => {
                 const data = await response.json();
                 console.log(data);
                 setHomeData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -60,8 +57,13 @@ const RedHome = () => {
     }
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Coronation Insurance Ghana | Corporate Insurance Solutions"
+                description="Coronation Insurance Ghana provides comprehensive corporate insurance solutions including motor, marine, engineering and business protection insurance for businesses."
+                keywords="corporate insurance Ghana, business insurance, Coronation Insurance Ghana, commercial insurance"
+            />
             <div className="relative">
-                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" fetchpriority="high" decoding="async" />
                 <div className="absolute lg:top-[370px] md:top-[430px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] md:h-[120px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">

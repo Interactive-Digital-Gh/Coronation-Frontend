@@ -8,11 +8,17 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 
 
 const PurpleService = () => {
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Self Service | Coronation Insurance Ghana"
+                description="Access Coronation Insurance Ghana self-service portal. File claims, renew policies, make payments and manage your personal insurance online."
+                keywords="Coronation Insurance self service, insurance portal Ghana, file claims online, renew insurance policy"
+            />
             <div className="flex lg:flex-row md:flex-row flex-col-reverse w-full gap-24">
                 <div className="flex-1 flex flex-col lg:items-center md:items-center md:justify-center lg:justify-center pl-4 lg:pl-0">
                     <div>

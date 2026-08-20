@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 // import ReactMarkdown from 'react-markdown';
 // import rehypeSanitize from 'rehype-sanitize';
 import DOMPurify from 'dompurify';
+import SEO from "./SEO";
 
 
 
@@ -56,11 +57,7 @@ const DetailOne = () => {
                 setArticleDetails(data[0]);
                 console.log(data)
                 setLoading(false);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching article details:', error);
                 setLoading(false);
@@ -100,6 +97,11 @@ const DetailOne = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Insurance Insights | Coronation Insurance Ghana"
+                description="Read in-depth insurance articles, news and expert insights from Coronation Insurance Ghana."
+                keywords="insurance article, Coronation Insurance insights, insurance news Ghana"
+            />
             <div className="relative">
                 <img
                     src={articleDetails?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}` : "assets/purplemotor/motorbg.png"}

@@ -36,10 +36,7 @@ const MarineInsuranceGhana = () => {
                 const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
                 const data = await response.json();
                 setMarineData(data[0]);
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(() => setShowLoader(false), 500);
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching marine data:', error);
             }

@@ -2,6 +2,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import PurpleMotor from "./PurpleMotor";
 import PurpleTravel from "./PurpleTravel";
 import PurpleHomeInsurance from "./PurpleHomeInsurance";
+import SEO from "../components/SEO";
 
 const PurpleProductDetails = () => {
     const location = useLocation();
@@ -11,6 +12,11 @@ const PurpleProductDetails = () => {
 
     return (
         <div>
+            <SEO
+                title="Personal Insurance Details | Coronation Insurance Ghana"
+                description="Explore detailed personal insurance products from Coronation Insurance Ghana including motor, travel and home insurance options for individuals."
+                keywords="personal insurance details, motor insurance, travel insurance, home insurance, Coronation Insurance Ghana"
+            />
             <div className="px-4 md:px-10">
                 <ul className="flex flex-wrap gap-2 md:gap-4">
                     <li>

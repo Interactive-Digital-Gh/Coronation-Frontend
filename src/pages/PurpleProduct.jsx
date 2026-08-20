@@ -8,6 +8,7 @@ import productmob from "../assets/purpleproduct/productmob.png"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO"
+import FAQ from "../components/FAQ"
 
 
 const PurpleProduct = () => {
@@ -23,11 +24,7 @@ const PurpleProduct = () => {
                 const data = await response.json();
                 console.log('purple product Data:', data);
                 setProductData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching product data:', error);
             }
@@ -231,6 +228,8 @@ const PurpleProduct = () => {
                     </div>
                 </div>
             </section>
+
+            <FAQ theme="purple" />
 
             <section>
                 <div className="relative hidden lg:block">

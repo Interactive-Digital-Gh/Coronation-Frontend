@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 const PurpleInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -21,11 +22,7 @@ const PurpleInsights = () => {
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching card latest data:', error);
             }
@@ -53,6 +50,11 @@ const PurpleInsights = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Insights & News | Coronation Insurance Ghana"
+                description="Stay informed with the latest insurance insights, news and articles from Coronation Insurance Ghana. Expert advice on personal insurance topics."
+                keywords="insurance news Ghana, Coronation Insurance blog, insurance insights, insurance articles Ghana"
+            />
             <div className="relative">
                 <img
                     src={insightmainbg} alt="about"
