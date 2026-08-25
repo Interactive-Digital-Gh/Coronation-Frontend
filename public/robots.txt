@@ -1,0 +1,29 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow legacy redirect paths (they 301 to canonical URLs)
+Disallow: /purpleabout
+Disallow: /purpleproduct
+Disallow: /purpleproductdetails
+Disallow: /purplecareers
+Disallow: /purplecontact
+Disallow: /purpleinsights
+Disallow: /purpledetail
+Disallow: /purpleservices
+Disallow: /purplewhistle
+Disallow: /purpleoffices
+Disallow: /redhome
+Disallow: /redabout
+Disallow: /redproduct
+Disallow: /redproductdetails
+Disallow: /redcareers
+Disallow: /redcontact
+Disallow: /redinsights
+Disallow: /reddetail
+Disallow: /redservices
+Disallow: /redwhistle
+Disallow: /redoffices
+
+# Sitemap
+Sitemap: https://coronationghana.com/sitemap.xml

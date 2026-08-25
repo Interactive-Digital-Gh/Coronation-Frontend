@@ -9,11 +9,11 @@ const faqData = [
     },
     {
         question: "How do I purchase an insurance policy?",
-        answer: "You can purchase insurance easily through our online portal at ecoronation.com, by visiting any of our agency offices across Ghana, or by contacting us directly via phone or email. Our team will guide you through selecting the right coverage for your needs.",
+        answer: "You can purchase insurance easily through our online portal at ecoronation.com, by visiting any of our agency offices across Ghana, or by contacting us directly via phone or email on 0302 772 606 / 0308 249 068/ infoghana@coronationinsurance.com.ng Our team will guide you through selecting the right coverage for your needs.",
     },
     {
         question: "How do I file an insurance claim?",
-        answer: "To file a claim, visit our Self Service portal or contact our claims team directly. You will need to provide your policy number, details of the incident, and any supporting documents such as a police report (for motor claims) or medical reports (for travel claims). Our team processes claims promptly to ensure fast settlement.",
+        answer: "To file a claim, visit our Self Service portal on ecoronation.com or contact our claims team directly on 0302772606 / 0308249068 or claims@coronationinsurance.com.gh . You will need to provide your policy number, details of the incident, and any supporting documents such as a police report (for motor claims) or medical reports (for travel claims). Our team processes claims promptly to ensure fast settlement.",
     },
     {
         question: "What does motor insurance cover in Ghana?",
@@ -25,11 +25,11 @@ const faqData = [
     },
     {
         question: "How do I renew my insurance policy?",
-        answer: "Policy renewal is quick and easy. You can renew through our Self Service portal online, visit any of our agency offices, or contact our customer service team. We recommend renewing before your policy expires to ensure continuous coverage.",
+        answer: "Policy renewal is quick and easy. You can renew through our Self Service portal online on ecoronation.com or visit any of our agency offices, or contact our customer service team. We recommend renewing before your policy expires to ensure continuous coverage.",
     },
     {
         question: "Is Coronation Insurance Ghana a licensed and regulated insurer?",
-        answer: "Yes, Coronation Insurance Ghana is a fully licensed and regulated general insurance company operating under the supervision of the National Insurance Commission (NIC) of Ghana. We are affiliated with the Coronation Group in Nigeria, one of Africa\u2019s leading financial services providers with over 16 years of experience.",
+        answer: "Yes, Coronation Insurance Ghana is a fully licensed and regulated general insurance company operating under the supervision of the National Insurance Commission (NIC) of Ghana. We are affiliated with the Coronation Group in Nigeria, one of Africa\u2019s leading financial services providers with over 18 years of experience.",
     },
 ];
 

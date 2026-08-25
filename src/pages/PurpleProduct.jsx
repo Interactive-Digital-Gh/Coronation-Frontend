@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import product5 from "../assets/purpleproduct/product5.png"
+import marineImg from "../assets/marine/marinebg.png"
+import businessImg from "../assets/redhome/redhero2.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
 
@@ -159,7 +161,7 @@ const PurpleProduct = () => {
                         <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
                             <div className="w-[436px] h-full">
                                 <img
-                                    src="https://loremflickr.com/600/400/ship"
+                                    src={marineImg}
                                     alt="Marine Insurance"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
@@ -179,7 +181,7 @@ const PurpleProduct = () => {
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src="https://loremflickr.com/600/400/business"
+                                    src={businessImg}
                                     alt="Business Protection Insurance"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
