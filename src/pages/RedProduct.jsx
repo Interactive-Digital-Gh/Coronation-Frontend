@@ -4,6 +4,7 @@
 // import product2 from "../assets/engineer/engineerbg.png"
 // import product3 from "../assets/marine/marinebg.png"
 import product4 from "../assets/purpleproduct/redprodbg.png"
+import { fetchCms } from '../lib/cmsCache';
 import product5 from "../assets/purpleproduct/redbanner.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
@@ -23,15 +24,11 @@ const RedProduct = () => {
     useEffect(() => {
         const fetchproductData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/pns/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/pns/fetch');
                 console.log('purple redproduct Data:', data);
                 setProductData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching redproduct data:', error);
             }
@@ -109,7 +106,7 @@ const RedProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
                                         dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/redmotor">Read More</Link>
+                                        <Link to="/corporate/products/motor">Read More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +124,7 @@ const RedProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
                                         dangerouslySetInnerHTML={{ __html: productData.eng_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/engineer">Read More</Link>
+                                        <Link to="/corporate/products/engineering">Read More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +143,7 @@ const RedProduct = () => {
                                         dangerouslySetInnerHTML={{ __html: productData.marine_body }} />
 
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/marine">Read More</Link>
+                                        <Link to="/corporate/products/marine">Read More</Link>
                                     </div>
                                 </div>
                             </div>

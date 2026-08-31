@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import aboutbg from "../assets/purpleabout/aboutbg.png"
 import { Link } from "react-router-dom"
+import { fetchCms } from '../lib/cmsCache';
 import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
 import Executive from "../components/Executive";
@@ -15,15 +16,11 @@ const PurpleAbout = () => {
     useEffect(() => {
         const fetchAboutData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
                 console.log('About Data:', data);
                 setAboutData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching about data:', error);
             }
@@ -35,8 +32,7 @@ const PurpleAbout = () => {
     useEffect(() => {
         const fetchBodData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/bod/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/bod/fetch');
                 console.log('BOD Data:', data);
                 setBodData(data[0]);
             } catch (error) {
@@ -85,7 +81,7 @@ const PurpleAbout = () => {
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <Link to="/purplecontact" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
+                        <Link to="/individual/contact" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
                             Contact Us
                         </Link>
                     </div>

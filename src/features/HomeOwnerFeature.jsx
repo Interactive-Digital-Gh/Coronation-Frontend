@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { FaTimes } from "react-icons/fa";
+import { fetchCms } from '../lib/cmsCache';
 import home5 from "../assets/purplehomeIns/home5.png";
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
@@ -12,8 +13,7 @@ const HomeOwnerFeature = ({ closeModal }) => { // Receive closeModal as prop
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
                 console.log('purple homeIns Data:', data);
                 setHomeInsData(data[0]);
             } catch (error) {

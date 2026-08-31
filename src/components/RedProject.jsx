@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { fetchCms } from '../lib/cmsCache';
 import RedBook from './RedBook';
 import { useLocation } from 'react-router-dom';
 
@@ -20,8 +21,7 @@ function RedProject() {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
 
                 // Map API data to the expected article format
                 const formattedArticles = data.map((article) => ({
@@ -31,7 +31,7 @@ function RedProject() {
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
                     category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
-                    link: `/reddetail/${article.id}` // Modify this based on your routing structure
+                    link: `/corporate/insights/${article.id}` // Modify this based on your routing structure
                 }));
 
                 setArticles(formattedArticles);
@@ -48,8 +48,7 @@ function RedProject() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
                 const fetchedCategories = data.map((category) => ({
                     name: (category.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim()
                 }));
@@ -101,7 +100,7 @@ function RedProject() {
     return (
         <div>
             {/* Conditionally render the categories based on the current path */}
-            {location.pathname !== '/redhome' && (
+            {location.pathname !== '/corporate' && (
                 <nav className="w-full h-[44px] px-4 flex items-center">
                     <ul className="flex gap-4">
                         {categories.map((navItem, index) => (
@@ -129,7 +128,7 @@ function RedProject() {
                 </div>
 
                 {/* Conditionally render pagination controls based on the current path */}
-                {location.pathname !== '/redhome' && (
+                {location.pathname !== '/corporate' && (
                     <div className="flex lg:justify-center lg:items-center mt-8 mb-8 lg:mb-0">
                         <button
                             onClick={handlePreviousPage}

@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 // import motorbg from "../assets/purplemotor/motorbg.png"
 // import student from "../assets/purpletravel/student1.png"
 // import travelguy from "../assets/purpletravel/travelguy.png"
@@ -26,15 +28,11 @@ const PurpleTravel = () => {
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
                 console.log('purple travel Data:', data);
                 setTravelData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching travel data:', error);
             }
@@ -197,6 +195,7 @@ const PurpleTravel = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Travel Insurance" accent="#B580D1" />
         </div>
     )
 }

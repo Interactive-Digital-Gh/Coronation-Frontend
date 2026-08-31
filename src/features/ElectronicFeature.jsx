@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { FaTimes } from "react-icons/fa";
+import { fetchCms } from '../lib/cmsCache';
 import engineer6 from "../assets/engineer/engineer6.png"
 
 import "./globalfeature.css";
@@ -14,8 +15,7 @@ const ElectronicFeature = ({ closeModal }) => {
     useEffect(() => {
         const fetchengineerData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
                 console.log('purple engineer Data:', data);
                 setEngineerData(data[0]);
             } catch (error) {

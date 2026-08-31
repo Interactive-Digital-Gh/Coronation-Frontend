@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 // import homebg from "../assets/purplehomeIns/homebg.png"
 // import homeIns1 from "../assets/purplehomeIns/homeIns1.png"
 // import homeIns2 from "../assets/purplehomeIns/homeIns2.png"
@@ -24,15 +26,11 @@ const PurpleHomeInsurance = () => {
     useEffect(() => {
         const fetchhomeData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
                 console.log('purple homeIns Data:', data);
                 setHomeInsData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching homeIns data:', error);
             }
@@ -183,6 +181,7 @@ const PurpleHomeInsurance = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Home Insurance" accent="#B580D1" />
         </div>
     )
 }

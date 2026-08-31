@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
+import { fetchCms } from '../lib/cmsCache';
 import aboutbg from "../assets/purplehome/instbg.png"
+import purplehomebg from "../assets/purplehome/purplehomebg.png"
 // import hero1 from "../assets/redhome/redhero1.png"
 // import hero2 from "../assets/redhome/redhero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
@@ -24,15 +26,10 @@ const RedHome = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
                 console.log(data);
                 setHomeData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -61,7 +58,7 @@ const RedHome = () => {
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" fetchpriority="high" />
                 <div className="absolute lg:top-[370px] md:top-[430px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] md:h-[120px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
@@ -75,7 +72,7 @@ const RedHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] text-white h-10 bg-[#FF0226] items-center justify-center">
-                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
                 </div>
             </div>
             <section id="redhome_section3">
@@ -83,7 +80,7 @@ const RedHome = () => {
                     <div className="lg:flex md:flex lg:gap-20 gap-6  lg:w-[1340px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
-                                src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : "assets/purplehome/purplehomebg.png"}
+                                src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : purplehomebg}
                                 alt="hero"
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
@@ -100,7 +97,7 @@ const RedHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/redabout">
+                                    <Link to="/corporate/about">
                                         Learn More
                                     </Link>
                                 </div>
@@ -108,7 +105,7 @@ const RedHome = () => {
                         </div>
                         <div className="w-[630px] h-[640px]">
                             <img
-                                src={homeData?.tile2_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile2_image}` : "assets/purplehome/purplehomebg.png"}
+                                src={homeData?.tile2_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile2_image}` : purplehomebg}
                                 alt="hero"
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
@@ -131,7 +128,7 @@ const RedHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/redabout">Learn More</Link>
+                                        <Link to="/corporate/about">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +206,7 @@ const RedHome = () => {
                                 Hear the latest trends from our industry experts
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#FF0226] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/purpleinsights">See more</Link>
+                                <Link to="/corporate/insights">See more</Link>
                             </div>
                         </div>
                     </div>
@@ -239,9 +236,9 @@ const RedHome = () => {
 
             <section>
                 <div className="relative">
-                    <img src={bannerbg} alt="banner" className="w-full bg-cover lg:h-full h-[200px]" />
+                    <img src={bannerbg} alt="banner" className="w-full bg-cover lg:h-full h-[200px]" loading="lazy" />
                     <div className="absolute lg:top-[48%] top-[50%] lg:left-[7%] left-8 lg:text-[56px] text-[32px] font-semibold leading-[64px] text-white">
-                        Get Insured Today
+                        <Link to="/corporate/products">Get Insured Today</Link>
                     </div>
                 </div>
             </section>

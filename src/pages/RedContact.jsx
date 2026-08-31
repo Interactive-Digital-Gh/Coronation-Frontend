@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import 'react-phone-number-input/style.css';
+import { fetchCms } from '../lib/cmsCache';
 import emailjs from '@emailjs/browser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -60,16 +61,10 @@ const RedContact = () => {
     useEffect(() => {
         const fetchcontactData = async () => {
             try {
-                const response = await fetch(
-                    "https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch"
-                );
-                const data = await response.json();
+                const data = await fetchCms("https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch");
                 setContactData(data[0]);
 
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(() => setShowLoader(false), 700);
-                }, 2000);
+                setShowLoader(false);
 
             } catch (error) {
                 console.error("Error fetching contact data:", error);

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { FaTimes } from "react-icons/fa";
+import { fetchCms } from '../lib/cmsCache';
 import travel5 from "../assets/purpletravel/travel5.png";
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
@@ -13,8 +14,7 @@ const StudentFeature = ({ closeModal }) => { // Receive closeModal as prop
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
                 console.log('purple travel Data:', data);
                 setTravelData(data[0]);
             } catch (error) {

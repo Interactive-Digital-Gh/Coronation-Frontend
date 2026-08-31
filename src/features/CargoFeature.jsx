@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { FaTimes } from "react-icons/fa";
+import { fetchCms } from '../lib/cmsCache';
 // import marinemainbg from "../assets/marine/marinemainbg.png"
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
@@ -13,8 +14,7 @@ const CargoFeature = ({ closeModal }) => {
     useEffect(() => {
         const fetchmarineData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
                 console.log('purple marine Data:', data);
                 setMarineData(data[0]);
             } catch (error) {

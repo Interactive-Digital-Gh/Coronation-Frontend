@@ -1,6 +1,7 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/no-unescaped-entities */
 import { Link, useParams } from "react-router-dom"
+import { fetchCms } from '../lib/cmsCache';
 import { IoIosArrowBack } from "react-icons/io";
 
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
@@ -32,11 +33,16 @@ const DetailOne = () => {
     const [showLoader, setShowLoader] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
 
+    // Article-specific page title once the article has loaded
+    useEffect(() => {
+        const plain = (articleDetails?.caption || "").replace(/<[^>]*>/g, "").trim();
+        if (plain) document.title = `${plain} | Coronation Insurance Ghana`;
+    }, [articleDetails]);
+
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
             } catch (error) {
@@ -49,16 +55,12 @@ const DetailOne = () => {
     useEffect(() => {
         const fetchArticleDetails = async () => {
             try {
-                const response = await fetch(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
-                const data = await response.json();
+                const data = await fetchCms(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
                 setArticleDetails(data[0]);
                 console.log(data)
                 setLoading(false);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching article details:', error);
                 setLoading(false);
@@ -106,7 +108,7 @@ const DetailOne = () => {
                     loading="lazy" />
                 <div className="absolute inset-0 bg-black/30"></div>
                 <div className="absolute top-[20px] lg:left-20 left-4 right-4 md:w-auto">
-                    <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/purpleinsights">Back</Link></div>
+                    <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/individual/insights">Back</Link></div>
                     <div
                         className="lg:max-w-[800px] lg:text-[40px] text-[20px] font-bold leading-tight text-[#ffffff]"
                         dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
@@ -187,7 +189,7 @@ const DetailOne = () => {
                                                 dangerouslySetInnerHTML={{ __html: article.caption }} />
                                             <p className="text-gray-600 text-sm mb-4"
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
-                                            {/* <Link to={`/purpleinsights/${article.id}`} className="text-[#B580D1] font-semibold">
+                                            {/* <Link to={`/individual/insights/${article.id}`} className="text-[#B580D1] font-semibold">
                                                 Read More
                                             </Link> */}
                                         </div>

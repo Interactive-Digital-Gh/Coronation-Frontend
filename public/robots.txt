@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coronation.com.gh/sitemap.xml
