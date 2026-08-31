@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
+import { fetchCms } from '../lib/cmsCache';
 import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
 import Executive from "../components/Executive";
@@ -12,15 +13,11 @@ const RedAbout = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
                 console.log(data);
                 setAboutData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -65,7 +62,7 @@ const RedAbout = () => {
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <Link to="/redcontact" className="flex mt-5 w-[90px] h-[35px] bg-black text-white items-center justify-center">
+                        <Link to="/corporate/contact" className="flex mt-5 w-[90px] h-[35px] bg-black text-white items-center justify-center">
                             Contact Us
                         </Link>
                     </div>

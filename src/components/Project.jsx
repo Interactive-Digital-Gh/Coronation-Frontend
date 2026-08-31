@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { fetchCms } from '../lib/cmsCache';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import Book from './Book';
 
@@ -19,8 +20,7 @@ function Project() {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
 
                 // Map API data to the expected article format
                 const formattedArticles = data.map((article) => ({
@@ -30,7 +30,7 @@ function Project() {
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
                     category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
-                    link: `/purpledetail/${article.id}` // Modify this based on your routing structure
+                    link: `/individual/insights/${article.id}` // Modify this based on your routing structure
                 }));
 
                 setArticles(formattedArticles);
@@ -47,8 +47,7 @@ function Project() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
                 const fetchedCategories = data.map((category) => ({
                     name: (category.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim()
                 }));

@@ -2,6 +2,8 @@
 // import motorbg from "../assets/purplemotor/motorbg.png"
 // import motorfeature from "../assets/purplemotor/motorfeature.png"
 import product5 from "../assets/purpleproduct/product5.png"
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
@@ -39,15 +41,11 @@ const RedMotor = () => {
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/motor/fetch');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/motor/fetch');
                 console.log('purple redmotor Data:', data);
                 setMotorData(data[0]);
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching redmotor data:', error);
             }
@@ -315,6 +313,7 @@ const RedMotor = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Commercial Motor Insurance" accent="#FF0226" />
         </div>
     )
 }

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import insightmainbg from "../assets/purpleinsight/insightmain.png"
+import { fetchCms } from '../lib/cmsCache';
 // import insight3 from "../assets/purpleinsight/insight3.png"
 // import insight4 from "../assets/purpleinsight/insight4.png"
 import Articles from "../components/Articles"
@@ -16,15 +17,11 @@ const PurpleInsights = () => {
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
-                const data = await response.json();
+                const data = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
                 // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching card latest data:', error);
             }
@@ -70,7 +67,7 @@ const PurpleInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
-                            <Link to="/purplecontact">Contact Us</Link>
+                            <Link to="/individual/contact">Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -116,9 +113,9 @@ const PurpleInsights = () => {
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
 
                                             {article.excerpt && article.excerpt.length > 30 && (
-                                                <a href={`/purpledetail/${article.id}`} className="text-[#B580D1] font-semibold hover:underline">
+                                                <Link to={`/individual/insights/${article.id}`} className="text-[#B580D1] font-semibold hover:underline">
                                                     Read More
-                                                </a>
+                                                </Link>
                                             )}
                                         </div>
                                     </div>

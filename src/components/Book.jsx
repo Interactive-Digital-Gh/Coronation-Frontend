@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Book = ({ item }) => {
     return (
@@ -37,9 +38,9 @@ const Book = ({ item }) => {
 
                 {/* Read More link */}
                 {item.details && item.details.length > 30 && (
-                    <a href={`/purpledetail/${item.id}`} className="text-[#B580D1] font-semibold hover:underline">
+                    <Link to={`/individual/insights/${item.id}`} className="text-[#B580D1] font-semibold hover:underline">
                         Read More
-                    </a>
+                    </Link>
                 )}
 
             </div>

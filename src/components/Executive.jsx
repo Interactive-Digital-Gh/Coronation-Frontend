@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
@@ -7,19 +8,13 @@ export default function Executive() {
     const [executives, setExecutives] = useState([]);
     const [expanded, setExpanded] = useState({});
     const location = useLocation();
-    const isRedAbout = location.pathname === "/redabout";
+    const isRedAbout = location.pathname === "/corporate/about";
 
     // Fetch Executive Members from CMS
     useEffect(() => {
         const fetchExecutives = async () => {
             try {
-                const res = await fetch(
-                    "https://coronation-cms.interactivedigital.com.gh/api/aboutus/executive-members/fetch"
-                );
-
-                if (!res.ok) throw new Error("Failed to fetch executive members");
-
-                const json = await res.json();
+                const json = await fetchCms("https://coronation-cms.interactivedigital.com.gh/api/aboutus/executive-members/fetch");
                 console.log("Executive API Response:", json);
 
                 setExecutives(json); // API returns array directly
