@@ -6,10 +6,16 @@ import whistle1 from "../assets/whistle/whistle1.png"
 import qrcode from "../assets/qrcode_coro.png"
 import { Link } from "react-router-dom"
 import { MdCall, MdPublic, MdEmail, MdLocationOn, MdQrCodeScanner } from "react-icons/md"
+import SEO from "../components/SEO";
 
 const WhistleBlowing = () => {
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Whistle Blowing | Coronation Insurance Ghana"
+                description="Coronation Insurance Ghana whistleblowing channel. Report misconduct, fraud or policy violations safely and confidentially."
+                keywords="whistleblowing Coronation Insurance, report fraud, ethics reporting Ghana, compliance Coronation Insurance"
+            />
             <div className="relative">
                 <img src={insightmainbg} alt="about" className="w-full bg-cover lg:w-full lg:h-[600px] h-[500px]" loading="lazy" />
                 <div className="absolute lg:top-[380px] top-[300px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">

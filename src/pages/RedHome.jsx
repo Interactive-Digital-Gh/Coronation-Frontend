@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
-import aboutbg from "../assets/purplehome/instbg.png"
+import aboutbg from "../assets/purplehome/instbg.webp"
 // import hero1 from "../assets/redhome/redhero1.png"
 // import hero2 from "../assets/redhome/redhero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
@@ -12,6 +12,7 @@ import RedArticles from "../components/RedArticles"
 
 // import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 
 
 
@@ -28,11 +29,7 @@ const RedHome = () => {
                 const data = await response.json();
                 console.log(data);
                 setHomeData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -60,8 +57,13 @@ const RedHome = () => {
     }
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Coronation Insurance Ghana | Corporate Insurance Solutions"
+                description="Coronation Insurance Ghana provides comprehensive corporate insurance solutions including motor, marine, engineering and business protection insurance for businesses."
+                keywords="corporate insurance Ghana, business insurance, Coronation Insurance Ghana, commercial insurance"
+            />
             <div className="relative">
-                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" fetchpriority="high" decoding="async" />
                 <div className="absolute lg:top-[370px] md:top-[430px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] md:h-[120px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
@@ -75,7 +77,7 @@ const RedHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] text-white h-10 bg-[#FF0226] items-center justify-center">
-                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
                 </div>
             </div>
             <section id="redhome_section3">
@@ -100,7 +102,7 @@ const RedHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/redabout">
+                                    <Link to="/corporate/about-us">
                                         Learn More
                                     </Link>
                                 </div>
@@ -131,7 +133,7 @@ const RedHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/redabout">Learn More</Link>
+                                        <Link to="/corporate/about-us">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +211,7 @@ const RedHome = () => {
                                 Hear the latest trends from our industry experts
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#FF0226] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/purpleinsights">See more</Link>
+                                <Link to="/corporate/insights">See more</Link>
                             </div>
                         </div>
                     </div>

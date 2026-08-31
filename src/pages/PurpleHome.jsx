@@ -4,6 +4,7 @@ import bannerbg from "../assets/purplehome/bannerbg.png"
 
 import { useEffect, useState } from "react"
 import Articles from "../components/Articles"
+import SEO from "../components/SEO"
 
 
 
@@ -21,11 +22,7 @@ const PurpleHome = () => {
                 console.log(data);
                 setHomeData(data[0]);
 
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -56,6 +53,11 @@ const PurpleHome = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Coronation Insurance Ghana | Trusted Insurance for Individuals & Businesses"
+                description="Coronation Insurance Ghana offers comprehensive motor, travel, home, marine & business insurance. Get insured today with fast claims settlement."
+                keywords="insurance Ghana, motor insurance, travel insurance, home insurance, Coronation Insurance Ghana"
+            />
             <div id="pruplehome_section1" className="w-full flex flex-col-reverse lg:flex-row">
                 <div className="flex flex-1 bg-black items-center lg:pl-20 pl-4 md:pl-6">
                     <div className="w-[545px] lg:h-[228px] md:h-[188px] h-[180px]">
@@ -75,7 +77,8 @@ const PurpleHome = () => {
                         src={homeData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.header_image}` : "assets/purplehome/purplehomebg.png"}
                         alt="home"
                         className="w-full lg:h-[540px] md:h-[450px] h-[458px] bg-cover"
-                        loading="lazy"
+                        fetchpriority="high"
+                        decoding="async"
                     />
 
                 </div>
@@ -86,7 +89,7 @@ const PurpleHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] h-10 bg-white rounded-lg items-center justify-center">
-                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer' >Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer' >Buy Insurance</Link>
                 </div>
             </div>
             <section id="pruplehome_section3">
@@ -111,7 +114,7 @@ const PurpleHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#B580D1] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to={homeData?.tile1_btn_link || "/purpleabout"}>
+                                    <Link to={homeData?.tile1_btn_link || "/about-us"}>
                                         {homeData?.tile1_btn_text || "Learn More"}
                                     </Link>
                                 </div>
@@ -142,7 +145,7 @@ const PurpleHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/purpleabout">Learn More</Link>
+                                        <Link to="/about-us">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +166,7 @@ const PurpleHome = () => {
                                     Hear the latest trends from our industry experts
                                 </span>
                                 <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                    <Link to="/purpleinsights">See more</Link>
+                                    <Link to="/insights">See more</Link>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +180,7 @@ const PurpleHome = () => {
                                     In today's age of global warming, characterised by a rise in the frequency and severity of flood...
                                 </p>
                                 <div className="mt-6 text-[14px] text-[#B580D1]">
-                                    <Link to="/purpledetailone">Read More</Link>
+                                    <Link to="/insights">Read More</Link>
                                 </div>
                             </div>
                             <div className="lg:w-[416px] w-[300px] h-[316px] lg:h-[452px] shadow-lg rounded-md bg-white p-4">
@@ -219,7 +222,7 @@ const PurpleHome = () => {
                                 Hear the latest trends from our industry experts
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/purpleinsights">See more</Link>
+                                <Link to="/insights">See more</Link>
                             </div>
                         </div>
                     </div>

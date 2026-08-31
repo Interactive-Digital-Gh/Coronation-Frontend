@@ -5,8 +5,10 @@ import insightmainbg from "../assets/purpleinsight/insightmain.png"
 import RedArticles from "../components/RedArticles"
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { Link } from "react-router-dom"
+import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
 const RedInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -20,11 +22,7 @@ const RedInsights = () => {
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching card latest data:', error);
             }
@@ -52,6 +50,11 @@ const RedInsights = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Corporate Insights & News | Coronation Insurance Ghana"
+                description="Read the latest corporate insurance insights, industry news and business articles from Coronation Insurance Ghana."
+                keywords="corporate insurance news Ghana, business insurance insights, Coronation Insurance articles"
+            />
             <div className="relative">
                 <img
                     src={insightmainbg} alt="about"
@@ -70,60 +73,69 @@ const RedInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-black text-white items-center justify-center">
-                            <Link to="/redcontact">Contact Us</Link>
+                            <Link to="/corporate/contact-us">Contact Us</Link>
                         </div>
                     </div>
                 </div>
             </div>
 
             <section>
-                <div className="lg:p-20 p-4">
-                    <div className="w-[1280px] lg:h-[800px] flex flex-col lg:gap-12">
-                        <h2 className="w-full h-[44px] lg:text-[40px] text-[24px] font-bold lg:leading-[44px] leading-[32px]">
-                            Read all our articles
-                        </h2>
+                <div className="lg:px-20 lg:pt-16 px-4 pt-8">
+                    <div className="w-full flex flex-col gap-8">
+                        <div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <span className="w-10 h-[3px] rounded-full bg-[#FF0226]" />
+                                <span className="text-[#FF0226] text-sm font-semibold tracking-widest uppercase">Latest Insights</span>
+                            </div>
+                            <h2 className="lg:text-[40px] text-[24px] font-bold lg:leading-[44px] leading-[32px]">
+                                Read all our articles
+                            </h2>
+                        </div>
 
-                        <div className="w-full lg:h-[708px] md:h-[500px] h-[380px] flex flex-col lg:gap-6 md:gap-10 gap-4">
+                        {/* Featured glass cards — two most recent articles */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {insightLatestData.slice(0, 2).map((article, index) => (
-                                <div key={index} className="w-full lg:h-[342px] h-[200px] flex flex-row">
-                                    <div className="lg:flex-1">
-                                        <img
-                                            src={article?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${article.main_image}` : "assets/purplemotor/motorbg.png"}
-                                            className="object-cover rounded-md lg:w-[630px] md:w-[400px] w-[167px] lg:h-[342px] md:h-[220px] h-[170px]"
-                                            loading="lazy"
-                                            alt={article.caption}
-                                        />
-                                    </div>
-                                    <div className="lg:flex-1 h-[170px] lg:h-[342px] md:h-[220px] w-[167px] flex flex-col gap-2 lg:items-center md:items-center md:justify-center lg:justify-center px-2">
-                                        <div className="lg:pl-8 md:pl-64 pl-0 py-2 lg:py-0">
-                                            <div className="flex lg:flex-row  md:flex-row flex-col lg:gap-10 md:gap-8">
-                                                <h3 className="text-[12px] text-[#888991]">
-                                                    {article.category}
-                                                </h3>
-                                                <ul className="lg:list-disc md:list-disc">
-                                                    <li className="text-[12px] text-[#888991]">
-                                                        {new Date(article.created_at).toLocaleDateString("en-US", {
-                                                            year: "numeric",
-                                                            month: "long",
-                                                            day: "numeric"
-                                                        })}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <h2 className="lg:w-[512px] md:w-[400px] w-[160px] h-auto text-left md:text-left"
-                                                dangerouslySetInnerHTML={{ __html: article.caption }} />
-                                            <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
-                                                dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+                                <Link
+                                    to={`/corporate/insights/${article.id}`}
+                                    key={index}
+                                    className="group relative block lg:h-[440px] md:h-[400px] h-[340px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#FF0226]/40 transition-all duration-500 hover:-translate-y-2"
+                                >
+                                    <img
+                                        src={article?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${article.main_image}` : "assets/purplemotor/motorbg.png"}
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                        loading="lazy"
+                                        alt="Insight article"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
+                                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 group-hover:ring-2 group-hover:ring-[#FF0226]/70 transition-all duration-500" />
 
-                                            {article.excerpt && article.excerpt.length > 30 && (
-                                                <Link to={`/reddetail/${article.id}`} className="text-[#FF0226] font-semibold hover:underline mt-4">
-                                                    Read More
-                                                </Link>
-                                            )}
+                                    {article.category && (
+                                        <span className="absolute top-5 left-5 backdrop-blur-md bg-white/15 border border-white/30 text-white text-[11px] font-semibold tracking-wider uppercase rounded-full px-3 py-1.5 shadow-md">
+                                            {article.category}
+                                        </span>
+                                    )}
 
+                                    <div className="absolute inset-x-0 bottom-0 m-4 rounded-xl backdrop-blur-xl bg-white/10 border border-white/25 lg:p-6 p-4 shadow-lg transition-colors duration-500 group-hover:bg-white/20">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0226]" />
+                                            <span className="text-white/80 text-[12px] font-medium">
+                                                {new Date(article.created_at).toLocaleDateString("en-US", {
+                                                    year: "numeric",
+                                                    month: "long",
+                                                    day: "numeric"
+                                                })}
+                                            </span>
                                         </div>
+                                        <h2 className="text-white lg:text-[24px] text-[18px] font-semibold leading-snug line-clamp-2 mb-2"
+                                            dangerouslySetInnerHTML={{ __html: article.caption }} />
+                                        <span className="hidden md:line-clamp-2 text-white/75 lg:text-[15px] text-[13px] leading-relaxed mb-3"
+                                            dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+                                        <span className="inline-flex items-center gap-2 text-[#FF9FAC] text-sm font-semibold">
+                                            Read More
+                                            <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
+                                        </span>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -131,8 +143,8 @@ const RedInsights = () => {
             </section>
 
             <section>
-                <div className="lg:p-20">
-                    <div className="w-[1280px] md:w-full">
+                <div className="lg:px-20 lg:py-16 px-4 py-8">
+                    <div className="w-full">
                         <RedArticles />
                     </div>
                 </div>

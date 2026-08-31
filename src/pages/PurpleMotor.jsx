@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import MotorFeature from "../features/MotorFeature";
 import TheftFeature from "../features/TheftFeature";
 import PartyFeature from "../features/PartyFeature";
+import SEO from "../components/SEO";
 
 
 const PurpleMotor = () => {
@@ -41,11 +42,7 @@ const PurpleMotor = () => {
                 const data = await response.json();
                 console.log('purple motor Data:', data);
                 setMotorData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching motor data:', error);
             }
@@ -83,6 +80,11 @@ const PurpleMotor = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Personal Motor Insurance | Coronation Insurance Ghana"
+                description="Get comprehensive personal motor insurance in Ghana with Coronation Insurance. Coverage options include comprehensive, third party fire and theft, and third party only."
+                keywords="motor insurance Ghana, car insurance Ghana, vehicle insurance, comprehensive motor insurance, third party insurance Ghana"
+            />
             <div>
                 <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
                     <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">

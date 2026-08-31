@@ -18,6 +18,7 @@ import { MdOutlineMarkEmailUnread, MdOutlineLocationOn } from "react-icons/md";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useRef, useState } from 'react';
+import SEO from "../components/SEO";
 
 const PurpleContact = () => {
 
@@ -66,10 +67,7 @@ const PurpleContact = () => {
                 const data = await response.json();
                 setContactData(data[0]);
 
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(() => setShowLoader(false), 700);
-                }, 2000);
+                setShowLoader(false);
 
             } catch (error) {
                 console.error("Error fetching contact data:", error);
@@ -98,6 +96,11 @@ const PurpleContact = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Contact Us | Coronation Insurance Ghana"
+                description="Get in touch with Coronation Insurance Ghana. Reach our team for insurance inquiries, claims support, policy questions or to request a quote."
+                keywords="contact Coronation Insurance, insurance Ghana contact, insurance quote Ghana, Coronation phone number"
+            />
 
             <ToastContainer />
 
@@ -186,7 +189,7 @@ const PurpleContact = () => {
                                     className={`flex w-full px-3 py-2 border rounded-md shadow-sm text-black 
                                         ${phoneNumber &&
                                             isPossiblePhoneNumber(phoneNumber)
-                                            ? "border-customPurple"
+                                            ? "border-[#B580D1]"
                                             : "border-gray-300"
                                         }
                                     `}

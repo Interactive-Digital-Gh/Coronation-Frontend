@@ -30,7 +30,7 @@ function Project() {
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
                     category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
-                    link: `/purpledetail/${article.id}` // Modify this based on your routing structure
+                    link: `/insights/${article.id}` // Modify this based on your routing structure
                 }));
 
                 setArticles(formattedArticles);
@@ -101,16 +101,16 @@ function Project() {
         <div>
             {/* Conditionally render the categories based on the current path */}
             {location.pathname !== '/' && (
-                <nav className="w-full h-[44px] px-4 flex items-center">
-                    <ul className="flex gap-4">
+                <nav className="w-full py-2 flex items-center">
+                    <ul className="flex flex-wrap gap-2">
                         {categories.map((navItem, index) => (
                             <li
                                 onClick={(e) => handleClick(e, index)}
                                 key={index}
                                 className={`${active === index
-                                    ? 'bg-[#B580D1] text-white'
-                                    : 'bg-[#F7F7F8] text-black'
-                                    } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
+                                    ? 'bg-[#B580D1] text-white shadow-lg shadow-[#B580D1]/40'
+                                    : 'bg-[#F7F7F8] text-black hover:bg-[#EFE4F5]'
+                                    } px-4 py-2 rounded-full cursor-pointer lg:text-[16px] md:text-[14px] text-[12px] font-semibold leading-[24px] transition-all duration-300`}
                             >
                                 {navItem.name}
                             </li>
@@ -121,7 +121,7 @@ function Project() {
 
             {/* Project grid */}
             <section>
-                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-2">
+                <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {currentArticles.map((item) => (
                         <Book item={item} key={item.id} />
                     ))}
@@ -133,7 +133,7 @@ function Project() {
                         <button
                             onClick={handlePreviousPage}
                             disabled={currentPage === 1}
-                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
+                            className="w-9 h-9 mx-1 border border-gray-300 rounded-full text-gray-500 hover:bg-gray-200 disabled:opacity-50 transition-colors duration-300"
                         >
                             &lt;
                         </button>
@@ -141,10 +141,10 @@ function Project() {
                             <button
                                 key={index + 1}
                                 onClick={() => setCurrentPage(index + 1)}
-                                className={`px-3 py-1 mx-1 border ${currentPage === index + 1
-                                    ? 'bg-[#B580D1] text-white'
+                                className={`w-9 h-9 mx-1 border ${currentPage === index + 1
+                                    ? 'bg-[#B580D1] border-transparent text-white shadow-lg shadow-[#B580D1]/40'
                                     : 'border-gray-300 text-gray-500'
-                                    } rounded-lg hover:bg-[#B580D1] hover:text-white`}
+                                    } rounded-full hover:bg-[#B580D1] hover:text-white transition-all duration-300`}
                             >
                                 {index + 1}
                             </button>
@@ -152,7 +152,7 @@ function Project() {
                         <button
                             onClick={handleNextPage}
                             disabled={currentPage === totalPages}
-                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
+                            className="w-9 h-9 mx-1 border border-gray-300 rounded-full text-gray-500 hover:bg-gray-200 disabled:opacity-50 transition-colors duration-300"
                         >
                             &gt;
                         </button>

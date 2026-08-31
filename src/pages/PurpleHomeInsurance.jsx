@@ -10,6 +10,7 @@ import HomeOwnerFeature from "../features/HomeOwnerFeature"
 import HouseHolderFeature from "../features/HouseHolderFeature"
 import { Link } from "react-router-dom"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import SEO from "../components/SEO";
 
 
 const PurpleHomeInsurance = () => {
@@ -28,11 +29,7 @@ const PurpleHomeInsurance = () => {
                 const data = await response.json();
                 console.log('purple homeIns Data:', data);
                 setHomeInsData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching homeIns data:', error);
             }
@@ -62,6 +59,11 @@ const PurpleHomeInsurance = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Home Insurance | Coronation Insurance Ghana"
+                description="Protect your home with Coronation Insurance Ghana. Homeowner and householder insurance covering fire, theft, natural disasters and personal belongings."
+                keywords="home insurance Ghana, homeowner insurance, householder insurance, property insurance Ghana, Coronation home cover"
+            />
             <div className="relative">
                 <img
                     src={homeInsData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${homeInsData.header_image}` : "assets/purplemotor/motorbg.png"}

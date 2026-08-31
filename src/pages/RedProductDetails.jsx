@@ -3,6 +3,7 @@ import RedMotor from "./RedMotor";
 import Engineer from "./Engineer";
 import Marine from "./Marine";
 import "./global.css"
+import SEO from "../components/SEO";
 
 const RedProductDetails = () => {
     const location = useLocation();
@@ -12,13 +13,18 @@ const RedProductDetails = () => {
 
     return (
         <div>
+            <SEO
+                title="Business Insurance Details | Coronation Insurance Ghana"
+                description="Explore detailed business insurance products from Coronation Insurance Ghana including motor, engineering and marine insurance for businesses."
+                keywords="business insurance details, commercial motor insurance, engineering insurance, marine insurance Ghana"
+            />
             {/* Scrollable Links Container */}
             <div className="px-4 h-[50px] flex items-center md:px-10 overflow-x-auto overflow-y-hidden scrollbar">
                 <ul className="flex gap-3 whitespace-nowrap">
                     <li>
                         <Link
-                            to="/redproductdetails/redmotor"
-                            className={`${isActive("/redproductdetails/redmotor")
+                            to="/corporate/business-insurance/motor"
+                            className={`${isActive("/corporate/business-insurance/motor")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -28,8 +34,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/redproductdetails/engineer"
-                            className={`${isActive("/redproductdetails/engineer")
+                            to="/corporate/business-insurance/engineering"
+                            className={`${isActive("/corporate/business-insurance/engineering")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -39,8 +45,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/redproductdetails/marine"
-                            className={`${isActive("/redproductdetails/marine")
+                            to="/corporate/business-insurance/marine"
+                            className={`${isActive("/corporate/business-insurance/marine")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -54,8 +60,8 @@ const RedProductDetails = () => {
             {/* Content Routes */}
             <div className="mt-6">
                 <Routes>
-                    <Route path="redmotor" element={<RedMotor />} />
-                    <Route path="engineer" element={<Engineer />} />
+                    <Route path="motor" element={<RedMotor />} />
+                    <Route path="engineering" element={<Engineer />} />
                     <Route path="marine" element={<Marine />} />
                 </Routes>
             </div>

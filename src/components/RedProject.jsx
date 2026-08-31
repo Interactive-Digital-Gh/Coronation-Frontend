@@ -31,7 +31,7 @@ function RedProject() {
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
                     category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
-                    link: `/reddetail/${article.id}` // Modify this based on your routing structure
+                    link: `/corporate/insights/${article.id}` // Modify this based on your routing structure
                 }));
 
                 setArticles(formattedArticles);
@@ -101,17 +101,17 @@ function RedProject() {
     return (
         <div>
             {/* Conditionally render the categories based on the current path */}
-            {location.pathname !== '/redhome' && (
-                <nav className="w-full h-[44px] px-4 flex items-center">
-                    <ul className="flex gap-4">
+            {location.pathname !== '/corporate' && (
+                <nav className="w-full py-2 flex items-center">
+                    <ul className="flex flex-wrap gap-2">
                         {categories.map((navItem, index) => (
                             <li
                                 onClick={(e) => handleClick(e, index)}
                                 key={index}
                                 className={`${active === index
-                                    ? 'bg-[#FF0226] text-white'
-                                    : 'bg-[#F7F7F8] text-black'
-                                    } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
+                                    ? 'bg-[#FF0226] text-white shadow-lg shadow-[#FF0226]/40'
+                                    : 'bg-[#F7F7F8] text-black hover:bg-[#FDE5E8]'
+                                    } px-4 py-2 rounded-full cursor-pointer lg:text-[16px] md:text-[14px] text-[12px] font-semibold leading-[24px] transition-all duration-300`}
                             >
                                 {navItem.name}
                             </li>
@@ -122,19 +122,19 @@ function RedProject() {
 
             {/* Project grid */}
             <section>
-                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-2">
+                <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {currentArticles.map((item) => (
                         <RedBook item={item} key={item.id} />
                     ))}
                 </div>
 
                 {/* Conditionally render pagination controls based on the current path */}
-                {location.pathname !== '/redhome' && (
+                {location.pathname !== '/corporate' && (
                     <div className="flex lg:justify-center lg:items-center mt-8 mb-8 lg:mb-0">
                         <button
                             onClick={handlePreviousPage}
                             disabled={currentPage === 1}
-                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
+                            className="w-9 h-9 mx-1 border border-gray-300 rounded-full text-gray-500 hover:bg-gray-200 disabled:opacity-50 transition-colors duration-300"
                         >
                             &lt;
                         </button>
@@ -142,10 +142,10 @@ function RedProject() {
                             <button
                                 key={index + 1}
                                 onClick={() => setCurrentPage(index + 1)}
-                                className={`px-3 py-1 mx-1 border ${currentPage === index + 1
-                                    ? 'bg-[#FF0226] text-white'
+                                className={`w-9 h-9 mx-1 border ${currentPage === index + 1
+                                    ? 'bg-[#FF0226] border-transparent text-white shadow-lg shadow-[#FF0226]/40'
                                     : 'border-gray-300 text-gray-500'
-                                    } rounded-lg hover:bg-[#FF0226] hover:text-white`}
+                                    } rounded-full hover:bg-[#FF0226] hover:text-white transition-all duration-300`}
                             >
                                 {index + 1}
                             </button>
@@ -153,7 +153,7 @@ function RedProject() {
                         <button
                             onClick={handleNextPage}
                             disabled={currentPage === totalPages}
-                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
+                            className="w-9 h-9 mx-1 border border-gray-300 rounded-full text-gray-500 hover:bg-gray-200 disabled:opacity-50 transition-colors duration-300"
                         >
                             &gt;
                         </button>

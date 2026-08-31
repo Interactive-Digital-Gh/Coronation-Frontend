@@ -8,6 +8,7 @@ import CargoFeature from "../features/CargoFeature"
 import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import SEO from "../components/SEO";
 
 
 
@@ -27,11 +28,7 @@ const Marine = () => {
                 const data = await response.json();
                 console.log('purple marine Data:', data);
                 setMarineData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching marine data:', error);
             }
@@ -61,6 +58,11 @@ const Marine = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Marine Insurance | Coronation Insurance Ghana - Corporate"
+                description="Coronation Insurance Ghana offers comprehensive marine insurance including cargo and marine hull coverage to protect your goods in transit and vessels."
+                keywords="marine insurance Ghana, cargo insurance, marine hull insurance, goods in transit insurance, shipping insurance Ghana"
+            />
             <div className="relative">
                 {/* Background images */}
                 <img
@@ -134,7 +136,7 @@ const Marine = () => {
                                 Insurance Features
                             </div>
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
                             </div>
                             <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                 Download Flyer
@@ -156,7 +158,7 @@ const Marine = () => {
                                 Insurance Features
                             </div>
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
                             </div>
                             <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                 Download Flyer

@@ -18,6 +18,7 @@ import { MdOutlineMarkEmailUnread, MdOutlineLocationOn } from "react-icons/md";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useRef, useState } from 'react';
+import SEO from "../components/SEO";
 
 const RedContact = () => {
 
@@ -66,10 +67,7 @@ const RedContact = () => {
                 const data = await response.json();
                 setContactData(data[0]);
 
-                setTimeout(() => {
-                    setFadeOut(true);
-                    setTimeout(() => setShowLoader(false), 700);
-                }, 2000);
+                setShowLoader(false);
 
             } catch (error) {
                 console.error("Error fetching contact data:", error);
@@ -98,6 +96,11 @@ const RedContact = () => {
 
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Contact Us | Coronation Insurance Ghana - Corporate"
+                description="Contact Coronation Insurance Ghana corporate team for business insurance inquiries, claims, policy support or to request a commercial insurance quote."
+                keywords="contact Coronation Insurance corporate, business insurance inquiry Ghana, commercial insurance quote"
+            />
 
             <ToastContainer />
 
@@ -186,7 +189,7 @@ const RedContact = () => {
                                     className={`flex w-full px-3 py-2 border rounded-md shadow-sm text-black 
                                         ${phoneNumber &&
                                             isPossiblePhoneNumber(phoneNumber)
-                                            ? "border-customPurple"
+                                            ? "border-[#FF0226]"
                                             : "border-gray-300"
                                         }
                                     `}

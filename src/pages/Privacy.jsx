@@ -1,8 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
+import SEO from "../components/SEO";
 
 const Privacy = () => {
     return (
         <div>
+            <SEO
+                title="Privacy & Cookie Policy | Coronation Insurance Ghana"
+                description="Read Coronation Insurance Ghana privacy and cookie policy. Understand how we collect, use and protect your personal data."
+                keywords="privacy policy Coronation Insurance, cookie policy, data protection Ghana, personal data Coronation Insurance"
+            />
             <div className='flex items-center justify-center'>
                 <div className='lg:w-[900px] w-full h-full lg:pt-16 md:pt-10 pt-4 lg:p-8 md:p-8 p-4'>
                     <h1 className='text-[40px] font-light leading-[32px] pt-10 mb-6'>Privacy and Cookie Policy</h1>

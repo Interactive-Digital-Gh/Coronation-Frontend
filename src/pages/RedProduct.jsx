@@ -5,6 +5,9 @@
 // import product3 from "../assets/marine/marinebg.png"
 import product4 from "../assets/purpleproduct/redprodbg.png"
 import product5 from "../assets/purpleproduct/redbanner.png"
+import fireImg from "../assets/redhome/redhero2.png"
+import burglaryImg from "../assets/engineer/engineer6.png"
+import interruptionImg from "../assets/purplehomeIns/homeIns2.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
 import product44 from "../assets/purpleproduct/redprodmob.png"
@@ -12,6 +15,8 @@ import product44 from "../assets/purpleproduct/redprodmob.png"
 
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import SEO from "../components/SEO";
+import FAQ from "../components/FAQ";
 
 
 const RedProduct = () => {
@@ -27,11 +32,7 @@ const RedProduct = () => {
                 const data = await response.json();
                 console.log('purple redproduct Data:', data);
                 setProductData(data[0]);
-                // Start 2-second loader timer only after data arrives
-                setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
-                }, 2000);
+                setShowLoader(false);
             } catch (error) {
                 console.error('Error fetching redproduct data:', error);
             }
@@ -59,19 +60,24 @@ const RedProduct = () => {
     }
     return (
         <div className="overflow-hidden">
+            <SEO
+                title="Business Insurance Products | Coronation Insurance Ghana"
+                description="Explore Coronation Insurance Ghana business insurance products including motor fleet, engineering, marine and business protection insurance for your company."
+                keywords="business insurance Ghana, corporate insurance products, commercial motor insurance, engineering insurance"
+            />
             <div className="relative">
                 <img
                     src={productData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.header_image}` : "assets/purpleproduct/productbg.png"}
                     className="hidden lg:max-h-[570px] lg:block w-full bg-cover lg:w-full"
                     loading="lazy" />
                 <img src={productmob} alt="about" className="lg:hidden block bg-cover w-full md:h-[800px]" loading="lazy" />
-                <div className="absolute lg:top-[350px] md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
+                <div className="absolute lg:top-1/2 lg:-translate-y-1/2 md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
                         dangerouslySetInnerHTML={{ __html: productData.header_caption }} />
                     <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
                         dangerouslySetInnerHTML={{ __html: productData.header_body }} />
                 </div>
-                <div className="absolute lg:top-[340px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
+                <div className="absolute lg:top-1/2 lg:-translate-y-1/2 top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white lg:w-[232px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-6 font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
@@ -85,7 +91,7 @@ const RedProduct = () => {
             </div>
             <section>
                 <div className="lg:p-20 p-6 bg-black">
-                    <div className="w-full lg:h-[748px]">
+                    <div className="w-full lg:h-auto">
                         <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
                                 Looking for The <br />Right Insurance Cover for You?
@@ -98,7 +104,7 @@ const RedProduct = () => {
                         <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-auto">
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "assets/purpleproduct/product1.png"}
+                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "https://loremflickr.com/600/400/car"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
@@ -109,14 +115,14 @@ const RedProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
                                         dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/redmotor">Read More</Link>
+                                        <Link to="/corporate/business-insurance/motor">Read More</Link>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={productData?.eng_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.eng_image}` : "assets/purpleproduct/product1.png"}
+                                    src={productData?.eng_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.eng_image}` : "https://loremflickr.com/600/400/engineering"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
@@ -127,14 +133,14 @@ const RedProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
                                         dangerouslySetInnerHTML={{ __html: productData.eng_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/engineer">Read More</Link>
+                                        <Link to="/corporate/business-insurance/engineering">Read More</Link>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={productData?.marine_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.marine_image}` : "assets/purpleproduct/product1.png"}
+                                    src={productData?.marine_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.marine_image}` : "https://loremflickr.com/600/400/ship"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy" />
@@ -146,7 +152,131 @@ const RedProduct = () => {
                                         dangerouslySetInnerHTML={{ __html: productData.marine_body }} />
 
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/redproductdetails/marine">Read More</Link>
+                                        <Link to="/corporate/business-insurance/marine">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Second Row of Products */}
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src="https://loremflickr.com/600/400/liability"
+                                    alt="Liability Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Liability Insurance
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
+                                        Helps take care of losses triggered by injuries and damages caused by you or your business to other people or their property.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src={fireImg}
+                                    alt="Fire & Special Perils Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Fire Insurance
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
+                                        Protects your business property, buildings, and contents against fire, lightning, explosion, and other special perils.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src={burglaryImg}
+                                    alt="Burglary Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy" />
+                                <div className="w-full h-[204px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Burglary Insurance
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
+                                        Comprehensive protection against loss or damage to your business property caused by burglary, theft, or attempted theft.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Third Row of Products */}
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src={interruptionImg}
+                                    alt="Business Interruption"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Business Interruption
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
+                                        Covers loss of income suffered by a business after a disaster, helping you navigate financial losses during recovery.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src="https://loremflickr.com/600/400/transport"
+                                    alt="Goods in Transit"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Goods in Transit
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
+                                        Protects goods while being transported by road, rail, or air within Ghana and beyond against damage, theft, or loss.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src="https://loremflickr.com/600/400/money"
+                                    alt="Money Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy" />
+                                <div className="w-full h-[204px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Money Insurance
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
+                                        Comprehensive coverage for loss of money in transit, on your business premises, or in a safe. Ideal for daily cash handlers.
+                                    </p>
+                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -180,6 +310,8 @@ const RedProduct = () => {
                     </div>
                 </div>
             </section>
+
+            <FAQ theme="red" />
 
             <section>
                 <div className="relative hidden lg:block">
