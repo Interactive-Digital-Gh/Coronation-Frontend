@@ -2,6 +2,8 @@
 import "./global.css"
 import { fetchCms } from '../lib/cmsCache';
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { generalFaqs } from "../lib/faqData"
 // import motorbg from "../assets/purplemotor/motorbg.png"
 // import hero1 from "../assets/redmotor/redmotor.png"
 // import hero2 from "../assets/engineer/engineer3.png"
@@ -340,6 +342,7 @@ const Engineer = () => {
                 </div>
             </section>
             <QuoteForm product="Engineering Insurance" accent="#FF0226" />
+            <Faq items={generalFaqs} accent="#FF0226" />
         </div>
     )
 }

@@ -2,6 +2,8 @@
 import "./global.css"
 import { fetchCms } from '../lib/cmsCache';
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { generalFaqs } from "../lib/faqData"
 // import motorbg from "../assets/purplemotor/motorbg.png"
 // import student from "../assets/purpletravel/student1.png"
 // import travelguy from "../assets/purpletravel/travelguy.png"
@@ -196,6 +198,7 @@ const PurpleTravel = () => {
                 </div>
             </section>
             <QuoteForm product="Travel Insurance" accent="#B580D1" />
+            <Faq items={generalFaqs} accent="#B580D1" />
         </div>
     )
 }

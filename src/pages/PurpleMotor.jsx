@@ -3,6 +3,8 @@
 import product5 from "../assets/purpleproduct/product5.png"
 import { fetchCms } from '../lib/cmsCache';
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { motorFaqs } from "../lib/faqData"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
@@ -82,7 +84,7 @@ const PurpleMotor = () => {
     return (
         <div className="overflow-hidden">
             <div>
-                <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
+                <div className="relative flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
                     <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                         <div className="p-4">
                             <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold"
@@ -99,9 +101,9 @@ const PurpleMotor = () => {
                             loading="lazy" />
                         <img src={motormob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                     </div>
-                    <div className="glass absolute lg:bottom-[137px] md:bottom-[227px] small:bottom-[317px] nsm:bottom-[280px] xsm:bottom-[51px]
-                    msm:bottom-[125px] rsm:bottom-[299px]
-                    xxsm:bottom-[228px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
+                    {/* Anchored to this section (parent is relative) so it always sits on the
+                        product image — on mobile it overlays the image, never the text above */}
+                    <div className="glass absolute right-0 top-[300px] lg:top-auto lg:bottom-[137px] lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
                         <div className="lg:p-4 p-2">
                             <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                             <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
@@ -311,6 +313,7 @@ const PurpleMotor = () => {
                 </div>
             </section>
             <QuoteForm product="Motor Insurance" accent="#B580D1" />
+            <Faq items={motorFaqs} accent="#B580D1" />
         </div>
     )
 }

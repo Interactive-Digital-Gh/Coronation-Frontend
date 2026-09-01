@@ -2,6 +2,8 @@
 import "./global.css"
 import { fetchCms } from '../lib/cmsCache';
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { generalFaqs } from "../lib/faqData"
 // import marinemainbg from "../assets/marine/marinemainbg.png"
 import mariners from "../assets/marine/mariners.png"
 import marinersmob from "../assets/marine/marinersmob.png"
@@ -119,8 +121,8 @@ const Marine = () => {
             </section>
 
             <section>
-                <div className="flex lg:flex-row md:flex-row flex-col py-5 lg:px-20 lg:gap-0 gap-8 px-4 bg-[#E9EAEC]">
-                    <div className="lg:w-[720px] w-full lg:h-[292px] flex flex-col items-start justify-center">
+                <div className="flex lg:flex-row md:flex-row flex-col py-5 lg:px-20 lg:gap-20 md:gap-12 gap-8 px-4 bg-[#E9EAEC]">
+                    <div className="lg:flex-1 w-full lg:h-[292px] flex flex-col items-start justify-center">
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine Cargo
                         </h3>
@@ -142,7 +144,7 @@ const Marine = () => {
                     {cargoOpen && (
                         <CargoFeature closeModal={() => setCargoOpen(false)} /> // Pass close function to the modal
                     )}
-                    <div className="lg:w-[720px] w-full lg:h-[292px] flex flex-col items-start justify-center">
+                    <div className="lg:flex-1 w-full lg:h-[292px] flex flex-col items-start justify-center">
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine hull
                         </h3>
@@ -200,6 +202,7 @@ const Marine = () => {
                 </div>
             </section>
             <QuoteForm product="Marine Insurance" accent="#FF0226" />
+            <Faq items={generalFaqs} accent="#FF0226" />
         </div>
     )
 }

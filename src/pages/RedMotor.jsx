@@ -4,6 +4,8 @@
 import product5 from "../assets/purpleproduct/product5.png"
 import { fetchCms } from '../lib/cmsCache';
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { motorFaqs } from "../lib/faqData"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
 import ProductFlyer from "../assets/Product_Flyers  .pdf"
@@ -314,6 +316,7 @@ const RedMotor = () => {
                 </div>
             </section>
             <QuoteForm product="Commercial Motor Insurance" accent="#FF0226" />
+            <Faq items={motorFaqs} accent="#FF0226" />
         </div>
     )
 }

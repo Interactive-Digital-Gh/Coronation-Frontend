@@ -1,33 +1,40 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Short lead-capture form embedded on product pages.
-// Reuses the same EmailJS service/template and field names as the Contact page,
-// so quote requests arrive through the existing channel.
+// Submits to the CMS quote endpoint, which emails the request over SMTP —
+// staging submissions are routed to the test inbox server-side.
 const QuoteForm = ({ product, accent = '#B580D1' }) => {
     const form = useRef();
     const [sending, setSending] = useState(false);
 
-    const sendQuoteRequest = (e) => {
+    const sendQuoteRequest = async (e) => {
         e.preventDefault();
         setSending(true);
-        emailjs
-            .sendForm('service_vpuym4k', 'template_0vf2k2b', form.current, {
-                publicKey: 'od2vIhbdFel9_otjO',
-            })
-            .then(
-                () => {
-                    toast.success('Thank you! Our team will contact you with your quote shortly.');
-                    e.target.reset();
-                },
-                () => {
-                    toast.error('Failed to send your request. Please try again.');
+        const formData = new FormData(form.current);
+        try {
+            const response = await fetch(
+                'https://coronation-cms.interactivedigital.com.gh/api/quote/request',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(formData)),
                 }
-            )
-            .finally(() => setSending(false));
+            );
+            const result = await response.json().catch(() => ({}));
+            if (response.ok && result.status === 'Success') {
+                toast.success('Thank you! Our team will contact you with your quote shortly.');
+                e.target.reset();
+            } else {
+                toast.error(result.message || 'Failed to send your request. Please try again.');
+            }
+        } catch {
+            toast.error('Failed to send your request. Please try again.');
+        } finally {
+            setSending(false);
+        }
     };
 
     const inputClass =
@@ -44,16 +51,16 @@ const QuoteForm = ({ product, accent = '#B580D1' }) => {
                     Fill in your details and our team will get back to you with a personalised quote.
                 </p>
                 <form ref={form} onSubmit={sendQuoteRequest} className="flex flex-col gap-4">
-                    <input type="hidden" name="user_request" value={`Quote request: ${product}`} />
+                    <input type="hidden" name="product" value={product} />
                     <div className="flex flex-col md:flex-row gap-4">
                         <input type="text" name="first_name" placeholder="First name" required className={inputClass} />
                         <input type="text" name="last_name" placeholder="Last name" required className={inputClass} />
                     </div>
                     <div className="flex flex-col md:flex-row gap-4">
-                        <input type="email" name="user_email" placeholder="Email address" required className={inputClass} />
+                        <input type="email" name="email" placeholder="Email address" required className={inputClass} />
                         <input
                             type="tel"
-                            name="user_phone"
+                            name="phone"
                             placeholder="Phone number"
                             required
                             pattern="^[+0-9 ()-]{7,}$"
@@ -63,7 +70,7 @@ const QuoteForm = ({ product, accent = '#B580D1' }) => {
                     <textarea
                         name="message"
                         rows="3"
-                        placeholder={`Tell us what you need covered (optional)`}
+                        placeholder="Tell us what you need covered (optional)"
                         className={inputClass}
                     />
                     <button

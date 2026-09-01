@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import QuoteForm from "../components/QuoteForm"
+import Faq from "../components/Faq"
+import { generalFaqs } from "../lib/faqData"
 
 // Dedicated SEO landing page for "corporate insurance" / "SME business insurance Ghana".
 // TODO: copy below is a first draft — the client should review/replace it, and the CMS
@@ -60,6 +62,7 @@ const BusinessProtectionInsurance = () => {
             </section>
 
             <QuoteForm product="Business Protection Insurance" accent="#FF0226" />
+            <Faq items={generalFaqs} accent="#FF0226" />
         </div>
     )
 }
