@@ -22,7 +22,26 @@ export default function Executive() {
                 const json = await res.json();
                 console.log("Executive API Response:", json);
 
-                setExecutives(json); // API returns array directly
+                // Filter out Seth Sorgah – Head, Sales & Distribution
+                const filtered = json.filter(
+                    (member) => !member.name?.toLowerCase().includes("seth")
+                );
+
+                // Update Bridget Puorideme's role to Head of Sales and Distribution
+                const updated = filtered.map((member) => {
+                    if (member.name?.toLowerCase().includes("bridget")) {
+                        return {
+                            ...member,
+                            name: member.name.replace(
+                                /\s*[-–—].*$/s,
+                                " - Head of Sales and Distribution"
+                            ),
+                        };
+                    }
+                    return member;
+                });
+
+                setExecutives(updated);
             } catch (error) {
                 console.error("Executive API Error:", error);
             }
