@@ -95,6 +95,10 @@ const DetailOne = () => {
         ALLOWED_ATTR: ['href', 'target'],  // Allow only necessary attributes, excluding `style`
     });
 
+    const bannerImage = articleDetails?.main_image
+        ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}`
+        : "assets/purplemotor/motorbg.png";
+
     return (
         <div className="overflow-hidden">
             <SEO
@@ -103,11 +107,20 @@ const DetailOne = () => {
                 keywords="insurance article, Coronation Insurance insights, insurance news Ghana"
             />
             <div className="relative">
-                <img
-                    src={articleDetails?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}` : "assets/purplemotor/motorbg.png"}
-                    alt="about"
-                    className="w-full h-[300px] md:h-[450px] lg:h-[600px] object-cover bg-center"
-                    loading="lazy" />
+                <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] overflow-hidden bg-black">
+                    {/* Blurred backdrop fills the space around the uncropped image */}
+                    <img
+                        src={bannerImage}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-70"
+                        loading="lazy" />
+                    <img
+                        src={bannerImage}
+                        alt="about"
+                        className="relative w-full h-full object-contain"
+                        loading="lazy" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
 
                 {/* Back — glass pill */}
