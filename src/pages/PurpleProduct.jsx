@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import product5 from "../assets/purpleproduct/product5.png"
 import { fetchCms } from '../lib/cmsCache';
+import marineImg from "../assets/marine/marinebg.png"
+import businessImg from "../assets/redhome/redhero2.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
 
@@ -81,7 +83,7 @@ const PurpleProduct = () => {
             </div>
             <section>
                 <div className="lg:p-20 p-6 bg-black">
-                    <div className="w-full lg:h-[748px]">
+                    <div className="w-full lg:h-auto">
                         <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
                                 Looking for The <br />Right Insurance Cover for You?
@@ -143,6 +145,49 @@ const PurpleProduct = () => {
                                         dangerouslySetInnerHTML={{ __html: productData.house_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
                                         <Link to="/individual/products/home">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Cross-links to the marine and business landing pages (from client_updates) */}
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src={marineImg}
+                                    alt="Marine Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Marine Insurance
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
+                                        Comprehensive protection for goods in transit by sea and marine vessels. Protect your cargo today.
+                                    </p>
+                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/marine-insurance-ghana">Read More</Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-[436px] h-full">
+                                <img
+                                    src={businessImg}
+                                    alt="Business Protection Insurance"
+                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                    loading="lazy"
+                                />
+                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                        Business Protection
+                                    </h2>
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
+                                        Comprehensive insurance solutions tailored for Ghanaian businesses — from SMEs to large corporations.
+                                    </p>
+                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
+                                        <Link to="/business-protection-insurance">Read More</Link>
                                     </div>
                                 </div>
                             </div>

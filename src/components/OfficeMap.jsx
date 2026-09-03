@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, useJsApiLoader, OverlayViewF } from '@react-google-maps/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import officeHero from '../assets/office/officehero.png';
+import officeHero from '../assets/office/officehero.webp';
 
 const containerStyle = {
   width: '100%',
@@ -23,7 +23,7 @@ const dummyOffices = [
   { id: 7, city: 'Kumasi', lat: 6.688, lng: -1.624, title: 'Kumasi | DVLA', person: 'Collins Asamoah', code: '00850/IN/CIG/NL/629A' },
   { id: 8, city: 'Kasoa', lat: 5.534, lng: -0.416, title: 'Kasoa | DVLA', person: 'Gloria Osaa', code: '15082/IN/CIG/NL/535A' },
   { id: 9, city: 'Asante Bakwai', lat: 6.453, lng: -1.583, title: 'Asante Bakwai | DVLA', person: 'Bernard Nkrumah', code: 'NIC/CORONATION/TRA/0017/23' },
-  { id: 10, city: 'Takoradi', lat: 4.885, lng: -1.750, title: 'Takoradi | Liberation Road', person: 'Susan Ackah', code: 'NIC/CORONATION/TRA003' },
+  { id: 10, city: 'Takoradi', lat: 4.9011722, lng: -1.7652209, title: 'Takoradi | Liberation Road', person: 'Susan Ackah', code: 'NIC/CORONATION/TRA003' },
   { id: 11, city: 'Sunyani', lat: 7.334, lng: -2.312, title: 'Sunyani | DVLA', person: 'Samuel Arthur', code: 'NIC/CORONATION/TRA/0016/23' }
 ];
 

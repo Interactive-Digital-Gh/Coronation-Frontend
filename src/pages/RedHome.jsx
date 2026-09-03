@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import { fetchCms } from '../lib/cmsCache';
-import aboutbg from "../assets/purplehome/instbg.png"
+import aboutbg from "../assets/purplehome/instbg.webp"
 import purplehomebg from "../assets/purplehome/purplehomebg.png"
 // import hero1 from "../assets/redhome/redhero1.png"
 // import hero2 from "../assets/redhome/redhero2.png"
@@ -14,6 +14,7 @@ import RedArticles from "../components/RedArticles"
 
 // import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
+import { trackBuyInsurance } from '../utils/metaPixel';
 
 
 
@@ -72,7 +73,7 @@ const RedHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] text-white h-10 bg-[#FF0226] items-center justify-center">
-                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Buy Insurance</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer' onClick={() => trackBuyInsurance('Corporate Insurance')}>Buy Insurance</Link>
                 </div>
             </div>
             <section id="redhome_section3">

@@ -9,6 +9,34 @@
       name="description"
       content="Coronation Insurance Ghana offers trusted motor, travel, home, marine, engineering and business insurance with fast claims settlement. Get your free quote today."
     />
+
+    <!-- Open connections early: CMS API/images -->
+    <link rel="preconnect" href="https://coronation-cms.interactivedigital.com.gh" crossorigin />
+    <link rel="dns-prefetch" href="https://coronation-cms.interactivedigital.com.gh" />
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WPQQFC35');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1076367412003615');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -39,12 +67,39 @@
     </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQQFC35"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Meta Pixel (noscript) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1076367412003615&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel (noscript) -->
     <div id="root"></div>
-    <script
-      id="zsiqscript"
-      src="https://salesiq.zohopublic.com/widget?wc=siqf909371124a7f6f21e5f7ddecf08c3cb7c5016be1ee684926f8af1ce3a3b17c2"
-      defer
-    ></script>
+    <!-- Zoho SalesIQ chat: loaded on first user interaction (or 5s after load)
+         so it does not compete with page content on slow mobile connections -->
+    <script>
+      (function () {
+        var loaded = false;
+        var events = ["scroll", "mousemove", "touchstart", "click", "keydown"];
+        function loadZoho() {
+          if (loaded) return;
+          loaded = true;
+          events.forEach(function (e) { window.removeEventListener(e, loadZoho); });
+          var s = document.createElement("script");
+          s.id = "zsiqscript";
+          s.defer = true;
+          s.src = "https://salesiq.zohopublic.com/widget?wc=siqf909371124a7f6f21e5f7ddecf08c3cb7c5016be1ee684926f8af1ce3a3b17c2";
+          document.body.appendChild(s);
+        }
+        events.forEach(function (e) {
+          window.addEventListener(e, loadZoho, { once: true, passive: true });
+        });
+        window.addEventListener("load", function () { setTimeout(loadZoho, 5000); });
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

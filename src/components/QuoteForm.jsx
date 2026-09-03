@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { trackQuoteRequest } from '../utils/metaPixel';
 
 // Short lead-capture form embedded on product pages.
 // Submits to the CMS quote endpoint, which emails the request over SMTP —
@@ -25,6 +26,7 @@ const QuoteForm = ({ product, accent = '#B580D1' }) => {
             );
             const result = await response.json().catch(() => ({}));
             if (response.ok && result.status === 'Success') {
+                trackQuoteRequest(product);
                 toast.success('Thank you! Our team will contact you with your quote shortly.');
                 e.target.reset();
             } else {

@@ -1,4 +1,4 @@
-import officeHero from '../assets/office/officehero.png';
+import officeHero from '../assets/office/officehero.webp';
 import OfficeMap from '../components/OfficeMap';
 
 const RedOffices = () => {

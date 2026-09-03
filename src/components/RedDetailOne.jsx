@@ -123,13 +123,15 @@ const RedDetailOne = () => {
                 </div>
                 <div className="absolute lg:top-[50px] top-0 lg:right-20 md:right-[82%] right-[16px] rounded-lg shadow-md">
 
-                    <a href={articleDetails?.pdf_file ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}` : ""}
-                        download
-                        target="_blank"
-                        className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
-                        <MdOutlineFileDownload size={20} />
-                        Download
-                    </a>
+                    {articleDetails?.pdf_file && (
+                        <a href={`https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}`}
+                            download
+                            target="_blank"
+                            className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
+                            <MdOutlineFileDownload size={20} />
+                            Download
+                        </a>
+                    )}
                 </div>
             </div>
 

@@ -6,6 +6,9 @@
 import product4 from "../assets/purpleproduct/redprodbg.png"
 import { fetchCms } from '../lib/cmsCache';
 import product5 from "../assets/purpleproduct/redbanner.png"
+import fireImg from "../assets/redhome/redhero2.png"
+import burglaryImg from "../assets/engineer/engineer6.png"
+import interruptionImg from "../assets/purplehomeIns/homeIns2.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
 import product44 from "../assets/purpleproduct/redprodmob.png"
@@ -82,7 +85,7 @@ const RedProduct = () => {
             </div>
             <section>
                 <div className="lg:p-20 p-6 bg-black">
-                    <div className="w-full lg:h-[748px]">
+                    <div className="w-full lg:h-auto">
                         <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
                                 Looking for The <br />Right Insurance Cover for You?
@@ -147,6 +150,87 @@ const RedProduct = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* Expanded product catalog (from client_updates).
+                            TODO: replace the loremflickr placeholders once the client supplies imagery,
+                            and point each card at its own page when the products get CMS content. */}
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
+                            {[
+                                {
+                                    title: 'Liability Insurance',
+                                    img: 'https://loremflickr.com/600/400/liability',
+                                    body: 'Helps take care of losses triggered by injuries and damages caused by you or your business to other people or their property.',
+                                },
+                                {
+                                    title: 'Fire Insurance',
+                                    img: fireImg,
+                                    body: 'Protects your business property, buildings, and contents against fire, lightning, explosion, and other special perils.',
+                                },
+                                {
+                                    title: 'Burglary Insurance',
+                                    img: burglaryImg,
+                                    body: 'Comprehensive protection against loss or damage to your business property caused by burglary, theft, or attempted theft.',
+                                },
+                            ].map((p) => (
+                                <div key={p.title} className="w-[436px] h-full">
+                                    <img
+                                        src={p.img}
+                                        alt={p.title}
+                                        className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                        loading="lazy" />
+                                    <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                        <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                            {p.title}
+                                        </h2>
+                                        <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
+                                            {p.body}
+                                        </p>
+                                        <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                            <Link to="/business-protection-insurance">Read More</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
+                            {[
+                                {
+                                    title: 'Business Interruption',
+                                    img: interruptionImg,
+                                    body: 'Covers loss of income suffered by a business after a disaster, helping you navigate financial losses during recovery.',
+                                },
+                                {
+                                    title: 'Goods in Transit',
+                                    img: 'https://loremflickr.com/600/400/transport',
+                                    body: 'Protects goods while being transported by road, rail, or air within Ghana and beyond against damage, theft, or loss.',
+                                },
+                                {
+                                    title: 'Money Insurance',
+                                    img: 'https://loremflickr.com/600/400/money',
+                                    body: 'Comprehensive coverage for loss of money in transit, on your business premises, or in a safe. Ideal for daily cash handlers.',
+                                },
+                            ].map((p) => (
+                                <div key={p.title} className="w-[436px] h-full">
+                                    <img
+                                        src={p.img}
+                                        alt={p.title}
+                                        className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                        loading="lazy" />
+                                    <div className="w-full lg:h-[204px] h-[150px] mt-4">
+                                        <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
+                                            {p.title}
+                                        </h2>
+                                        <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
+                                            {p.body}
+                                        </p>
+                                        <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
+                                            <Link to="/business-protection-insurance">Read More</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
