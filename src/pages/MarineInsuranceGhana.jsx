@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom"
 import CargoFeature from "../features/CargoFeature"
 import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
-import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import { marineCargoFlyer, marineHullFlyer } from "../utils/flyers"
 import SEO from "../components/SEO"
 import GetQuoteForm from "../components/GetQuoteForm"
 import { trackProductView, trackBuyInsurance } from "../utils/metaPixel"
@@ -145,7 +145,7 @@ const MarineInsuranceGhana = () => {
                                     Buy Insurance
                                 </Link>
                             </div>
-                            <a href={ProductFlyer} download="Product_Flyers.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
+                            <a href={marineCargoFlyer} download="Coronation_Marine_Cargo_Insurance_Flyer.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
                                 Download Flyer
                             </a>
                         </div>
@@ -170,7 +170,7 @@ const MarineInsuranceGhana = () => {
                                     Buy Insurance
                                 </Link>
                             </div>
-                            <a href={ProductFlyer} download="Product_Flyers.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
+                            <a href={marineHullFlyer} download="Coronation_Marine_Hull_Insurance_Flyer.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
                                 Download Flyer
                             </a>
                         </div>
