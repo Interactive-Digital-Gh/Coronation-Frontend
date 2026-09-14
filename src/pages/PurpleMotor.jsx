@@ -3,7 +3,7 @@
 import product5 from "../assets/purpleproduct/product5.png"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
-import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import { motorFlyer } from "../utils/flyers"
 
 
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -167,7 +167,7 @@ const PurpleMotor = () => {
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                                 <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Download Flyer
                                             </a>
                                         </div>
@@ -201,7 +201,7 @@ const PurpleMotor = () => {
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                                 <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Download Flyer
                                             </a>
                                         </div>
@@ -235,7 +235,7 @@ const PurpleMotor = () => {
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                                 <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Download Flyer
                                             </a>
                                         </div>

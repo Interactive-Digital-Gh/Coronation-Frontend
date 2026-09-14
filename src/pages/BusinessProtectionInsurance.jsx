@@ -5,6 +5,15 @@ import productmob from "../assets/purpleproduct/productmob.png"
 import { Link, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO"
+import {
+    fireSpecialPerilsFlyer,
+    publicLiabilityFlyer,
+    burglaryFlyer,
+    businessInterruptionFlyer,
+    goodsInTransitFlyer,
+    moneyFlyer,
+    businessProtectionFlyer,
+} from "../utils/flyers"
 import GetQuoteForm from "../components/GetQuoteForm"
 import { trackProductView, trackBuyInsurance } from "../utils/metaPixel"
 
@@ -48,6 +57,8 @@ const BusinessProtectionInsurance = () => {
     const products = [
         {
             title: "Fire & Special Perils Insurance",
+            flyer: fireSpecialPerilsFlyer,
+            flyerName: "Coronation_Fire_and_Special_Perils_Insurance_Flyer.pdf",
             description: "Protects your business property, buildings, and contents against fire, lightning, explosion, and other special perils. Covers loss or damage caused by natural disasters, riots, and malicious acts.",
             link: "https://ecoronation.com/",
             features: [
@@ -59,6 +70,8 @@ const BusinessProtectionInsurance = () => {
         },
         {
             title: "Liability Insurance",
+            flyer: publicLiabilityFlyer,
+            flyerName: "Coronation_Public_Liability_Insurance_Flyer.pdf",
             description: "Our Liability Insurance helps you take care of losses triggered by injuries and damages caused by you or your business to other people or their property. Covers public liability, product liability, and employers' liability.",
             link: "https://ecoronation.com/",
             features: [
@@ -70,6 +83,8 @@ const BusinessProtectionInsurance = () => {
         },
         {
             title: "Burglary & Theft Insurance",
+            flyer: burglaryFlyer,
+            flyerName: "Coronation_Burglary_Insurance_Flyer.pdf",
             description: "Comprehensive protection against loss or damage to your business property caused by burglary, theft, or attempted theft. Includes coverage for stock, equipment, and cash on premises.",
             link: "https://ecoronation.com/",
             features: [
@@ -81,6 +96,8 @@ const BusinessProtectionInsurance = () => {
         },
         {
             title: "Business Interruption Insurance",
+            flyer: businessInterruptionFlyer,
+            flyerName: "Coronation_Business_Interruption_Insurance_Flyer.pdf",
             description: "Covers loss of income suffered by a business after a disaster. This policy helps cover financial losses during the period a business must close or operate at reduced capacity while damage is being repaired.",
             link: "https://ecoronation.com/",
             features: [
@@ -92,6 +109,8 @@ const BusinessProtectionInsurance = () => {
         },
         {
             title: "Goods in Transit Insurance",
+            flyer: goodsInTransitFlyer,
+            flyerName: "Coronation_Goods_in_Transit_Insurance_Flyer.pdf",
             description: "Protects goods while being transported by road, rail, or air within Ghana and beyond. Covers the risk of damage, theft, or loss during transportation from warehouse to final destination.",
             link: "https://ecoronation.com/",
             features: [
@@ -103,6 +122,8 @@ const BusinessProtectionInsurance = () => {
         },
         {
             title: "Money Insurance",
+            flyer: moneyFlyer,
+            flyerName: "Coronation_Money_Insurance_Flyer.pdf",
             description: "Provides comprehensive coverage for loss of money in transit, on your business premises, or in a safe. Ideal for businesses that handle significant cash transactions daily.",
             link: "https://ecoronation.com/",
             features: [
@@ -175,6 +196,10 @@ const BusinessProtectionInsurance = () => {
                         <div className={`flex mt-5 w-[90px] h-[35px] ${accentBg} text-white rounded-lg items-center justify-center`}>
                             <Link to={contactPath}>Contact Us</Link>
                         </div>
+                        <a href={businessProtectionFlyer} download="Coronation_Business_Protection_Insurance_Flyer.pdf"
+                            className="inline-block mt-3 text-white text-[14px] font-medium underline underline-offset-4">
+                            Download Flyer
+                        </a>
                     </div>
                 </div>
             </div>
@@ -243,6 +268,12 @@ const BusinessProtectionInsurance = () => {
                                         Contact Us
                                     </Link>
                                 </div>
+                                {product.flyer && (
+                                    <a href={product.flyer} download={product.flyerName}
+                                        className={`w-[130px] h-[36px] mt-3 ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center`}>
+                                        Download Flyer
+                                    </a>
+                                )}
                             </div>
                         ))}
                     </div>

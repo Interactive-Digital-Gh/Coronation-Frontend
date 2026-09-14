@@ -2,7 +2,7 @@
 import product5 from "../assets/purpleproduct/product5.png"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
-import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import { motorFlyer } from "../utils/flyers"
 
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import "./global.css"
@@ -173,7 +173,7 @@ const MotorInsuranceGhana = () => {
                                                     Buy Insurance
                                                 </Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
                                                 Download Flyer
                                             </a>
                                         </div>
@@ -210,7 +210,7 @@ const MotorInsuranceGhana = () => {
                                                     Buy Insurance
                                                 </Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
                                                 Download Flyer
                                             </a>
                                         </div>
@@ -247,7 +247,7 @@ const MotorInsuranceGhana = () => {
                                                     Buy Insurance
                                                 </Link>
                                             </span>
-                                            <a href={ProductFlyer} download="Product_Flyers.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
+                                            <a href={motorFlyer} download="Coronation_Motor_Insurance_Flyer.pdf" className={`w-[142px] h-[36px] ${accentBg} font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6`}>
                                                 Download Flyer
                                             </a>
                                         </div>

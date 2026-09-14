@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import HomeOwnerFeature from "../features/HomeOwnerFeature"
 import HouseHolderFeature from "../features/HouseHolderFeature"
 import { Link } from "react-router-dom"
-import ProductFlyer from "../assets/Product_Flyers  .pdf"
+import { homeOwnersFlyer, houseHolderFlyer } from "../utils/flyers"
 import SEO from "../components/SEO";
 
 
@@ -114,7 +114,7 @@ const PurpleHomeInsurance = () => {
                                 </div>
                                 <div className="flex gap-4 mt-2">
                                     <span onClick={() => setIsModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
-                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
+                                    <a href={homeOwnersFlyer} download="Coronation_Home_Owners_Insurance_Flyer.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
                                 </div>
                             </div>
                             {isModalOpen && (
@@ -146,7 +146,7 @@ const PurpleHomeInsurance = () => {
                                 </div>
                                 <div className="flex gap-4 mt-2">
                                     <span onClick={() => setIsHouseModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
-                                    <a href={ProductFlyer} download="Product_Flyers.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
+                                    <a href={houseHolderFlyer} download="Coronation_House_Holder_Insurance_Flyer.pdf" className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Download Flyer</a>
                                 </div>
                             </div>
                             {isHouseModalOpen && (
