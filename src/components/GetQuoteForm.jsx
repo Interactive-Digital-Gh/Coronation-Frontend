@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react';
 import { trackQuoteRequest } from '../utils/metaPixel';
+import { submitQuoteRequest, splitFullName } from '../lib/quoteApi';
 
 const GetQuoteForm = ({ productType = 'General Insurance', accentColor = '#B580D1' }) => {
     const [formData, setFormData] = useState({
@@ -47,27 +48,22 @@ const GetQuoteForm = ({ productType = 'General Insurance', accentColor = '#B580D
         setIsSubmitting(true);
 
         try {
-            // Send via EmailJS (using existing project dependency)
-            const emailjs = await import('@emailjs/browser');
-            await emailjs.send(
-                'service_coronation', // Replace with your EmailJS service ID
-                'template_quote',     // Replace with your EmailJS template ID
-                {
-                    from_name: formData.fullName,
-                    from_email: formData.email,
-                    phone: formData.phone,
-                    insurance_type: formData.insuranceType,
-                    message: formData.message,
-                },
-                'YOUR_EMAILJS_PUBLIC_KEY' // Replace with your EmailJS public key
-            );
+            const { firstName, lastName } = splitFullName(formData.fullName);
+            await submitQuoteRequest({
+                product: formData.insuranceType,
+                firstName,
+                lastName,
+                email: formData.email,
+                phone: formData.phone,
+                message: formData.message,
+            });
 
             // Track conversion
             trackQuoteRequest(formData.insuranceType);
             setIsSubmitted(true);
         } catch (err) {
             console.error('Quote form submission error:', err);
-            setError('Something went wrong. Please try again or contact us directly.');
+            setError(err.message || 'Something went wrong. Please try again or contact us directly.');
         } finally {
             setIsSubmitting(false);
         }

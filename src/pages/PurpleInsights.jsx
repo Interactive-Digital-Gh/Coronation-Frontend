@@ -9,6 +9,7 @@ import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
 const PurpleInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -18,7 +19,7 @@ const PurpleInsights = () => {
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
@@ -73,7 +74,7 @@ const PurpleInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
-                            <Link to="/contact-us">Contact Us</Link>
+                            <Link to="/individual/contact">Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,7 @@ const PurpleInsights = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {insightLatestData.slice(0, 2).map((article, index) => (
                                 <Link
-                                    to={`/insights/${article.id}`}
+                                    to={`/individual/insights/${article.id}`}
                                     key={index}
                                     className="group relative block lg:h-[440px] md:h-[400px] h-[340px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-2"
                                 >

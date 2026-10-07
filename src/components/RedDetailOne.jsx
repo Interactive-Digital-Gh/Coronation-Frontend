@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 
 import DOMPurify from 'dompurify';
 import SEO from "./SEO";
+import { fetchCms } from '../lib/cmsCache';
 
 
 const RedDetailOne = () => {
@@ -29,7 +30,7 @@ const RedDetailOne = () => {
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
@@ -46,7 +47,7 @@ const RedDetailOne = () => {
         window.scrollTo(0, 0);
         const fetchArticleDetails = async () => {
             try {
-                const response = await fetch(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
+                const response = await fetchCms(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
                 const data = await response.json();
                 setArticleDetails(data[0]);
                 console.log(data)

@@ -6,6 +6,7 @@ import PurpleNavbar from './components/PurpleNavbar'
 import Footer from './components/Footer'
 import Feedback from './components/FeedBack'
 import CookieConsent from "react-cookie-consent";
+import { prefetchAllCms } from './lib/cmsCache'
 
 // Every page except the landing page is lazy-loaded so mobile visitors only
 // download the code for the route they are on, not the whole site.
@@ -42,6 +43,59 @@ const RouteFallback = () => (
   </div>
 )
 
+
+// Old URL -> current URL. Covers the Sept 2026 scheme (/about-us, /personal-insurance, ...)
+// and the original purple/red paths.
+const legacyRedirects = {
+  // Sept 2026 scheme
+  '/about-us': '/individual/about',
+  '/personal-insurance': '/individual/products',
+  '/personal-insurance/motor': '/individual/products/motor',
+  '/personal-insurance/travel': '/individual/products/travel',
+  '/personal-insurance/home': '/individual/products/home',
+  '/careers': '/individual/careers',
+  '/contact-us': '/individual/contact',
+  '/insights': '/individual/insights',
+  '/self-service': '/individual/services',
+  '/whistle-blowing': '/individual/whistleblowing',
+  '/our-offices': '/individual/offices',
+  '/corporate/about-us': '/corporate/about',
+  '/corporate/business-insurance': '/corporate/products',
+  '/corporate/business-insurance/motor': '/corporate/products/motor',
+  '/corporate/business-insurance/engineering': '/corporate/products/engineering',
+  '/corporate/business-insurance/marine': '/corporate/products/marine',
+  '/corporate/contact-us': '/corporate/contact',
+  '/corporate/self-service': '/corporate/services',
+  '/corporate/whistle-blowing': '/corporate/whistleblowing',
+  '/corporate/our-offices': '/corporate/offices',
+  // Original purple/red scheme
+  '/purpleabout': '/individual/about',
+  '/purpleproduct': '/individual/products',
+  '/purpleproductdetails': '/individual/products',
+  '/purpleproductdetails/motor': '/individual/products/motor',
+  '/purpleproductdetails/travel': '/individual/products/travel',
+  '/purpleproductdetails/home': '/individual/products/home',
+  '/purplecareers': '/individual/careers',
+  '/purplecontact': '/individual/contact',
+  '/purpleinsights': '/individual/insights',
+  '/purpleservices': '/individual/services',
+  '/purplewhistle': '/individual/whistleblowing',
+  '/purpleoffices': '/individual/offices',
+  '/redhome': '/corporate',
+  '/redabout': '/corporate/about',
+  '/redproduct': '/corporate/products',
+  '/redproductdetails': '/corporate/products',
+  '/redproductdetails/redmotor': '/corporate/products/motor',
+  '/redproductdetails/engineer': '/corporate/products/engineering',
+  '/redproductdetails/marine': '/corporate/products/marine',
+  '/redinsights': '/corporate/insights',
+  '/redcareers': '/corporate/careers',
+  '/redcontact': '/corporate/contact',
+  '/redservices': '/corporate/services',
+  '/redwhistle': '/corporate/whistleblowing',
+  '/redoffices': '/corporate/offices',
+};
+
 // Forwards legacy insight-detail URLs (/purpledetail/:id, /reddetail/:id) to the new paths
 const LegacyDetailRedirect = ({ base }) => {
   const { id } = useParams();
@@ -63,6 +117,14 @@ function App() {
     }
   }, []);
 
+
+  // Warm the CMS cache in the background once the first page has settled,
+  // so navigating to any other page is instant.
+  useEffect(() => {
+    const timer = setTimeout(prefetchAllCms, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div>
       <BrowserRouter>
@@ -71,33 +133,33 @@ function App() {
         <Routes>
           {/* Individual (personal) section */}
           <Route path='/' element={<PurpleHome />} />
-          <Route path='/about-us' element={<PurpleAbout />} />
-          <Route path='/personal-insurance' element={<PurpleProduct />} />
-          <Route path='/personal-insurance/*' element={<PurpleProductDetails />} />
-          <Route path='/careers' element={<PurpleCareers />} />
-          <Route path='/contact-us' element={<PurpleContact />} />
-          <Route path='/insights' element={<PurpleInsights />} />
-          <Route path='/insights/:id' element={<DetailOne />} />
-          <Route path='/self-service' element={<PurpleService />} />
-          <Route path='/whistle-blowing' element={<WhistleBlowing />} />
-          <Route path='/our-offices' element={<PurpleOffices />} />
+          <Route path='/individual/about' element={<PurpleAbout />} />
+          <Route path='/individual/products' element={<PurpleProduct />} />
+          <Route path='/individual/products/*' element={<PurpleProductDetails />} />
+          <Route path='/individual/careers' element={<PurpleCareers />} />
+          <Route path='/individual/contact' element={<PurpleContact />} />
+          <Route path='/individual/insights' element={<PurpleInsights />} />
+          <Route path='/individual/insights/:id' element={<DetailOne />} />
+          <Route path='/individual/services' element={<PurpleService />} />
+          <Route path='/individual/whistleblowing' element={<WhistleBlowing />} />
+          <Route path='/individual/offices' element={<PurpleOffices />} />
 
           {/* Corporate section */}
           <Route path='/corporate' element={<RedHome />} />
-          <Route path='/corporate/about-us' element={<RedAbout />} />
-          <Route path='/corporate/business-insurance' element={<RedProduct />} />
-          <Route path='/corporate/business-insurance/*' element={<RedProductDetails />} />
+          <Route path='/corporate/about' element={<RedAbout />} />
+          <Route path='/corporate/products' element={<RedProduct />} />
+          <Route path='/corporate/products/*' element={<RedProductDetails />} />
           <Route path='/corporate/careers' element={<RedCareers />} />
-          <Route path='/corporate/contact-us' element={<RedContact />} />
+          <Route path='/corporate/contact' element={<RedContact />} />
           <Route path='/corporate/insights' element={<RedInsights />} />
           <Route path='/corporate/insights/:id' element={<RedDetailOne />} />
-          <Route path='/corporate/self-service' element={<RedService />} />
-          <Route path='/corporate/whistle-blowing' element={<RedWhistleBlowing />} />
-          <Route path='/corporate/our-offices' element={<RedOffices />} />
+          <Route path='/corporate/services' element={<RedService />} />
+          <Route path='/corporate/whistleblowing' element={<RedWhistleBlowing />} />
+          <Route path='/corporate/offices' element={<RedOffices />} />
 
           <Route path="/privacy" element={<Privacy />} />
 
-          {/* SEO-optimized dedicated product landing pages (theme follows section) */}
+          {/* SEO-optimised dedicated product landing pages (theme follows section) */}
           <Route path="/motor-insurance-ghana" element={<MotorInsuranceGhana />} />
           <Route path="/marine-insurance-ghana" element={<MarineInsuranceGhana />} />
           <Route path="/business-protection-insurance" element={<BusinessProtectionInsurance />} />
@@ -105,34 +167,13 @@ function App() {
           <Route path="/corporate/marine-insurance-ghana" element={<MarineInsuranceGhana />} />
           <Route path="/corporate/business-protection-insurance" element={<BusinessProtectionInsurance />} />
 
-          {/* Legacy URL redirects — keep old bookmarks, CMS links and indexed pages working */}
-          <Route path='/purpleabout' element={<Navigate to="/about-us" replace />} />
-          <Route path='/purpleproduct' element={<Navigate to="/personal-insurance" replace />} />
-          <Route path='/purpleproductdetails' element={<Navigate to="/personal-insurance" replace />} />
-          <Route path='/purpleproductdetails/motor' element={<Navigate to="/personal-insurance/motor" replace />} />
-          <Route path='/purpleproductdetails/travel' element={<Navigate to="/personal-insurance/travel" replace />} />
-          <Route path='/purpleproductdetails/home' element={<Navigate to="/personal-insurance/home" replace />} />
-          <Route path='/purplecareers' element={<Navigate to="/careers" replace />} />
-          <Route path='/purplecontact' element={<Navigate to="/contact-us" replace />} />
-          <Route path='/purpleinsights' element={<Navigate to="/insights" replace />} />
-          <Route path='/purpledetail/:id' element={<LegacyDetailRedirect base="/insights" />} />
-          <Route path='/purpleservices' element={<Navigate to="/self-service" replace />} />
-          <Route path='/purplewhistle' element={<Navigate to="/whistle-blowing" replace />} />
-          <Route path='/purpleoffices' element={<Navigate to="/our-offices" replace />} />
-          <Route path='/redhome' element={<Navigate to="/corporate" replace />} />
-          <Route path='/redabout' element={<Navigate to="/corporate/about-us" replace />} />
-          <Route path='/redproduct' element={<Navigate to="/corporate/business-insurance" replace />} />
-          <Route path='/redproductdetails' element={<Navigate to="/corporate/business-insurance" replace />} />
-          <Route path='/redproductdetails/redmotor' element={<Navigate to="/corporate/business-insurance/motor" replace />} />
-          <Route path='/redproductdetails/engineer' element={<Navigate to="/corporate/business-insurance/engineering" replace />} />
-          <Route path='/redproductdetails/marine' element={<Navigate to="/corporate/business-insurance/marine" replace />} />
-          <Route path='/redcareers' element={<Navigate to="/corporate/careers" replace />} />
-          <Route path='/redcontact' element={<Navigate to="/corporate/contact-us" replace />} />
-          <Route path='/redinsights' element={<Navigate to="/corporate/insights" replace />} />
+          {/* Redirects from every earlier URL scheme, so bookmarks, CMS links and indexed pages keep working */}
+          {Object.entries(legacyRedirects).map(([from, to]) => (
+            <Route key={from} path={from} element={<Navigate to={to} replace />} />
+          ))}
+          <Route path='/insights/:id' element={<LegacyDetailRedirect base="/individual/insights" />} />
+          <Route path='/purpledetail/:id' element={<LegacyDetailRedirect base="/individual/insights" />} />
           <Route path='/reddetail/:id' element={<LegacyDetailRedirect base="/corporate/insights" />} />
-          <Route path='/redservices' element={<Navigate to="/corporate/self-service" replace />} />
-          <Route path='/redwhistle' element={<Navigate to="/corporate/whistle-blowing" replace />} />
-          <Route path='/redoffices' element={<Navigate to="/corporate/our-offices" replace />} />
         </Routes>
         </Suspense>
         <Footer />

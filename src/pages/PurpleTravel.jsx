@@ -13,6 +13,8 @@ import travelbenefit from "../assets/purpletravel/travelbenefit.png"
 import { Link } from "react-router-dom";
 import { travelFlyer } from "../utils/flyers"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 
 const PurpleTravel = () => {
 
@@ -27,7 +29,7 @@ const PurpleTravel = () => {
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
                 const data = await response.json();
                 console.log('purple travel Data:', data);
                 setTravelData(data[0]);
@@ -199,6 +201,7 @@ const PurpleTravel = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Travel Insurance" accent="#B580D1" />
         </div>
     )
 }

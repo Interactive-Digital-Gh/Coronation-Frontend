@@ -21,8 +21,8 @@ const PurpleProductDetails = () => {
                 <ul className="flex flex-wrap gap-2 md:gap-4">
                     <li>
                         <Link
-                            to="/personal-insurance/motor"
-                            className={`${isActive("/personal-insurance/motor")
+                            to="/individual/products/motor"
+                            className={`${isActive("/individual/products/motor")
                                 ? "text-purple-500 border-b-4 border-purple-500 font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -32,8 +32,8 @@ const PurpleProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/personal-insurance/travel"
-                            className={`${isActive("/personal-insurance/travel")
+                            to="/individual/products/travel"
+                            className={`${isActive("/individual/products/travel")
                                 ? "text-purple-500 border-b-4 border-purple-500 font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -43,8 +43,8 @@ const PurpleProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/personal-insurance/home"
-                            className={`${isActive("/personal-insurance/home")
+                            to="/individual/products/home"
+                            className={`${isActive("/individual/products/home")
                                 ? "text-purple-500 border-b-4 border-purple-500 font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}

@@ -25,7 +25,7 @@ const BusinessProtectionInsurance = () => {
     const accentColor = isCorporate ? "#FF0226" : "#B580D1";
     const accentBg = isCorporate ? "bg-[#FF0226]" : "bg-[#B580D1]";
     const accentBorderB = isCorporate ? "border-b-[#FF0226]" : "border-b-[#B580D1]";
-    const contactPath = isCorporate ? "/corporate/contact-us" : "/contact-us";
+    const contactPath = isCorporate ? "/corporate/contact" : "/individual/contact";
     const marinePath = isCorporate ? "/corporate/marine-insurance-ghana" : "/marine-insurance-ghana";
 
     const [showLoader, setShowLoader] = useState(true);
@@ -136,7 +136,7 @@ const BusinessProtectionInsurance = () => {
         {
             title: "Engineering Insurance",
             description: "Covers risks associated with engineering projects including machinery breakdown, plant all-risk, contractors all-risk, erection all-risk, and electronic equipment damage.",
-            link: "/corporate/business-insurance/engineering",
+            link: "/corporate/products/engineering",
             isInternal: true,
             features: [
                 "Machinery breakdown",
@@ -165,7 +165,7 @@ const BusinessProtectionInsurance = () => {
                 title="Business & Corporate Insurance in Ghana | SME Protection | Coronation"
                 description="Comprehensive business insurance for Ghanaian SMEs and corporations. Engineering, liability, fire & more. Protect your business with Coronation today."
                 keywords="corporate insurance, SME business insurance Ghana, business protection insurance, commercial insurance Ghana, liability insurance Ghana, fire insurance Ghana"
-                canonicalUrl="https://coronationghana.com/business-protection-insurance"
+                canonicalUrl="https://coronation.com.gh/business-protection-insurance"
             />
 
             {/* Hero Section */}

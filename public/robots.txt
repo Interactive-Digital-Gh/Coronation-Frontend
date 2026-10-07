@@ -2,7 +2,21 @@
 User-agent: *
 Allow: /
 
-# Disallow legacy redirect paths (they 301 to canonical URLs)
+# Legacy paths 301 to the canonical URLs above; keep them out of the index
+Disallow: /about-us
+Disallow: /personal-insurance
+Disallow: /careers
+Disallow: /contact-us
+Disallow: /insights
+Disallow: /self-service
+Disallow: /whistle-blowing
+Disallow: /our-offices
+Disallow: /corporate/about-us
+Disallow: /corporate/business-insurance
+Disallow: /corporate/contact-us
+Disallow: /corporate/self-service
+Disallow: /corporate/whistle-blowing
+Disallow: /corporate/our-offices
 Disallow: /purpleabout
 Disallow: /purpleproduct
 Disallow: /purpleproductdetails
@@ -25,5 +39,4 @@ Disallow: /redservices
 Disallow: /redwhistle
 Disallow: /redoffices
 
-# Sitemap
-Sitemap: https://coronationghana.com/sitemap.xml
+Sitemap: https://coronation.com.gh/sitemap.xml

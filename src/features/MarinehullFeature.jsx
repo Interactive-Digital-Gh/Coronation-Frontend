@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 // import marinemainbg from "../assets/marine/marinemainbg.png"
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 
 const MarinehullFeature = ({ closeModal }) => {
 
@@ -13,7 +14,7 @@ const MarinehullFeature = ({ closeModal }) => {
     useEffect(() => {
         const fetchmarineData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
                 const data = await response.json();
                 console.log('purple marine Data:', data);
                 setMarineData(data[0]);

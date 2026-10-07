@@ -9,6 +9,7 @@ import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
 const RedInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -18,7 +19,7 @@ const RedInsights = () => {
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
@@ -73,7 +74,7 @@ const RedInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-black text-white items-center justify-center">
-                            <Link to="/corporate/contact-us">Contact Us</Link>
+                            <Link to="/corporate/contact">Contact Us</Link>
                         </div>
                     </div>
                 </div>

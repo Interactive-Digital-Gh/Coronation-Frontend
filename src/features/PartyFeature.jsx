@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import motor5 from "../assets/purplemotor/motor5.png";
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 
 const PartyFeature = ({ closeModal }) => { // Receive closeModal as prop
 
@@ -12,7 +13,7 @@ const PartyFeature = ({ closeModal }) => { // Receive closeModal as prop
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
                 const data = await response.json();
                 console.log('purple motor Data:', data);
                 setMotorData(data[0]);

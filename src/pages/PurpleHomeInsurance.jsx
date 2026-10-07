@@ -11,6 +11,8 @@ import HouseHolderFeature from "../features/HouseHolderFeature"
 import { Link } from "react-router-dom"
 import { homeOwnersFlyer, houseHolderFlyer } from "../utils/flyers"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 
 
 const PurpleHomeInsurance = () => {
@@ -25,7 +27,7 @@ const PurpleHomeInsurance = () => {
     useEffect(() => {
         const fetchhomeData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
                 const data = await response.json();
                 console.log('purple homeIns Data:', data);
                 setHomeInsData(data[0]);
@@ -185,6 +187,7 @@ const PurpleHomeInsurance = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Home Insurance" accent="#B580D1" />
         </div>
     )
 }

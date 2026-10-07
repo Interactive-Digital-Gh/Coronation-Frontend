@@ -5,7 +5,7 @@ import { HiArrowRight } from 'react-icons/hi';
 const Book = ({ item }) => {
     return (
         <Link
-            to={item.link || `/insights/${item.id}`}
+            to={item.link || `/individual/insights/${item.id}`}
             className="group relative block h-[420px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-2"
         >
             {/* Full-bleed article image */}

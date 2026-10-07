@@ -44,11 +44,11 @@ const Footer = () => {
                                                 <li className="text-[#888991] mb-2">Personal Accident</li>
                                             </a>
 
-                                            <Link to="/personal-insurance/travel">
+                                            <Link to="/individual/products/travel">
                                                 <li className="text-[#888991] mb-2">Travel Insurance</li>
                                             </Link>
 
-                                            <Link to="/personal-insurance/home">
+                                            <Link to="/individual/products/home">
                                                 <li className="text-[#888991] mb-2">Home Insurance</li>
                                             </Link>
                                         </ul>
@@ -79,7 +79,7 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Whistle Blowing</div>
                                         <ul>
-                                            <Link to={`${sectionPrefix}/whistle-blowing`}>
+                                            <Link to={isCorporate ? "/corporate/whistleblowing" : "/individual/whistleblowing"}>
                                                 <li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li>
                                             </Link>
                                         </ul>

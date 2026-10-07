@@ -5,11 +5,12 @@ import { useLocation } from "react-router-dom";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { fetchCms } from '../lib/cmsCache';
 
 const SlickSlider = () => {
     const sliderRef = React.useRef(null);
     const location = useLocation();
-    const isRedAbout = location.pathname === "/corporate/about-us";
+    const isRedAbout = location.pathname === "/corporate/about";
 
     const [data, setData] = useState([]);
 
@@ -17,7 +18,7 @@ const SlickSlider = () => {
     useEffect(() => {
         const fetchBoardMembers = async () => {
             try {
-                const res = await fetch("https://coronation-cms.interactivedigital.com.gh/api/bod/fetch");
+                const res = await fetchCms("https://coronation-cms.interactivedigital.com.gh/api/bod/fetch");
 
                 if (!res.ok) throw new Error("Failed to fetch board data");
 

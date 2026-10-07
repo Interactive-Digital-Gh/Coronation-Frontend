@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { fetchCms } from '../lib/cmsCache';
 
 export default function Executive() {
     const [executives, setExecutives] = useState([]);
     const [expanded, setExpanded] = useState({});
     const location = useLocation();
-    const isRedAbout = location.pathname === "/corporate/about-us";
+    const isRedAbout = location.pathname === "/corporate/about";
 
     // Fetch Executive Members from CMS
     useEffect(() => {
         const fetchExecutives = async () => {
             try {
-                const res = await fetch(
+                const res = await fetchCms(
                     "https://coronation-cms.interactivedigital.com.gh/api/aboutus/executive-members/fetch"
                 );
 

@@ -35,7 +35,7 @@ export const articleData = [
         heading: "STAYING AHEAD OF THE STORM",
         details: `In today's age of global warming, characterised by a rise in the frequency and severity of floods...`,
         category: 'Insurance',
-        link: "/insights"
+        link: "/individual/insights"
 
     },
     {

@@ -9,6 +9,8 @@ import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
 import { marineCargoFlyer, marineHullFlyer } from "../utils/flyers"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 
 
 
@@ -24,7 +26,7 @@ const Marine = () => {
     useEffect(() => {
         const fetchmarineData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
                 const data = await response.json();
                 console.log('purple marine Data:', data);
                 setMarineData(data[0]);
@@ -203,6 +205,7 @@ const Marine = () => {
 
                 </div>
             </section>
+            <QuoteForm product="Marine Insurance" accent="#FF0226" />
         </div>
     )
 }
