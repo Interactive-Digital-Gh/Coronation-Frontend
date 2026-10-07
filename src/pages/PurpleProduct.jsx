@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO"
 import FAQ from "../components/FAQ"
+import { fetchCms } from '../lib/cmsCache';
 
 
 const PurpleProduct = () => {
@@ -22,7 +23,7 @@ const PurpleProduct = () => {
     useEffect(() => {
         const fetchproductData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/pns/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/pns/fetch');
                 const data = await response.json();
                 console.log('purple product Data:', data);
                 setProductData(data[0]);
@@ -114,7 +115,7 @@ const PurpleProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
                                         dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/personal-insurance/motor">Read More</Link>
+                                        <Link to="/individual/products/motor">Read More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +134,7 @@ const PurpleProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
                                         dangerouslySetInnerHTML={{ __html: productData.travel_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/personal-insurance/travel">Read More</Link>
+                                        <Link to="/individual/products/travel">Read More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +151,7 @@ const PurpleProduct = () => {
                                     <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
                                         dangerouslySetInnerHTML={{ __html: productData.house_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/personal-insurance/home">Read More</Link>
+                                        <Link to="/individual/products/home">Read More</Link>
                                     </div>
                                 </div>
                             </div>

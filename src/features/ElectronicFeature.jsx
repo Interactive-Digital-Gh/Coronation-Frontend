@@ -5,6 +5,7 @@ import engineer6 from "../assets/engineer/engineer6.png"
 
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 
 const ElectronicFeature = ({ closeModal }) => {
 
@@ -14,7 +15,7 @@ const ElectronicFeature = ({ closeModal }) => {
     useEffect(() => {
         const fetchengineerData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
                 const data = await response.json();
                 console.log('purple engineer Data:', data);
                 setEngineerData(data[0]);

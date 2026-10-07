@@ -13,6 +13,7 @@ import RedArticles from "../components/RedArticles"
 // import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
 
 
 
@@ -25,7 +26,7 @@ const RedHome = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
                 const data = await response.json();
                 console.log(data);
                 setHomeData(data[0]);
@@ -102,7 +103,7 @@ const RedHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/corporate/about-us">
+                                    <Link to="/corporate/about">
                                         Learn More
                                     </Link>
                                 </div>
@@ -133,7 +134,7 @@ const RedHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/corporate/about-us">Learn More</Link>
+                                        <Link to="/corporate/about">Learn More</Link>
                                     </div>
                                 </div>
                             </div>

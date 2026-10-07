@@ -5,6 +5,7 @@ import bannerbg from "../assets/purplehome/bannerbg.png"
 import { useEffect, useState } from "react"
 import Articles from "../components/Articles"
 import SEO from "../components/SEO"
+import { fetchCms } from '../lib/cmsCache';
 
 
 
@@ -17,7 +18,7 @@ const PurpleHome = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
                 const data = await response.json();
                 console.log(data);
                 setHomeData(data[0]);
@@ -114,7 +115,7 @@ const PurpleHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#B580D1] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to={homeData?.tile1_btn_link || "/about-us"}>
+                                    <Link to={homeData?.tile1_btn_link || "/individual/about"}>
                                         {homeData?.tile1_btn_text || "Learn More"}
                                     </Link>
                                 </div>
@@ -145,7 +146,7 @@ const PurpleHome = () => {
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/about-us">Learn More</Link>
+                                        <Link to="/individual/about">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +167,7 @@ const PurpleHome = () => {
                                     Hear the latest trends from our industry experts
                                 </span>
                                 <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                    <Link to="/insights">See more</Link>
+                                    <Link to="/individual/insights">See more</Link>
                                 </div>
                             </div>
                         </div>
@@ -180,7 +181,7 @@ const PurpleHome = () => {
                                     In today's age of global warming, characterised by a rise in the frequency and severity of flood...
                                 </p>
                                 <div className="mt-6 text-[14px] text-[#B580D1]">
-                                    <Link to="/insights">Read More</Link>
+                                    <Link to="/individual/insights">Read More</Link>
                                 </div>
                             </div>
                             <div className="lg:w-[416px] w-[300px] h-[316px] lg:h-[452px] shadow-lg rounded-md bg-white p-4">
@@ -222,7 +223,7 @@ const PurpleHome = () => {
                                 Hear the latest trends from our industry experts
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/insights">See more</Link>
+                                <Link to="/individual/insights">See more</Link>
                             </div>
                         </div>
                     </div>

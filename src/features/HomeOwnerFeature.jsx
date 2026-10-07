@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import home5 from "../assets/purplehomeIns/home5.png";
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 
 const HomeOwnerFeature = ({ closeModal }) => { // Receive closeModal as prop
     const [homeInsData, setHomeInsData] = useState(null);
@@ -12,7 +13,7 @@ const HomeOwnerFeature = ({ closeModal }) => { // Receive closeModal as prop
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
                 const data = await response.json();
                 console.log('purple homeIns Data:', data);
                 setHomeInsData(data[0]);

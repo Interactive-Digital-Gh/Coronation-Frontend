@@ -16,6 +16,8 @@ import ErectionFeature from "../features/ErectionFeature"
 import ElectronicFeature from "../features/ElectronicFeature"
 import { plantAllRiskFlyer, contractorErectionAllRiskFlyer, machineryBreakdownFlyer, electronicEquipmentFlyer } from "../utils/flyers"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 
 
 const Engineer = () => {
@@ -34,7 +36,7 @@ const Engineer = () => {
     useEffect(() => {
         const fetchengineerData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
                 const data = await response.json();
                 console.log('purple engineer Data:', data);
                 setEngineerData(data[0]);
@@ -204,7 +206,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="/corporate/contact-us">Contact Us</Link>
+                                    <Link to="/corporate/contact">Contact Us</Link>
                                 </div>
                                 <a href={machineryBreakdownFlyer} download="Coronation_Machinery_Breakdown_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                     Download Flyer
@@ -236,7 +238,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="/corporate/contact-us">Contact Us</Link>
+                                    <Link to="/corporate/contact">Contact Us</Link>
                                 </div>
                                 <a href={contractorErectionAllRiskFlyer} download="Coronation_Erection_All_Risk_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                     Download Flyer
@@ -284,7 +286,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="/corporate/contact-us">Contact Us</Link>
+                                    <Link to="/corporate/contact">Contact Us</Link>
                                 </div>
                                 <a href={electronicEquipmentFlyer} download="Coronation_Electronic_Equipment_All_Risk_Insurance_Flyer.pdf" className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                     Download Flyer
@@ -343,6 +345,7 @@ const Engineer = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Engineering Insurance" accent="#FF0226" />
         </div>
     )
 }

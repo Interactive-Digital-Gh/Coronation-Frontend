@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import 'react-phone-number-input/style.css';
-import emailjs from '@emailjs/browser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
@@ -19,6 +18,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useRef, useState } from 'react';
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import { submitContactMessage } from '../lib/contactApi';
 
 const PurpleContact = () => {
 
@@ -30,7 +31,7 @@ const PurpleContact = () => {
     const [showLoader, setShowLoader] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
 
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
 
         if (!isValidPhoneNumber(phoneNumber)) {
@@ -38,30 +39,21 @@ const PurpleContact = () => {
             return;
         }
 
-        // EmailJS requires template fields to be inside the form
-        // sendForm MUST NOT include template params manually
-        emailjs
-            .sendForm("service_vpuym4k", "template_0vf2k2b", form.current, {
-                publicKey: "od2vIhbdFel9_otjO",
-            })
-            .then(
-                () => {
-                    toast.success("Message sent successfully!");
-                },
-                () => {
-                    toast.error("Failed to send message. Please try again.");
-                }
-            );
-
-        e.target.reset();
-        setPhoneNumber("");
-        setSelectedDate(null);
+        try {
+            await submitContactMessage(form.current);
+            toast.success("Message sent successfully!");
+            e.target.reset();
+            setPhoneNumber("");
+            setSelectedDate(null);
+        } catch (error) {
+            toast.error(error.message);
+        }
     };
 
     useEffect(() => {
         const fetchcontactData = async () => {
             try {
-                const response = await fetch(
+                const response = await fetchCms(
                     "https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch"
                 );
                 const data = await response.json();

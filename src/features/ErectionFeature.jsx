@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import engineerbg from "../assets/engineer/engineerbg.png";
 import "./globalfeature.css";
 import { useEffect, useState } from "react";
+import { fetchCms } from '../lib/cmsCache';
 
 const ErectionFeature = ({ closeModal }) => {
 
@@ -13,7 +14,7 @@ const ErectionFeature = ({ closeModal }) => {
     useEffect(() => {
         const fetchengineerData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
                 const data = await response.json();
                 console.log('purple engineer Data:', data);
                 setEngineerData(data[0]);

@@ -5,6 +5,7 @@ import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
 import Executive from "../components/Executive";
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
 
 const PurpleAbout = () => {
     const [aboutData, setAboutData] = useState(null);
@@ -16,7 +17,7 @@ const PurpleAbout = () => {
     useEffect(() => {
         const fetchAboutData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
                 const data = await response.json();
                 console.log('About Data:', data);
                 setAboutData(data[0]);
@@ -32,7 +33,7 @@ const PurpleAbout = () => {
     useEffect(() => {
         const fetchBodData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/bod/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/bod/fetch');
                 const data = await response.json();
                 console.log('BOD Data:', data);
                 setBodData(data[0]);
@@ -87,7 +88,7 @@ const PurpleAbout = () => {
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <Link to="/contact-us" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
+                        <Link to="/individual/contact" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
                             Contact Us
                         </Link>
                     </div>

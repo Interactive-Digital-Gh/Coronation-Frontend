@@ -23,8 +23,8 @@ const RedProductDetails = () => {
                 <ul className="flex gap-3 whitespace-nowrap">
                     <li>
                         <Link
-                            to="/corporate/business-insurance/motor"
-                            className={`${isActive("/corporate/business-insurance/motor")
+                            to="/corporate/products/motor"
+                            className={`${isActive("/corporate/products/motor")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -34,8 +34,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/corporate/business-insurance/engineering"
-                            className={`${isActive("/corporate/business-insurance/engineering")
+                            to="/corporate/products/engineering"
+                            className={`${isActive("/corporate/products/engineering")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}
@@ -45,8 +45,8 @@ const RedProductDetails = () => {
                     </li>
                     <li>
                         <Link
-                            to="/corporate/business-insurance/marine"
-                            className={`${isActive("/corporate/business-insurance/marine")
+                            to="/corporate/products/marine"
+                            className={`${isActive("/corporate/products/marine")
                                 ? "text-[#FF0226] border-b-4 border-[#FF0226] font-bold"
                                 : "text-gray-500"
                                 } pb-2 text-sm md:text-base`}

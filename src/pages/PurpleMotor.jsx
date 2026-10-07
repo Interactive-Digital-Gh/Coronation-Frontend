@@ -15,6 +15,8 @@ import MotorFeature from "../features/MotorFeature";
 import TheftFeature from "../features/TheftFeature";
 import PartyFeature from "../features/PartyFeature";
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
+import QuoteForm from "../components/QuoteForm"
 
 
 const PurpleMotor = () => {
@@ -38,7 +40,7 @@ const PurpleMotor = () => {
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
                 const data = await response.json();
                 console.log('purple motor Data:', data);
                 setMotorData(data[0]);
@@ -314,6 +316,7 @@ const PurpleMotor = () => {
                     </div>
                 </div>
             </section>
+            <QuoteForm product="Motor Insurance" accent="#B580D1" />
         </div>
     )
 }

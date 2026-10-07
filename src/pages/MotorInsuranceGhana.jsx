@@ -14,6 +14,7 @@ import PartyFeature from "../features/PartyFeature";
 import SEO from "../components/SEO";
 import GetQuoteForm from "../components/GetQuoteForm";
 import { trackProductView, trackBuyInsurance } from "../utils/metaPixel";
+import { fetchCms } from '../lib/cmsCache';
 
 
 const MotorInsuranceGhana = () => {
@@ -43,7 +44,7 @@ const MotorInsuranceGhana = () => {
         trackProductView('Motor Insurance Ghana');
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
                 const data = await response.json();
                 setMotorData(data[0]);
                 setShowLoader(false);
@@ -84,7 +85,7 @@ const MotorInsuranceGhana = () => {
                 title="Motor & Car Insurance in Ghana | Get a Quote Fast | Coronation"
                 description="Protect your vehicle with Coronation's comprehensive motor insurance in Ghana. We settle claims within 48 hours. Get your free car insurance quote today."
                 keywords="car insurance in Ghana, comprehensive motor insurance, vehicle insurance Ghana, third party insurance Ghana, motor insurance quote Ghana"
-                canonicalUrl="https://coronationghana.com/motor-insurance-ghana"
+                canonicalUrl="https://coronation.com.gh/motor-insurance-ghana"
             />
 
             {/* Hero Section */}

@@ -10,6 +10,7 @@ import { marineCargoFlyer, marineHullFlyer } from "../utils/flyers"
 import SEO from "../components/SEO"
 import GetQuoteForm from "../components/GetQuoteForm"
 import { trackProductView, trackBuyInsurance } from "../utils/metaPixel"
+import { fetchCms } from '../lib/cmsCache';
 
 
 const MarineInsuranceGhana = () => {
@@ -20,7 +21,7 @@ const MarineInsuranceGhana = () => {
     const accentBg = isCorporate ? "bg-[#FF0226]" : "bg-[#B580D1]";
     const accentBorder = isCorporate ? "border-[#FF0226]" : "border-[#B580D1]";
     const accentText = isCorporate ? "text-[#FF0226]" : "text-[#B580D1]";
-    const contactPath = isCorporate ? "/corporate/contact-us" : "/contact-us";
+    const contactPath = isCorporate ? "/corporate/contact" : "/individual/contact";
 
     const [cargoOpen, setCargoOpen] = useState(false);
     const [marinehullOpen, setMarinehullOpen] = useState(false);
@@ -33,7 +34,7 @@ const MarineInsuranceGhana = () => {
         trackProductView('Marine Insurance Ghana');
         const fetchmarineData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
                 const data = await response.json();
                 setMarineData(data[0]);
                 setShowLoader(false);
@@ -67,7 +68,7 @@ const MarineInsuranceGhana = () => {
                 title="Marine Insurance Brokers in Ghana | Cargo & Hull Cover | Coronation"
                 description="Protect your goods in transit and marine vessels with Coronation's marine insurance in Ghana. Expert brokers, competitive rates. Get a quote today."
                 keywords="marine insurance brokers, goods in transit insurance, marine cargo insurance Ghana, marine hull insurance, shipping insurance Ghana"
-                canonicalUrl="https://coronationghana.com/marine-insurance-ghana"
+                canonicalUrl="https://coronation.com.gh/marine-insurance-ghana"
             />
 
             {/* Hero Section */}

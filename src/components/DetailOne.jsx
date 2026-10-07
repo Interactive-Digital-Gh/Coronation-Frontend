@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 // import rehypeSanitize from 'rehype-sanitize';
 import DOMPurify from 'dompurify';
 import SEO from "./SEO";
+import { fetchCms } from '../lib/cmsCache';
 
 
 
@@ -37,7 +38,7 @@ const DetailOne = () => {
     useEffect(() => {
         const fetchCardLatestData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
@@ -52,7 +53,7 @@ const DetailOne = () => {
         window.scrollTo(0, 0);
         const fetchArticleDetails = async () => {
             try {
-                const response = await fetch(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
+                const response = await fetchCms(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
                 const data = await response.json();
                 setArticleDetails(data[0]);
                 console.log(data)
@@ -125,7 +126,7 @@ const DetailOne = () => {
 
                 {/* Back — glass pill */}
                 <Link
-                    to="/insights"
+                    to="/individual/insights"
                     className="absolute top-5 lg:left-20 left-4 inline-flex items-center gap-1.5 backdrop-blur-md bg-white/15 border border-white/30 text-white text-sm font-medium rounded-full pl-3 pr-4 py-2 shadow-md hover:bg-white/25 transition-colors duration-300"
                 >
                     <IoIosArrowBack /> Back
@@ -202,7 +203,7 @@ const DetailOne = () => {
                                 </div>
                                 {insightLatestData.filter((article) => String(article.id) !== String(id)).slice(0, 2).map((article, index) => (
                                     <Link
-                                        to={`/insights/${article.id}`}
+                                        to={`/individual/insights/${article.id}`}
                                         key={index}
                                         className="group relative block h-[240px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-1.5"
                                     >

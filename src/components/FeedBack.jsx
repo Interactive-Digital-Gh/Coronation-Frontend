@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import emailjs from '@emailjs/browser';
+import { fetchCms } from '../lib/cmsCache';
+import { EMAILJS_FEEDBACK_SERVICE, EMAILJS_FEEDBACK_TEMPLATE, EMAILJS_FEEDBACK_PUBLIC_KEY, sendEmailJs } from '../lib/emailjs';
 
 const Feedback = ({ showModal, setShowModal }) => {
     const [rangeValue, setRangeValue] = useState(0);
@@ -39,7 +40,7 @@ const Feedback = ({ showModal, setShowModal }) => {
 
         try {
             // Send feedback to the API
-            const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/feedback/form', {
+            const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/feedback/form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,23 +49,12 @@ const Feedback = ({ showModal, setShowModal }) => {
             });
 
             if (response.ok) {
-                // Send an email using EmailJS
-                emailjs.send(
-                    'service_8o5f2xd',       // Your EmailJS Service ID
-                    'template_e0khrmr',      // Your EmailJS Template ID
-                    {
-                        rating: starRating,
-                        likely_to_recommend: rangeValue,
-                        feedback: feedback
-                    },
-                    '6aG8jxTKE39zz493J'        // Your EmailJS Public Key
-                )
-                    .then(() => {
-                        toast.success('Submitted successfully and email sent!');
-                    })
+                // Also email a copy through EmailJS; the CMS already has the record.
+                sendEmailJs(EMAILJS_FEEDBACK_SERVICE, EMAILJS_FEEDBACK_TEMPLATE, feedbackData, EMAILJS_FEEDBACK_PUBLIC_KEY)
+                    .then(() => toast.success('Thank you for your feedback!'))
                     .catch((error) => {
-                        console.error('Error sending email:', error);
-                        toast.error('Feedback saved, but failed to send email.');
+                        console.error('Feedback email failed:', error);
+                        toast.success('Thank you for your feedback!');
                     });
 
                 setShowModal(false);

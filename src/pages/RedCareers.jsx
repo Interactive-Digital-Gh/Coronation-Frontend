@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
+import { fetchCms } from '../lib/cmsCache';
 
 
 const RedCareers = () => {
@@ -13,7 +14,7 @@ const RedCareers = () => {
     useEffect(() => {
         const fetchmotorData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/careerspage/fetch');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/careerspage/fetch');
                 const data = await response.json();
                 console.log('purple career Data:', data);
                 setCareerData(data[0]);
@@ -249,7 +250,7 @@ const RedCareers = () => {
                 <div className="w-full h-[164px] bg-[#FF0226] flex lg:flex-row flex-col lg:items-center lg:justify-between lg:pr-40 lg:pl-20 pr-0 pl-4 py-14 lg:py-0 gap-2 lg:gap-0">
                     <h2 className="text-white w-[343px] lg:w-full h-[40px]  font-bold lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px]">Get Insured Today</h2>
                     <div className="w-[110px] h-[44px]  bg-white flex items-center justify-center p-2 lg:p-2 rounded-lg text-[16px] leading-[24px] font-semibold">
-                        <Link to="/corporate/contact-us">Contact Us</Link>
+                        <Link to="/corporate/contact">Contact Us</Link>
                     </div>
                 </div>
             </section>

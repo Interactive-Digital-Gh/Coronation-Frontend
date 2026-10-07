@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import RedBook from './RedBook';
 import { useLocation } from 'react-router-dom';
+import { fetchCms } from '../lib/cmsCache';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -20,7 +21,7 @@ function RedProject() {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
                 const data = await response.json();
 
                 // Map API data to the expected article format
@@ -48,7 +49,7 @@ function RedProject() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
                 const data = await response.json();
                 const fetchedCategories = data.map((category) => ({
                     name: (category.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim()

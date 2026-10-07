@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import Book from './Book';
+import { fetchCms } from '../lib/cmsCache';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -19,7 +20,7 @@ function Project() {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
                 const data = await response.json();
 
                 // Map API data to the expected article format
@@ -30,7 +31,7 @@ function Project() {
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
                     category: (article.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim(),
-                    link: `/insights/${article.id}` // Modify this based on your routing structure
+                    link: `/individual/insights/${article.id}` // Modify this based on your routing structure
                 }));
 
                 setArticles(formattedArticles);
@@ -47,7 +48,7 @@ function Project() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
+                const response = await fetchCms('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
                 const data = await response.json();
                 const fetchedCategories = data.map((category) => ({
                     name: (category.category || "").replace(/<\/?[^>]+(>|$)/g, "").trim()
