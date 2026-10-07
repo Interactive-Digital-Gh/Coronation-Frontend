@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchCms } from '../lib/cmsCache';
+import { EMAILJS_FEEDBACK_SERVICE, EMAILJS_FEEDBACK_TEMPLATE, EMAILJS_FEEDBACK_PUBLIC_KEY, sendEmailJs } from '../lib/emailjs';
 
 const Feedback = ({ showModal, setShowModal }) => {
     const [rangeValue, setRangeValue] = useState(0);
@@ -48,7 +49,13 @@ const Feedback = ({ showModal, setShowModal }) => {
             });
 
             if (response.ok) {
-                toast.success('Thank you for your feedback!');
+                // Also email a copy through EmailJS; the CMS already has the record.
+                sendEmailJs(EMAILJS_FEEDBACK_SERVICE, EMAILJS_FEEDBACK_TEMPLATE, feedbackData, EMAILJS_FEEDBACK_PUBLIC_KEY)
+                    .then(() => toast.success('Thank you for your feedback!'))
+                    .catch((error) => {
+                        console.error('Feedback email failed:', error);
+                        toast.success('Thank you for your feedback!');
+                    });
 
                 setShowModal(false);
             } else {
