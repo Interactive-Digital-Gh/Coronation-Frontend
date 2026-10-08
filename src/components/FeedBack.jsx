@@ -57,7 +57,7 @@ const Feedback = ({ showModal, setShowModal }) => {
                         likely_to_recommend: rangeValue,
                         feedback: feedback
                     },
-                    '6aG8jxTKE39zz493J'        // Your EmailJS Public Key
+                    'PmcLEEEQ3R8MWgQoV'        // Your EmailJS Public Key
                 )
                     .then(() => {
                         toast.success('Submitted successfully and email sent!');
