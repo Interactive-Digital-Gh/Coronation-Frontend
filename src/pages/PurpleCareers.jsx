@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
 import { fetchCms } from '../lib/cmsCache';
+import CareerCards from '../components/CareerCards';
 
 const PurpleCareers = () => {
     const [careerData, setCareerData] = useState(null);
@@ -128,123 +129,7 @@ const PurpleCareers = () => {
 
             </section>
 
-            <section>
-                <div className="bg-black w-full lg:h-[1169px] h-[400px] lg:p-20">
-                    <div className="lg:w-[1280px] w-full lg:h-[1008px] h-[400px] flex flex-row py-8 lg:py-0 lg:flex-col gap-6 overflow-x-scroll overflow-y-hidden lg:overflow-hidden">
-                        <div className="flex w-full h-[492px] gap-6">
-                            <div className="bg-[#1D1E20] hidden lg:h-full h-[336px] rounded-lg shadow-lg lg:flex">
-                                <div className="flex-1 hidden lg:flex">
-                                    <img
-                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card1_image}` : "assets/purplehome/purplehomebg.png"}
-                                        className="bg-cover w-[631px] h-full rounded-l-md"
-                                        loading="lazy" />
-                                </div>
-                                <div className="flex-1 border-b-4 border-b-[#B580D1] flex items-center justify-center">
-                                    <div className="lg:w-[357px] h-[220px] lg:pt-10 pt-0">
-                                        <div className="mb-4 pl-4 lg:pl-0">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card1_caption }} />
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[18px]"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card1_body }} />
-                                        </div>
-                                        <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1] pl-4 lg:pl-0">Learn More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-[#1D1E20] hidden lg:block lg:w-[424px] w-[300px] h-[336px] p-4 lg:p-0 lg:h-full border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img
-                                    src={careerData?.card2_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card2_image}` : "assets/purplehome/purplehomebg.png"}
-                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                    loading="lazy" />
-                                <div className="p-4">
-                                    <div className="lg:mt-4 mt-0">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card2_caption }} />
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card2_body }} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex gap-6">
-                            <div className="lg:hidden flex gap-6">
-                                <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                    <img
-                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card3_image}` : "assets/purplehome/purplehomebg.png"}
-                                        className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                        loading="lazy" />
-                                    <div className="p-4">
-                                        <div className="mt-4 mb-1">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card1_caption }} />
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card1_body }} />
-                                        </div>
-                                        <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1]">Learn More</Link>
-
-                                    </div>
-                                </div>
-                                <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                    <img
-                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card4_image}` : "assets/purplehome/purplehomebg.png"}
-                                        className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                        loading="lazy" />
-                                    <div className="p-4">
-                                        <div className="mt-4">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card2_caption }} />
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                                dangerouslySetInnerHTML={{ __html: careerData.card2_body }} />                                       </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img
-                                    src={careerData?.card3_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card3_image}` : "assets/purplehome/purplehomebg.png"}
-                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                    loading="lazy" />
-                                <div className="p-4">
-                                    <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card3_caption }} />
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card3_body }} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img
-                                    src={careerData?.card4_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card4_image}` : "assets/purplehome/purplehomebg.png"}
-                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                    loading="lazy" />
-                                <div className="p-4">
-                                    <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card4_caption }} />
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card4_body }} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img
-                                    src={careerData?.card5_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card5_image}` : "assets/purplehome/purplehomebg.png"}
-                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
-                                    loading="lazy" />
-                                <div className="p-4">
-                                    <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card5_caption }} />
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
-                                            dangerouslySetInnerHTML={{ __html: careerData.card5_body }} />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <CareerCards data={careerData} accent="#B580D1" />
 
             <section>
                 <div className="w-full h-[164px] bg-[#B580D1] flex lg:flex-row flex-col lg:items-center lg:justify-between lg:pr-40 lg:pl-20 pr-0 pl-4 py-14 lg:py-0 gap-2 lg:gap-0">

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { GoogleMap, useJsApiLoader, OverlayViewF } from '@react-google-maps/api';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FiPhone } from 'react-icons/fi';
 import officeHero from '../assets/office/officehero.webp';
+
+// Shared line for all agency offices. Give an office its own `phone` below to override it.
+const AGENCY_PHONE = '+233 24 438 3098';
 
 const containerStyle = {
   width: '100%',
@@ -14,17 +18,17 @@ const center = {
 };
 
 const dummyOffices = [
-  { id: 1, city: 'Tema', lat: 5.670, lng: -0.010, title: 'Tema 1 | DVLA', person: 'Emelia Akon', code: 'IWI/ILA/0016/12' },
-  { id: 2, city: 'Tema', lat: 5.685, lng: -0.005, title: 'Tema 2 | DVLA', person: 'Philomina Danso', code: 'IWI/ILA/0021/12' },
-  { id: 3, city: 'Tema', lat: 5.660, lng: 0.005, title: 'Tema 3 | DVLA', person: 'Dorcas Eture', code: 'IWI/ILA/0080/17' },
-  { id: 4, city: 'Bohye', lat: 5.640, lng: -0.190, title: 'Bohye | DVLA', person: 'Millicent | Abigail Naa Adorley Addo', code: 'WIG/ILA0083/17' },
-  { id: 5, city: 'Takoradi', lat: 4.901, lng: -1.783, title: 'Takoradi | DVLA', person: 'Samuel Tetteh', code: '5575/IN/CIG/NL/E2EB' },
-  { id: 6, city: 'Weija', lat: 5.560, lng: -0.330, title: 'Weija | DVLA', person: 'Daniel Yeboah', code: '14692/IN/CIG/NL/4654' },
-  { id: 7, city: 'Kumasi', lat: 6.688, lng: -1.624, title: 'Kumasi | DVLA', person: 'Collins Asamoah', code: '00850/IN/CIG/NL/629A' },
-  { id: 8, city: 'Kasoa', lat: 5.534, lng: -0.416, title: 'Kasoa | DVLA', person: 'Gloria Osaa', code: '15082/IN/CIG/NL/535A' },
-  { id: 9, city: 'Asante Bakwai', lat: 6.453, lng: -1.583, title: 'Asante Bakwai | DVLA', person: 'Bernard Nkrumah', code: 'NIC/CORONATION/TRA/0017/23' },
-  { id: 10, city: 'Takoradi', lat: 4.9011722, lng: -1.7652209, title: 'Takoradi | Liberation Road', person: 'Susan Ackah', code: 'NIC/CORONATION/TRA003' },
-  { id: 11, city: 'Sunyani', lat: 7.334, lng: -2.312, title: 'Sunyani | DVLA', person: 'Samuel Arthur', code: 'NIC/CORONATION/TRA/0016/23' }
+  { id: 1, city: 'Tema', lat: 5.670, lng: -0.010, title: 'Tema 1 | DVLA', person: 'Emelia Akon', code: 'IWI/ILA/0016/12', phone: AGENCY_PHONE },
+  { id: 2, city: 'Tema', lat: 5.685, lng: -0.005, title: 'Tema 2 | DVLA', person: 'Philomina Danso', code: 'IWI/ILA/0021/12', phone: AGENCY_PHONE },
+  { id: 3, city: 'Tema', lat: 5.660, lng: 0.005, title: 'Tema 3 | DVLA', person: 'Dorcas Eture', code: 'IWI/ILA/0080/17', phone: AGENCY_PHONE },
+  { id: 4, city: 'Bohye', lat: 5.640, lng: -0.190, title: 'Bohye | DVLA', person: 'Millicent | Abigail Naa Adorley Addo', code: 'WIG/ILA0083/17', phone: AGENCY_PHONE },
+  { id: 5, city: 'Takoradi', lat: 4.901, lng: -1.783, title: 'Takoradi | DVLA', person: 'Samuel Tetteh', code: '5575/IN/CIG/NL/E2EB', phone: AGENCY_PHONE },
+  { id: 6, city: 'Weija', lat: 5.560, lng: -0.330, title: 'Weija | DVLA', person: 'Daniel Yeboah', code: '14692/IN/CIG/NL/4654', phone: AGENCY_PHONE },
+  { id: 7, city: 'Kumasi', lat: 6.688, lng: -1.624, title: 'Kumasi | DVLA', person: 'Collins Asamoah', code: '00850/IN/CIG/NL/629A', phone: AGENCY_PHONE },
+  { id: 8, city: 'Kasoa', lat: 5.534, lng: -0.416, title: 'Kasoa | DVLA', person: 'Gloria Osaa', code: '15082/IN/CIG/NL/535A', phone: AGENCY_PHONE },
+  { id: 9, city: 'Asante Bakwai', lat: 6.453, lng: -1.583, title: 'Asante Bakwai | DVLA', person: 'Bernard Nkrumah', code: 'NIC/CORONATION/TRA/0017/23', phone: AGENCY_PHONE },
+  { id: 10, city: 'Takoradi', lat: 4.9011722, lng: -1.7652209, title: 'Takoradi | Liberation Road', person: 'Susan Ackah', code: 'NIC/CORONATION/TRA003', phone: AGENCY_PHONE },
+  { id: 11, city: 'Sunyani', lat: 7.334, lng: -2.312, title: 'Sunyani | DVLA', person: 'Samuel Arthur', code: 'NIC/CORONATION/TRA/0016/23', phone: AGENCY_PHONE }
 ];
 
 const OfficeMap = ({ theme = 'purple' }) => {
@@ -117,6 +121,15 @@ const OfficeMap = ({ theme = 'purple' }) => {
                 <h2 className="text-white text-[32px] font-light mb-6 tracking-wide">{selectedOffice.title}</h2>
                 <p className="text-gray-200 text-lg mb-1">{selectedOffice.person}</p>
                 <p className="text-gray-400 text-md">{selectedOffice.code}</p>
+                {selectedOffice.phone && (
+                  <a
+                    href={`tel:${selectedOffice.phone.replace(/\s/g, '')}`}
+                    className="mt-4 inline-flex items-center gap-2 text-white text-lg hover:underline"
+                  >
+                    <FiPhone aria-hidden="true" />
+                    {selectedOffice.phone}
+                  </a>
+                )}
               </div>
             </motion.div>
           </motion.div>
