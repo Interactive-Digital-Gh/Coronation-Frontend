@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import product5 from "../assets/purpleproduct/product5.png"
-import marineImg from "../assets/marine/marinebg.png"
-import businessImg from "../assets/redhome/redhero2.png"
+import marineImg from "../assets/product_artwork/marine-cargo.webp"
+import businessImg from "../assets/product_artwork/business-protection.webp"
 
 import productmob from "../assets/purpleproduct/productmob.png"
 
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO"
 import FAQ from "../components/FAQ"
+import ProductCard from "../components/ProductCard"
 import { fetchCms } from '../lib/cmsCache';
 
 
@@ -90,117 +91,58 @@ const PurpleProduct = () => {
             </div>
             <section>
                 <div className="lg:p-20 p-6 bg-black">
-                    <div className="w-full lg:h-[748px]">
-                        <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
-                            <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
-                                Looking for The <br />Right Insurance Cover for You?
-                            </h2>
-                            <span className="text-[16px] font-normal leading-[24px] text-[#888991] w-[846px] h-[48px]">
-                                Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
-                                business, and life. One call, and Total protection. Get a quote now!
-                            </span>
-                        </div>
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-[1204px]">
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "https://loremflickr.com/600/400/car"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.motor_caption }} />
-
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
-                                        dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
-                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/individual/products/motor">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.travel_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.travel_image}` : "https://loremflickr.com/600/400/travel"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.travel_caption }} />
-
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
-                                        dangerouslySetInnerHTML={{ __html: productData.travel_body }} />
-                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/individual/products/travel">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.house_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.house_image}` : "https://loremflickr.com/600/400/house"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy" />
-                                <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.house_caption }} />
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
-                                        dangerouslySetInnerHTML={{ __html: productData.house_body }} />
-                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/individual/products/home">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-
-                        {/* Second Row of Products */}
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={marineImg}
-                                    alt="Marine Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Marine Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
-                                        Comprehensive protection for goods in transit by sea and marine vessels. Protect your cargo today.
-                                    </p>
-                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/marine-insurance-ghana">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={businessImg}
-                                    alt="Business Protection Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Business Protection
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Comprehensive insurance solutions tailored for Ghanaian businesses — from SMEs to large corporations.
-                                    </p>
-                                    <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="hidden md:block mb-4 lg:mb-0">
+                        <h2 className="text-[48px] font-bold leading-[56px] text-white">
+                            Looking for The <br />Right Insurance Cover for You?
+                        </h2>
+                        <span className="block mt-2 text-[16px] font-normal leading-[24px] text-[#888991]">
+                            Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
+                            business, and life. One call, and Total protection. Get a quote now!
+                        </span>
                     </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 lg:mt-10">
+                        <ProductCard
+                            image={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "https://loremflickr.com/600/400/car"}
+                            alt="Motor Insurance"
+                            titleHtml={productData.motor_caption}
+                            bodyHtml={productData.motor_body}
+                            to="/individual/products/motor"
+                            linkClassName="text-[#B580D1]"
+                        />
+                        <ProductCard
+                            image={productData?.travel_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.travel_image}` : "https://loremflickr.com/600/400/travel"}
+                            alt="Travel Insurance"
+                            titleHtml={productData.travel_caption}
+                            bodyHtml={productData.travel_body}
+                            to="/individual/products/travel"
+                            linkClassName="text-[#B580D1]"
+                        />
+                        <ProductCard
+                            image={productData?.house_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.house_image}` : "https://loremflickr.com/600/400/house"}
+                            alt="Home Insurance"
+                            titleHtml={productData.house_caption}
+                            bodyHtml={productData.house_body}
+                            to="/individual/products/home"
+                            linkClassName="text-[#B580D1]"
+                        />
+                        <ProductCard
+                            image={marineImg}
+                            alt="Marine Cargo Insurance"
+                            title="Marine Insurance"
+                            body="Comprehensive protection for goods in transit by sea and marine vessels. Protect your cargo today."
+                            to="/marine-insurance-ghana"
+                            linkClassName="text-[#B580D1]"
+                        />
+                        <ProductCard
+                            image={businessImg}
+                            alt="Business Protection Insurance"
+                            title="Business Protection"
+                            body="Comprehensive insurance solutions tailored for Ghanaian businesses — from SMEs to large corporations."
+                            to="/business-protection-insurance"
+                            linkClassName="text-[#B580D1]"
+                        />
+                    </div>
+                </div>
             </section>
 
             <section>

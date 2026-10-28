@@ -5,7 +5,8 @@
 // import product3 from "../assets/marine/marinebg.png"
 import product4 from "../assets/purpleproduct/redprodbg.png"
 import product5 from "../assets/purpleproduct/redbanner.png"
-import fireImg from "../assets/redhome/redhero2.png"
+import fireImg from "../assets/product_artwork/fire-special-perils.webp"
+import goodsInTransitImg from "../assets/product_artwork/goods-in-transit.webp"
 import burglaryImg from "../assets/engineer/engineer6.png"
 import interruptionImg from "../assets/purplehomeIns/homeIns2.png"
 
@@ -17,6 +18,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
 import FAQ from "../components/FAQ";
+import ProductCard from "../components/ProductCard";
 import { fetchCms } from '../lib/cmsCache';
 
 
@@ -92,196 +94,88 @@ const RedProduct = () => {
             </div>
             <section>
                 <div className="lg:p-20 p-6 bg-black">
-                    <div className="w-full lg:h-auto">
-                        <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
-                            <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
-                                Looking for The <br />Right Insurance Cover for You?
-                            </h2>
-                            <span className="text-[16px] font-normal leading-[24px] text-[#888991] w-[846px] h-[48px]">
-                                Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
-                                business, and life. One call, and Total protection. Get a quote now!
-                            </span>
-                        </div>
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-auto">
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "https://loremflickr.com/600/400/car"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.motor_caption }} />
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
-                                        dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/products/motor">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.eng_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.eng_image}` : "https://loremflickr.com/600/400/engineering"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.eng_caption }} />
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
-                                        dangerouslySetInnerHTML={{ __html: productData.eng_body }} />
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/products/engineering">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={productData?.marine_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.marine_image}` : "https://loremflickr.com/600/400/ship"}
-                                    alt="pic"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy" />
-                                <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
-                                        dangerouslySetInnerHTML={{ __html: productData.marine_caption }} />
-
-                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
-                                        dangerouslySetInnerHTML={{ __html: productData.marine_body }} />
-
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/products/marine">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Second Row of Products */}
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src="https://loremflickr.com/600/400/liability"
-                                    alt="Liability Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Liability Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
-                                        Helps take care of losses triggered by injuries and damages caused by you or your business to other people or their property.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={fireImg}
-                                    alt="Fire & Special Perils Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Fire Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Protects your business property, buildings, and contents against fire, lightning, explosion, and other special perils.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={burglaryImg}
-                                    alt="Burglary Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy" />
-                                <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Burglary Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Comprehensive protection against loss or damage to your business property caused by burglary, theft, or attempted theft.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Third Row of Products */}
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:mt-10 mt-6 md:px-40 lg:px-0 px-0 w-full lg:h-auto h-auto">
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src={interruptionImg}
-                                    alt="Business Interruption"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Business Interruption
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
-                                        Covers loss of income suffered by a business after a disaster, helping you navigate financial losses during recovery.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src="https://loremflickr.com/600/400/transport"
-                                    alt="Goods in Transit"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Goods in Transit
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Protects goods while being transported by road, rail, or air within Ghana and beyond against damage, theft, or loss.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-[436px] h-full">
-                                <img
-                                    src="https://loremflickr.com/600/400/money"
-                                    alt="Money Insurance"
-                                    className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
-                                    loading="lazy" />
-                                <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Money Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Comprehensive coverage for loss of money in transit, on your business premises, or in a safe. Ideal for daily cash handlers.
-                                    </p>
-                                    <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
-                                        <Link to="/corporate/business-protection-insurance">Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="hidden md:block mb-4 lg:mb-0">
+                        <h2 className="text-[48px] font-bold leading-[56px] text-white">
+                            Looking for The <br />Right Insurance Cover for You?
+                        </h2>
+                        <span className="block mt-2 text-[16px] font-normal leading-[24px] text-[#888991]">
+                            Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
+                            business, and life. One call, and Total protection. Get a quote now!
+                        </span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 lg:mt-10">
+                        <ProductCard
+                            image={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "https://loremflickr.com/600/400/car"}
+                            alt="Motor Insurance"
+                            titleHtml={productData.motor_caption}
+                            bodyHtml={productData.motor_body}
+                            to="/corporate/products/motor"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={productData?.eng_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.eng_image}` : "https://loremflickr.com/600/400/engineering"}
+                            alt="Engineering Insurance"
+                            titleHtml={productData.eng_caption}
+                            bodyHtml={productData.eng_body}
+                            to="/corporate/products/engineering"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={productData?.marine_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.marine_image}` : "https://loremflickr.com/600/400/ship"}
+                            alt="Marine Insurance"
+                            titleHtml={productData.marine_caption}
+                            bodyHtml={productData.marine_body}
+                            to="/corporate/products/marine"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image="https://loremflickr.com/600/400/liability"
+                            alt="Liability Insurance"
+                            title="Liability Insurance"
+                            body="Helps take care of losses triggered by injuries and damages caused by you or your business to other people or their property."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={fireImg}
+                            alt="Fire & Special Perils Insurance"
+                            title="Fire Insurance"
+                            body="Protects your business property, buildings, and contents against fire, lightning, explosion, and other special perils."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={burglaryImg}
+                            alt="Burglary Insurance"
+                            title="Burglary Insurance"
+                            body="Comprehensive protection against loss or damage to your business property caused by burglary, theft, or attempted theft."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={interruptionImg}
+                            alt="Business Interruption"
+                            title="Business Interruption"
+                            body="Covers loss of income suffered by a business after a disaster, helping you navigate financial losses during recovery."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image={goodsInTransitImg}
+                            alt="Goods in Transit Insurance"
+                            title="Goods in Transit"
+                            body="Protects goods while being transported by road, rail, or air within Ghana and beyond against damage, theft, or loss."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
+                        <ProductCard
+                            image="https://loremflickr.com/600/400/money"
+                            alt="Money Insurance"
+                            title="Money Insurance"
+                            body="Comprehensive coverage for loss of money in transit, on your business premises, or in a safe. Ideal for daily cash handlers."
+                            to="/corporate/business-protection-insurance"
+                            linkClassName="text-[#FF0226]"
+                        />
                     </div>
                 </div>
             </section>
