@@ -4,9 +4,18 @@
 // resolve from memory, so moving between pages never shows the loaders again.
 // Callers keep using the normal Response API (`res.ok`, `res.json()`), which
 // keeps the call sites identical to a plain `fetch`.
+import { findLocalInsight, mergeLocalInsights } from './localInsights';
+
 const cache = new Map();
 
 export const CMS_URL = 'https://coronation-cms.interactivedigital.com.gh';
+
+// Resolves a CMS image path. CMS uploads are relative paths on the CMS host;
+// local insight images are bundled asset URLs and are returned as-is.
+export function cmsImage(path) {
+    if (!path) return path;
+    return /^(https?:|data:|blob:|\/)/.test(path) ? path : `${CMS_URL}/${path}`;
+}
 
 export function fetchCms(url, init) {
     // Only idempotent GETs are cached; form posts go straight through.
@@ -14,10 +23,21 @@ export function fetchCms(url, init) {
         return fetch(url, init);
     }
 
+    // Local insight posts are served without touching the CMS.
+    const detailMatch = url.match(/\/api\/blog\/([^/]+)\/details$/);
+    const localPost = detailMatch && findLocalInsight(decodeURIComponent(detailMatch[1]));
+    if (localPost) {
+        return Promise.resolve(new Response(JSON.stringify([localPost]), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        }));
+    }
+
     if (!cache.has(url)) {
         const entry = fetch(url, init)
             .then(async (response) => {
-                const body = await response.text();
+                const raw = await response.text();
+                const body = response.ok ? mergeLocalInsights(url, raw) : raw;
                 if (!response.ok) {
                     // Don't keep failures around - let the next visit retry.
                     cache.delete(url);

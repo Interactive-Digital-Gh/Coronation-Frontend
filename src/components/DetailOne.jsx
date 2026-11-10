@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 // import rehypeSanitize from 'rehype-sanitize';
 import DOMPurify from 'dompurify';
 import SEO from "./SEO";
-import { fetchCms } from '../lib/cmsCache';
+import { fetchCms, cmsImage } from '../lib/cmsCache';
 
 
 
@@ -97,7 +97,7 @@ const DetailOne = () => {
     });
 
     const bannerImage = articleDetails?.main_image
-        ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}`
+        ? cmsImage(articleDetails.main_image)
         : "assets/purplemotor/motorbg.png";
 
     return (
@@ -208,7 +208,7 @@ const DetailOne = () => {
                                         className="group relative block h-[240px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-1.5"
                                     >
                                         <img
-                                            src={article?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${article.main_image}` : "assets/purplemotor/motorbg.png"}
+                                            src={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
                                             alt="Insight article"
                                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                             loading="lazy"
