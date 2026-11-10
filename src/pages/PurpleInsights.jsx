@@ -9,7 +9,7 @@ import { HiArrowRight } from "react-icons/hi"
 import "./global.css"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
-import { fetchCms } from '../lib/cmsCache';
+import { fetchCms, cmsImage } from '../lib/cmsCache';
 const PurpleInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -102,7 +102,7 @@ const PurpleInsights = () => {
                                     className="group relative block lg:h-[440px] md:h-[400px] h-[340px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-2"
                                 >
                                     <img
-                                        src={article?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${article.main_image}` : "assets/purplemotor/motorbg.png"}
+                                        src={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                         loading="lazy"
                                         alt="Insight article"

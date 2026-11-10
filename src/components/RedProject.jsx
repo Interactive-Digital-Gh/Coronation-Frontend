@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import RedBook from './RedBook';
 import { useLocation } from 'react-router-dom';
-import { fetchCms } from '../lib/cmsCache';
+import { fetchCms, cmsImage } from '../lib/cmsCache';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -27,7 +27,7 @@ function RedProject() {
                 // Map API data to the expected article format
                 const formattedArticles = data.map((article) => ({
                     id: article.id,
-                    image: `https://coronation-cms.interactivedigital.com.gh/${article.main_image}`,
+                    image: cmsImage(article.main_image),
                     date: new Date(article.created_at).toLocaleDateString(),
                     heading: (article.caption || "").replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
                     details: (article.excerpt || "").replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
