@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 import { MdOutlineFileDownload } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
+import InsightCard from "./InsightCard";
 
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { useEffect, useState } from "react";
@@ -100,69 +100,67 @@ const RedDetailOne = () => {
                 description="Read in-depth corporate insurance articles, business news and expert insights from Coronation Insurance Ghana."
                 keywords="corporate insurance article, business insurance insights Ghana"
             />
-            <div className="relative">
-                <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] overflow-hidden bg-black">
-                    {/* Blurred backdrop fills the space around the uncropped image */}
-                    <img
-                        src={bannerImage}
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-70"
-                        loading="lazy" />
-                    <img
-                        src={bannerImage}
-                        alt="about"
-                        className="relative w-full h-full object-contain"
-                        loading="lazy" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
+            <div className="relative overflow-hidden bg-black">
+                {/* Ambient layer — the article image, blurred, tints the glass around it */}
+                <img
+                    src={bannerImage}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover blur-3xl scale-125 saturate-150 opacity-80" />
+                <div className="absolute inset-0 bg-black/55"></div>
 
-                {/* Back — glass pill */}
-                <Link
-                    to="/corporate/insights"
-                    className="absolute top-5 lg:left-20 left-4 inline-flex items-center gap-1.5 backdrop-blur-md bg-white/15 border border-white/30 text-white text-sm font-medium rounded-full pl-3 pr-4 py-2 shadow-md hover:bg-white/25 transition-colors duration-300"
-                >
-                    <IoIosArrowBack /> Back
-                </Link>
+                <div className="relative lg:px-20 px-4 pt-5 lg:pb-8 pb-5 flex flex-col lg:gap-5 gap-4">
+                    <div className="flex items-center justify-between gap-3">
+                        {/* Back — glass pill */}
+                        <Link
+                            to="/corporate/insights"
+                            className="inline-flex items-center gap-1.5 backdrop-blur-md bg-white/15 border border-white/30 text-white text-sm font-medium rounded-full pl-3 pr-4 py-2 shadow-md hover:bg-white/25 transition-colors duration-300"
+                        >
+                            <IoIosArrowBack /> Back
+                        </Link>
 
-                {/* Download — glass pill (only when the article has a PDF) */}
-                {articleDetails?.pdf_file && (
-                    <a
-                        href={`https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}`}
-                        download
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute top-5 lg:right-20 right-4 inline-flex items-center gap-2 backdrop-blur-md bg-white/15 border border-white/30 text-white text-sm font-medium rounded-full px-4 py-2 shadow-md hover:bg-white/25 transition-colors duration-300"
-                    >
-                        <MdOutlineFileDownload size={20} />
-                        Download
-                    </a>
-                )}
-
-                {/* Title — frosted glass panel */}
-                <div className="absolute inset-x-0 bottom-0 lg:mx-20 mx-4 mb-6 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/25 lg:p-8 p-4 shadow-lg">
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                        {articleDetails.category && (
-                            <span
-                                className="backdrop-blur-md bg-white/15 border border-white/30 text-white text-[11px] font-semibold tracking-wider uppercase rounded-full px-3 py-1.5"
-                                dangerouslySetInnerHTML={{ __html: articleDetails.category }}
-                            />
+                        {/* Download — glass pill (only when the article has a PDF) */}
+                        {articleDetails?.pdf_file && (
+                            <a
+                                href={`https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}`}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 backdrop-blur-md bg-white/15 border border-white/30 text-white text-sm font-medium rounded-full px-4 py-2 shadow-md hover:bg-white/25 transition-colors duration-300"
+                            >
+                                <MdOutlineFileDownload size={20} />
+                                Download
+                            </a>
                         )}
-                        <span className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0226]" />
-                            <span className="text-white/80 text-[12px] font-medium">
-                                {new Date(articleDetails.created_at).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric"
-                                })}
-                            </span>
-                        </span>
                     </div>
-                    <div
-                        className="lg:max-w-[900px] lg:text-[36px] md:text-[28px] text-[18px] font-bold leading-tight text-white line-clamp-3 lg:line-clamp-none"
-                        dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
-                    />
+
+                    {/* The article image — shown whole, with nothing on top of it */}
+                    <img
+                        src={bannerImage}
+                        alt="Article cover"
+                        className="w-full h-[240px] md:h-[420px] lg:h-[540px] object-contain drop-shadow-2xl" />
+
+                    {/* Title — frosted glass panel, below the image instead of over it */}
+                    <div className="rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 lg:p-8 p-4 shadow-lg">
+                        <div className="flex flex-wrap items-center gap-3 mb-3">
+                            {articleDetails.category && (
+                                <span
+                                    className="bg-white/15 border border-white/30 text-white text-[11px] font-semibold tracking-wider uppercase rounded-full px-3 py-1.5"
+                                    dangerouslySetInnerHTML={{ __html: articleDetails.category }}
+                                />
+                            )}
+                            <span className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#FF0226]" />
+                                <span className="text-white/80 text-[12px] font-medium">
+                                    {new Date(articleDetails.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                                </span>
+                            </span>
+                        </div>
+                        <div
+                            className="lg:text-[36px] md:text-[28px] text-[20px] font-bold leading-tight text-white"
+                            dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -195,42 +193,16 @@ const RedDetailOne = () => {
                                     <span className="text-[#FF0226] text-xs font-semibold tracking-widest uppercase">Latest Insights</span>
                                 </div>
                                 {insightLatestData.filter((article) => String(article.id) !== String(id)).slice(0, 2).map((article, index) => (
-                                    <Link
-                                        to={`/corporate/insights/${article.id}`}
+                                    <InsightCard
                                         key={index}
-                                        className="group relative block h-[240px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-[#FF0226]/40 transition-all duration-500 hover:-translate-y-1.5"
-                                    >
-                                        <img
-                                            src={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
-                                            alt="Insight article"
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-                                        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 group-hover:ring-2 group-hover:ring-[#FF0226]/70 transition-all duration-500" />
-                                        {article.category && (
-                                            <span className="absolute top-3 left-3 backdrop-blur-md bg-white/15 border border-white/30 text-white text-[10px] font-semibold tracking-wider uppercase rounded-full px-2.5 py-1 shadow-md">
-                                                {article.category}
-                                            </span>
-                                        )}
-                                        <div className="absolute inset-x-0 bottom-0 m-2.5 rounded-xl backdrop-blur-xl bg-white/10 border border-white/25 p-3 transition-colors duration-500 group-hover:bg-white/20">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#FF0226]" />
-                                                <span className="text-white/80 text-[11px] font-medium">
-                                                    {new Date(article.created_at).toLocaleDateString("en-US", {
-                                                        year: "numeric",
-                                                        month: "long",
-                                                        day: "numeric"
-                                                    })}
-                                                </span>
-                                            </div>
-                                            <h3 className="text-white text-[15px] font-semibold leading-snug line-clamp-2"
-                                                dangerouslySetInnerHTML={{ __html: article.caption }} />
-                                            <span className="mt-1.5 inline-flex items-center gap-1.5 text-[#FF9FAC] text-[13px] font-semibold">
-                                                Read More <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                                            </span>
-                                        </div>
-                                    </Link>
+                                        theme="red"
+                                        size="compact"
+                                        to={`/corporate/insights/${article.id}`}
+                                        image={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
+                                        category={article.category}
+                                        date={new Date(article.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                                        title={article.caption}
+                                    />
                                 ))}
                             </div>
 
