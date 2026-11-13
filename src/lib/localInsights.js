@@ -9,7 +9,7 @@ import ciigVpElect from "../assets/purpleinsight/ciig-vp-elect.jpeg";
 export const LOCAL_INSIGHTS = [
     {
         id: "dr-yaw-adom-boateng-ciig-vice-president-elect",
-        caption: "Coronation Insurance Ghana MD, Dr Yaw Adom-Boateng, Earns Top CIIG Leadership Role",
+        caption: "Coronation Insurance Ghana MD, Dr Yaw Adom-\u2060Boateng, Earns Top CIIG Leadership Role",
         excerpt: "The Managing Director of Coronation Insurance Ghana, Dr Yaw Adom-Boateng, has been elected Vice President-Elect of the Chartered Institute of Insurers Ghana (CIIG).",
         category: "News",
         main_image: ciigVpElect,

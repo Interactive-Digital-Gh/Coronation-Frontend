@@ -5,7 +5,7 @@ import insightmainbg from "../assets/purpleinsight/insightmain.png"
 import Articles from "../components/Articles"
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { Link } from "react-router-dom"
-import { HiArrowRight } from "react-icons/hi"
+import InsightCard from "../components/InsightCard"
 import "./global.css"
 import { useEffect, useState } from "react"
 import SEO from "../components/SEO";
@@ -93,50 +93,20 @@ const PurpleInsights = () => {
                             </h2>
                         </div>
 
-                        {/* Featured glass cards — two most recent articles */}
+                        {/* Featured cards — two most recent articles */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {insightLatestData.slice(0, 2).map((article, index) => (
-                                <Link
-                                    to={`/individual/insights/${article.id}`}
+                                <InsightCard
                                     key={index}
-                                    className="group relative block lg:h-[440px] md:h-[400px] h-[340px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#B580D1]/40 transition-all duration-500 hover:-translate-y-2"
-                                >
-                                    <img
-                                        src={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                                        loading="lazy"
-                                        alt="Insight article"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-                                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 group-hover:ring-2 group-hover:ring-[#B580D1]/70 transition-all duration-500" />
-
-                                    {article.category && (
-                                        <span className="absolute top-5 left-5 backdrop-blur-md bg-white/15 border border-white/30 text-white text-[11px] font-semibold tracking-wider uppercase rounded-full px-3 py-1.5 shadow-md">
-                                            {article.category}
-                                        </span>
-                                    )}
-
-                                    <div className="absolute inset-x-0 bottom-0 m-4 rounded-xl backdrop-blur-xl bg-white/10 border border-white/25 lg:p-6 p-4 shadow-lg transition-colors duration-500 group-hover:bg-white/20">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#B580D1]" />
-                                            <span className="text-white/80 text-[12px] font-medium">
-                                                {new Date(article.created_at).toLocaleDateString("en-US", {
-                                                    year: "numeric",
-                                                    month: "long",
-                                                    day: "numeric"
-                                                })}
-                                            </span>
-                                        </div>
-                                        <h2 className="text-white lg:text-[24px] text-[18px] font-semibold leading-snug line-clamp-2 mb-2"
-                                            dangerouslySetInnerHTML={{ __html: article.caption }} />
-                                        <span className="hidden md:line-clamp-2 text-white/75 lg:text-[15px] text-[13px] leading-relaxed mb-3"
-                                            dangerouslySetInnerHTML={{ __html: article.excerpt }} />
-                                        <span className="inline-flex items-center gap-2 text-[#D8B9EA] text-sm font-semibold">
-                                            Read More
-                                            <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
-                                        </span>
-                                    </div>
-                                </Link>
+                                    theme="purple"
+                                    size="featured"
+                                    to={`/individual/insights/${article.id}`}
+                                    image={article?.main_image ? cmsImage(article.main_image) : "assets/purplemotor/motorbg.png"}
+                                    category={article.category}
+                                    date={new Date(article.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                                    title={article.caption}
+                                    excerpt={article.excerpt}
+                                />
                             ))}
                         </div>
                     </div>
